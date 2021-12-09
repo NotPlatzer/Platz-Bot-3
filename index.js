@@ -82,7 +82,7 @@ client.distube = new distube.default(client, {
 })
 
 client.distube
-    .on('empty', queue => queue.textChannel.send('The Queue is Empty!'))
+    .on('empty', queue => message.reply('The Queue is Empty!'))
     .on('playSong', (queue, song) =>
         queue.textChannel.send(
             `Playing \`${song.name}\` - \`${song.formattedDuration
