@@ -40,6 +40,10 @@ client.once('ready', () => {
 
 client.on('messageCreate', message => {
 
+    if (message.mentions.has(client.user.id)) {
+        message.reply("Hello there!");
+    }
+
     if (!message.content.startsWith(prefix) || message.author.bot) return;
     if (message.channel.type === 'dm') return;
 
