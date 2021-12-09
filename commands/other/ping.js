@@ -4,7 +4,7 @@ module.exports = {
     name: "ping",
     aliases: ['pi'],
     cooldown: 1000 * 5,
-    description: "ping command",
+    description: "ping/test command",
 
 
     async run (client, message, args) {
