@@ -18,5 +18,8 @@
     "libsodium-wrappers": "^0.7.9",
     "ms": "^2.1.3",
     "ytdl": "^1.4.1"
+  },
+  "engines": {
+    "node": "16.10.0"
   }
 }
