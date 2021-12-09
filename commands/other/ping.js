@@ -7,10 +7,9 @@ module.exports = {
     description: "ping/test command",
 
 
-    async run (client, message, args) {
+    async run(client, message, args) {
         message.reply("Pong");
-        const queue = client.distube.getQueue(message)
-        message.reply(queue.lengt);
+
     }
 
 }
