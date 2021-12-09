@@ -10,8 +10,9 @@ module.exports = {
 
     async run(client, message, args) {
         const queue = client.distube.getQueue(message)
+        if(!queue || queue.songs.lenght === 0) return message.reply("There is nothing to skip!");
         if(!message.member.voice.channel) return message.reply("You have to be in a voice channel!");
-        if(!queue) return message.reply("There is nothing to skip!");
+        
        await client.distube.skip(message)
        await message.reply("Skipped")
     }
