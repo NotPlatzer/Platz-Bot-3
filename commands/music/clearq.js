@@ -11,7 +11,7 @@ module.exports = {
     async run(client, message, args) {
         const queue = client.distube.getQueue(message)
         if (!message.member.voice.channel) return message.reply("You have to be in a voice channel!");
-        if (!queue) return message.reply("There is nothing to clear!");
+        if (!queue || queue.songs.length <= 1) return message.reply("There is nothing to clear!");
 
         queue.songs = [queue.songs[0]]
 
