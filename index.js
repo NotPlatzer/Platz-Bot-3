@@ -25,7 +25,7 @@ for (const folder of commandFolders) {
     const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
     for (const file of commandFiles) {
         const command = require(`./commands/${folder}/${file}`);
-        console.log(`[${commandCount}]\u001b[1;34m${command.name}\u001b[0m Loaded!`)
+        console.log(`[${commandCount}] ${command.name} Loaded!`)
         commandCount++;
         client.commands.set(command.name, command);
     }
