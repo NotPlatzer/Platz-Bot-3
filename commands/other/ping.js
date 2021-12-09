@@ -9,6 +9,8 @@ module.exports = {
 
     async run (client, message, args) {
         message.reply("Pong");
+        const queue = client.distube.getQueue(message)
+        message.reply(queue);
     }
 
 }
