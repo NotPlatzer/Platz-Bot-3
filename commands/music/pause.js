@@ -13,7 +13,7 @@ module.exports = {
         if (!message.member.voice.channel) return message.reply("You have to be in a voice channel!");
         
         client.distube.pause(message)
-        message.channel.send("Music is Paused");
+        message.reply("Music is Paused");
 
     }
 

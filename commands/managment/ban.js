@@ -22,11 +22,11 @@ module.exports = {
             await user.ban({
                 reason: reason,
             }).then(() => {
-                message.channel.send(`${user} was Banned by ${message.author}`)
+                message.reply(`${user} was Banned by ${message.author}`)
             })
 
         } else {
-            message.channel.send('cant find the user!')
+            message.reply('cant find the user!')
         }
 
     }

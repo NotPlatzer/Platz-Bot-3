@@ -13,7 +13,7 @@ module.exports = {
     if (!message.member.voice.channel) return message.reply("You have to be in a voice channel!");
 
     const mode = client.distube.setRepeatMode(message)
-    message.channel.send(`Set repeat mode to \`${mode ? mode === 2 ? 'All Queue' : 'This Song' : 'Off'}\``)
+    message.reply(`Set repeat mode to \`${mode ? mode === 2 ? 'All Queue' : 'This Song' : 'Off'}\``)
   }
 
 }

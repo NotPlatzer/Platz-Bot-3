@@ -44,14 +44,19 @@ client.on('messageCreate', message => {
     if (message.channel.type === 'dm') return;
 
     const args = message.content.slice(prefix.length).trim().split(' ');
+
+    if (message.mentions.has(client.user.id)) {
+        message.reply("Hello there!");
+    }
+
     const commandName = args.shift().toLowerCase();
     const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
-    if (!command) return message.channel.send("No such Command: " + commandName);
+    if (!command) return message.reply("No such Command: " + commandName);
 
     if (command) {
         if (command.cooldown) {
-            if (timeout.has(`${command.name}${message.author.id}`)) return message.channel.send(`Please Wait \`${ms(timeout.get(`${command.name}${message.author.id}`) - Date.now(), { long: true })}\``);
+            if (timeout.has(`${command.name}${message.author.id}`)) return message.reply(`Please Wait \`${ms(timeout.get(`${command.name}${message.author.id}`) - Date.now(), { long: true })}\``);
             command.run(client, message, args)
             timeout.set(`${command.name}${message.author.id}`, Date.now() + command.cooldown);
             setTimeout(() => {

@@ -13,7 +13,7 @@ module.exports = {
         if (!message.member.voice.channel) return message.reply("You have to be in a voice channel!");
 
         client.distube.resume(message)
-        message.channel.send("Resumed");
+        message.reply("Resumed");
 
     }
 
