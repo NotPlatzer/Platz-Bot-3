@@ -69,7 +69,7 @@ client.on('messageCreate', message => {
                 timeout.delete(`${command.name}${message.author.id}`)
             }, command.cooldown)
         } else {
-            console.log(`${message.author.username} executed ${command.name}\n[${args}]`);
+            console.log(`${message.author.username} executed ${command.name}${args}`);
             command.run(client, message, args);
 
         }
