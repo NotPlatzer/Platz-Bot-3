@@ -2,8 +2,8 @@ const Discord = require("discord.js");
 
 
 module.exports = {
-    name: "clearq",
-    aliases: ['cq', 'clearqueue'],
+    name: "clearQueue",
+    aliases: ['cq', 'clearqueue', 'clearQueue'],
     cooldown: 1000 * 1,
     description: "clears the queue",
 
