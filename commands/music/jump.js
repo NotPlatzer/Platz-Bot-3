@@ -12,7 +12,7 @@ module.exports = {
         if (!queue) return message.reply("There is nothing to Jump!");
         if (!message.member.voice.channel) return message.reply("You have to be in a voice channel!");
 
-        await distube.jump(message, parseInt(args[0]))
+        await client.distube.jump(message, parseInt(args[0]))
             .catch(err => message.channel.send("Invalid song number."));
         message.reply("Jumped to song no: " + parseInt(args[0]));
 
