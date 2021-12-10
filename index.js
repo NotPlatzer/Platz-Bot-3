@@ -36,7 +36,8 @@ client.on('error', console.error);
 client.once('ready', () => {
 
     console.log(`\nBot is Online! \nThere are: ${commandCount - 1} commands\n`)
-    client.user.setActivity(`Prefix: ${prefix}`);
+    // Set the client user's presence
+    client.user.setPresence({ activities: [{ name: 'with discord.js' }], status: 'idle' });
 })
 
 client.on('messageCreate', message => {
