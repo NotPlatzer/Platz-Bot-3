@@ -22,8 +22,11 @@ module.exports = {
             case "party":
                 client.distube.play(message, "https://open.spotify.com/playlist/1tzIp6T8rhOJFdgbRKHVxS?si=7feadcdae25b466e");
                 break;
+            case "rock":
+                client.distube.play(message, "https://open.spotify.com/playlist/1OsViAzNJKTiP5sKrAuSNF?si=cff65e21de1f401b");
+                break;
             default:
-                message.reply("Current Playlists: **sad**, **og**, **vibe**, **party**\nUsage: ,plist {playlist}");
+                message.reply("Current Playlists: **sad**, **og**, **vibe**, **party**, **rock**\nUsage: ,plist {playlist}");
         }
 
     }
