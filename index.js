@@ -36,7 +36,7 @@ client.on('error', console.error);
 client.once('ready', () => {
 
     console.log(`\nBot is Online! \nThere are: ${commandCount - 1} commands\n`)
-    client.user.setActivity('discord.js', { type: 'WATCHING' });
+    client.user.setActivity(`Prefix: ${prefix}`, { type: 'PLAYING' });
 })
 
 client.on('messageCreate', message => {
