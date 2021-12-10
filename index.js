@@ -50,10 +50,6 @@ client.on('messageCreate', message => {
 
     const args = message.content.slice(prefix.length).trim().split(' ');
 
-    if (message.mentions.has(client.user.id)) {
-        message.reply("Hello there!");
-    }
-
     const commandName = args.shift().toLowerCase();
     const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
