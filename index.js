@@ -45,7 +45,7 @@ client.on('messageCreate', message => {
         message.reply(`Hello there! My Current Prefix is: ${prefix}`);
     }
 
-    if (!message.content.startsWith(prefix) || message.author.bot) return;
+    if (!message.content.startsWith(prefix)) return;
     if (message.channel.type === 'dm') return;
 
     const args = message.content.slice(prefix.length).trim().split(' ');

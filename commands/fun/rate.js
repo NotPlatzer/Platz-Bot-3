@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports = {
     name: "rate",
     aliases: ['r'],
-    cooldown: 1000 * 3,
+    cooldown: 1000 * 5,
     description: "ping command",
 
 
