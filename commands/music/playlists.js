@@ -16,8 +16,14 @@ module.exports = {
             case "og":
                 client.distube.play(message, "https://open.spotify.com/playlist/3RviHWVcqSpD6Ye7zjCllD?si=f6ec0f65acb149b9");
                 break;
+            case "vibe":
+                client.distube.play(message, "https://open.spotify.com/playlist/0gVGrs8jZ856kFIleLXHVX?si=c9e7024792b94b91");
+                break;
+            case "party":
+                client.distube.play(message, "https://open.spotify.com/playlist/1tzIp6T8rhOJFdgbRKHVxS?si=7feadcdae25b466e");
+                break;
             default:
-                message.reply("Current Playlists: **sad**, **og**");
+                message.reply("Current Playlists: **sad**, **og**, **vibe**, **party**\nUsage: ,plist {playlist}");
         }
 
     }
