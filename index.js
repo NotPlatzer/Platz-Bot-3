@@ -12,7 +12,7 @@ const client = new Discord.Client({
 })
 
 const ms = require('ms')
-
+//clear the console
 console.clear();
 
 
