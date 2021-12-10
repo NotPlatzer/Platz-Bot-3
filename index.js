@@ -110,7 +110,7 @@ client.distube
     .on('addList', (queue, playlist) =>
         queue.textChannel.send(
             `Added \`${playlist.name}\` playlist (${playlist.songs.length
-            } songs) to queue`,
+            } songs) to queue by ${playlist.user}`,
         ))
 
 
