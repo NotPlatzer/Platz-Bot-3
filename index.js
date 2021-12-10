@@ -90,7 +90,7 @@ client.distube = new distube.default(client, {
 })
 
 client.distube
-    .on("finish", message => message.channel.send("No more song in queue"))
+    .on('finish', queue => queue.textChannel.send('Finish queue!'))
 
     .on('playSong', (queue, song) =>
         queue.textChannel.send(
