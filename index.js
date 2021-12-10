@@ -99,7 +99,7 @@ client.distube
     .on('playSong', (queue, song) =>
         queue.textChannel.send(
             `Playing \`${song.name}\` - \`${song.formattedDuration
-            }\`\nRequested by: ${song.user}`,
+            }\``,
         ))
     .on('addSong', (queue, song) =>
         queue.textChannel.send(
