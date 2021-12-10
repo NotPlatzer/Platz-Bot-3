@@ -114,9 +114,9 @@ client.distube
         ))
 
 
-    .on('error', (channel, error) => {
-        console.error(error)
-    })
+    .on("error", (message, err) => message.channel.send(
+        "An error encountered: " + err
+    ));
 
 
 

@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 
 module.exports = {
-    name: "suffle",
+    name: "shuffle",
     aliases: ['su'],
     cooldown: 1000 * 0,
     description: "Shuffles the Queue",
@@ -12,7 +12,8 @@ module.exports = {
         if (!queue) return message.reply("There is nothing to Shuffle!");
         if (!message.member.voice.channel) return message.reply("You have to be in a voice channel!");
 
-        client.distube.shuffle(message);
+        await client.distube.shuffle(message);
+        await message.reply("Shuffled the Queue!")
 
 
     }
