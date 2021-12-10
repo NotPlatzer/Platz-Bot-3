@@ -94,29 +94,29 @@ client.distube = new distube.default(client, {
 })
 
 client.distube
-        .on("finish", message => message.reply("No more song in queue")
+    .on("finish", message => message.reply("No more song in queue"))
 
-        .on('playSong', (queue, song) =>
-            queue.textChannel.send(
-                `Playing \`${song.name}\` - \`${song.formattedDuration
-                }\`\nRequested by: ${song.user}`,
-            ))
-        .on('addSong', (queue, song) =>
-            queue.textChannel.send(
-                `Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user}`,
-            ))
-        .on('searchNoResult', message => message.reply(`No result found!`))
+    .on('playSong', (queue, song) =>
+        queue.textChannel.send(
+            `Playing \`${song.name}\` - \`${song.formattedDuration
+            }\`\nRequested by: ${song.user}`,
+        ))
+    .on('addSong', (queue, song) =>
+        queue.textChannel.send(
+            `Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user}`,
+        ))
+    .on('searchNoResult', message => message.reply(`No result found!`))
 
-        .on('addList', (queue, playlist) =>
-            queue.textChannel.send(
-                `Added \`${playlist.name}\` playlist (${playlist.songs.length
-                } songs) to queue`,
-            ))
+    .on('addList', (queue, playlist) =>
+        queue.textChannel.send(
+            `Added \`${playlist.name}\` playlist (${playlist.songs.length
+            } songs) to queue`,
+        ))
 
 
-        .on('error', (channel, error) => {
-            console.error(error)
-        })   
+    .on('error', (channel, error) => {
+        console.error(error)
+    })
 
 
 
