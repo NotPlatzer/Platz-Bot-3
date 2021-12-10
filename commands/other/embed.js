@@ -9,7 +9,9 @@ module.exports = {
 
 
     async run(client, message, args) {
-       
+        const embed = new Discord.MessageEmbed().setDescription("Hello World!");
+
+        message.channel.send({ embeds: [embed] });
     }
 
 }
