@@ -82,9 +82,6 @@ const distube = require('distube')
 
 const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
-const { Console } = require('console')
-
-
 
 client.distube = new distube.default(client, {
     searchSongs: 0,

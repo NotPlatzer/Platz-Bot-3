@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 module.exports = {
     name: "say",
-    aliases: ['r'],
+    aliases: ['say'],
     cooldown: 1000 * 3,
     description: "Repeats everything you say",
 
