@@ -63,13 +63,13 @@ client.on('messageCreate', message => {
         if (command.cooldown) {
             if (timeout.has(`${command.name}${message.author.id}`)) return message.reply(`Please Wait \`${ms(timeout.get(`${command.name}${message.author.id}`) - Date.now(), { long: true })}\``);
             command.run(client, message, args)
-            console.log(`${message.author.username} executed ${prefix}${command.name} ${args}`)
+            console.log(`${message.author.username} executed ${message.content}`)
             timeout.set(`${command.name}${message.author.id}`, Date.now() + command.cooldown);
             setTimeout(() => {
                 timeout.delete(`${command.name}${message.author.id}`)
             }, command.cooldown)
         } else {
-            console.log(`${message.author.username} executed ${prefix}${command.name} ${args}`);
+            console.log(`${message.author.username} executed ${message.content}`);
             command.run(client, message, args);
 
         }
