@@ -10,6 +10,8 @@ module.exports = {
 
     async run(client, message, args) {
 
+        if(1 === 1) return;
+
         const user = message.mentions.members.first();
         const reason = args.slice(1).join(' ');
         if(user === client.user.id) return message.reply("nope");

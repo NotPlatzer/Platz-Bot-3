@@ -9,7 +9,7 @@ module.exports = {
 
     async run(client, message, args) {
         
-        
+        if(1 === 1) return;
 
     }
     
