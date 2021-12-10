@@ -36,8 +36,7 @@ client.on('error', console.error);
 client.once('ready', () => {
 
     console.log(`\nBot is Online! \nThere are: ${commandCount - 1} commands\n`)
-    // Set the client user's presence
-    client.user.setPresence({status: 'online' });
+
 })
 
 client.on('messageCreate', message => {
