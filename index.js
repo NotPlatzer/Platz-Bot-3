@@ -40,7 +40,7 @@ client.once('ready', () => {
 })
 
 client.on('messageCreate', message => {
-
+    if (message.author === client.user) return;
     if (message.mentions.has(client.user.id)) {
         message.reply(`Hello there! My Current Prefix is: ${prefix}`);
     }
