@@ -12,6 +12,7 @@ module.exports = {
 
         const user = message.mentions.members.first();
         const reason = args.slice(1).join(' ');
+        if(user === client.user) return message.reply("nope");
         if(!user) return message.reply("Tell me someone to Ban!");
         if (!reason) return message.reply('Tell me a reason!');
         if(!message.guild.me.permissions.has("BAN_MEMBERS")) return message.reply("can not")
