@@ -1,10 +1,10 @@
 const Discord = require("discord.js");
 
 module.exports = {
-    name: "shuffle",
-    aliases: ['su'],
+    name: "jump",
+    aliases: ['j'],
     cooldown: 1000 * 0,
-    description: "Shuffles the Queue",
+    description: "Jumps to a Song in the Queue",
 
 
     async run(client, message, args) {
