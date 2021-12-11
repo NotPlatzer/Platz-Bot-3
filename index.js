@@ -48,7 +48,7 @@ client.once('ready', async () => {
         await new testscema({
             message: 'Hello, world',
         }).safe()
-    }, 1000)
+    }, 5000)
 })
 
 mongoose.connection.on("connected", () => {
