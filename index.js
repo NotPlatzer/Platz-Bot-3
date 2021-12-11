@@ -45,7 +45,7 @@ client.once('ready', async () => {
     const testServer = '793644454124453938'
 
     setTimeout(async () =>{
-        await new testScema({
+        await new testscema({
             message: 'Hello, world',
         }).safe()
     }, 1000)
