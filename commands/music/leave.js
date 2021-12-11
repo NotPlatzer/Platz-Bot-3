@@ -9,10 +9,10 @@ module.exports = {
 
 
     async run(client, message, args) {
-        
+
         if (!message.member.voice.channel) return message.reply("You have to be in a voice channel!");
-        
-        message.guild.me.voice.channel.leave(); 
+
+        message.member.voice.channel.leave();
         await message.reply("**Left the Channel**");
     }
 }
