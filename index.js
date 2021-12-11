@@ -99,8 +99,8 @@ client.distube = new distube.default(client, {
     searchCooldown: 3,
     leaveOnEmpty: true,
     emptyCooldown: 0,
-    leaveOnFinish: true,
-    leaveOnStop: true,
+    leaveOnFinish: false,
+    leaveOnStop: false,
     plugins: [new SoundCloudPlugin(), new SpotifyPlugin()]
 })
 
