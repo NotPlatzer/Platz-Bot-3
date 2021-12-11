@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports = {
     name: "clear",
     aliases: ['cl'],
-    cooldown: 1000 * 5,
+    cooldown: 1000 * 0,
     description: "clears mesages",
 
 
