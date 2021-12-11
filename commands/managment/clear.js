@@ -1,10 +1,10 @@
 const Discord = require("discord.js");
 
 module.exports = {
-    name: "info",
-    aliases: ['pi'],
+    name: "clear",
+    aliases: ['cl'],
     cooldown: 1000 * 5,
-    description: "ping command",
+    description: "clears mesages",
 
 
     async run(client, message, args) {
