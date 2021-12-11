@@ -16,6 +16,7 @@
     "ffmpeg-static": "^4.4.0",
     "fs": "^0.0.1-security",
     "libsodium-wrappers": "^0.7.9",
+    "mongoose": "^6.1.1",
     "ms": "^2.1.3",
     "ytdl": "^1.4.1"
   },

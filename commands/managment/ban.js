@@ -10,27 +10,39 @@ module.exports = {
 
     async run(client, message, args) {
 
-        if(1 === 1) return;
+        let reason = args.slice(1).join(" ");
+        if (!reason) reason = "Unspecified";
 
-        const user = message.mentions.members.first();
-        const reason = args.slice(1).join(' ');
-        if(user === client.user.id) return message.reply("nope");
-        if(!user) return message.reply("Tell me someone to Ban!");
-        if (!reason) return message.reply('Tell me a reason!');
-        if(!message.guild.me.permissions.has("BAN_MEMBERS")) return message.reply("can not")
-        if(!message.author.permissions.has("BAN_MEMBERS")) return message.reply("you cant");
+        const target = message.mentions.members.first() || message.guild.users.cache.get(args[0]);
 
-        if (user) {
-
-            await user.ban({
-                reason: reason,
-            }).then(() => {
-                message.reply(`${user} was Banned by ${message.author}`)
-            })
-
-        } else {
-            message.reply('cant find the user!')
+        if (!target) {
+            return message.channel.send(
+                `**${message.author.username}**, Please mention the person who you want to ban.`
+            );
         }
+
+        if (target.id === message.author.id) {
+            return message.channel.send(
+                `**${message.author.username}**, You can not ban yourself!`
+            );
+        }
+        if (target.id === message.guild.ownerId) {
+            return message.channel.send("You cannot Ban The Server Owner");
+        }
+
+        let embed = new discord.MessageEmbed()
+            .setTitle("Action : Ban")
+            .setDescription(`Banned ${target} (${target.id})\nReason: ${reason}`)
+            .setColor("#ff2050")
+            .setThumbnail(target.avatarURL)
+            .setFooter(`Banned by ${message.author.tag}`);
+
+        await message.guild.bans.create(target, {
+            reason: reason
+        }).then(() => {
+            message.channel.send({ embeds: [embed] });
+        });
+
 
     }
 
