@@ -10,7 +10,7 @@ module.exports = {
     async run(client, message, args) {
         var numOfMesasges = args.slice(0).join(' ');
         if (!numOfMesasges) return message.reply("Please enter a amount of mesages to be deleted");
-        if(typeof(numOfMesasges) != 'number') return message.reply("Please enter a Number");
+        if(typeof(numOfMesasges) !== 'number') return message.reply("Please enter a Number");
 
         message.delete();
         message.channel.bulkDelete(numOfMesasges)
