@@ -47,7 +47,7 @@ client.once('ready', async () => {
     setTimeout(async () =>{
         await new testScema({
             message: 'Hello, world'
-        }).safe()
+        }).safe();
     }, 1000)
 })
 
