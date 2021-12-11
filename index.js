@@ -36,8 +36,8 @@ client.on('error', console.error);
 client.once('ready', async () => {
     await mongoose.connect(
         process.env.DB_URI, {
-            keepAlive: true
-        })
+        keepAlive: true
+    })
 
 
     console.log(`\nBot is Online! \nThere are: ${commandCount - 1} commands\n`)
@@ -46,6 +46,11 @@ client.once('ready', async () => {
 
 
 })
+
+mongoose.connection.on("connected", () => {
+    console.log("Connected to database !")
+});
+
 
 client.on('messageCreate', message => {
     if (message.author === client.user) return;
