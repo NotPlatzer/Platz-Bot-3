@@ -8,6 +8,7 @@ module.exports = {
 
 
     async run(client, message, args) {
+        msg = message;
         async function clear() {
             msg.delete();
             const fetched = await msg.channel.fetchMessages({ limit: 99 });
