@@ -36,23 +36,23 @@ client.on('error', console.error);
 
 client.once('ready', async () => {
     //await mongoose.connect(
-   //     process.env.DB_URI, {
-   //     keepAlive: true
-   // })
-    
+    //     process.env.DB_URI, {
+    //     keepAlive: true
+    // })
+
     console.log(`\nBot is Online! \nThere are: ${commandCount - 1} commands\n`)
     const botOwner = '608381190336020494'
     const testServer = '793644454124453938'
 
-  //  setTimeout(async () =>{
-     //   await new testscema({
-  //          message: 'Hello, world',
- //       }).safe()
- //   }, 5000)
+    //  setTimeout(async () =>{
+    //   await new testscema({
+    //          message: 'Hello, world',
+    //       }).safe()
+    //   }, 5000)
 })
 
 //mongoose.connection.on("connected", () => {
- //   console.log("Connected to database !")
+//   console.log("Connected to database !")
 //});
 
 
