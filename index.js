@@ -1,5 +1,6 @@
 const Discord = require('discord.js')
 const mongoose = require('mongoose')
+const testscema = require('./test-scema')
 const fs = require('fs')
 const prefix = ",";
 const client = new Discord.Client({
@@ -38,13 +39,16 @@ client.once('ready', async () => {
         process.env.DB_URI, {
         keepAlive: true
     })
-
-
+    
     console.log(`\nBot is Online! \nThere are: ${commandCount - 1} commands\n`)
     const botOwner = '608381190336020494'
     const testServer = '793644454124453938'
 
-
+    setTimeout(async () =>{
+        await new testScema({
+            message: 'Hello, world'
+        }).safe()
+    }, 1000)
 })
 
 mongoose.connection.on("connected", () => {
@@ -88,6 +92,7 @@ const distube = require('distube')
 
 const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
+const testScema = require('./test-scema');
 
 client.distube = new distube.default(client, {
     searchSongs: 0,
