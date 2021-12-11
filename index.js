@@ -51,9 +51,9 @@ client.once('ready', async () => {
  //   }, 5000)
 })
 
-mongoose.connection.on("connected", () => {
-    console.log("Connected to database !")
-});
+//mongoose.connection.on("connected", () => {
+ //   console.log("Connected to database !")
+//});
 
 
 client.on('messageCreate', message => {
