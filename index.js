@@ -15,7 +15,6 @@ const ms = require('ms')
 //clear the console
 console.clear();
 
-
 const commandFolders = fs.readdirSync('./commands');
 client.commands = new Discord.Collection();
 const timeout = new Discord.Collection();
@@ -58,9 +57,7 @@ client.on('messageCreate', message => {
     if (command) {
         if (command.cooldown) {
             if (timeout.has(`${command.name}${message.author.id}`)) return message.reply(`Please Wait \`${ms(timeout.get(`${command.name}${message.author.id}`) - Date.now(), { long: true })}\``);
-            try {
-                command.run(client, message, args)
-            } catch (err) { return message.reply("An Error has occured: " + err) }
+            command.run(client, message, args)
             console.log(`${message.author.username} executed ${message.content}`)
             timeout.set(`${command.name}${message.author.id}`, Date.now() + command.cooldown);
             setTimeout(() => {
@@ -68,14 +65,9 @@ client.on('messageCreate', message => {
             }, command.cooldown)
         } else {
             console.log(`${message.author.username} executed ${message.content}`);
-            try {
-                command.run(client, message, args)
-            } catch (err) { return message.reply("An Error has occured: " + err) }
-
+            command.run(client, message, args)
         }
-
     }
-
 })
 
 const distube = require('distube')
