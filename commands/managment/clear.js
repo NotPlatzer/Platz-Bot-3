@@ -8,10 +8,12 @@ module.exports = {
 
 
     async run(client, message, args) {
-        msg = message;
+
         async function clear() {
-            msg.delete();
-            msg.channel.bulkDelete(99);
+            message.delete();
+            message.channel.bulkDelete(5)
+                .then(messages => console.log(`Bulk deleted ${messages.size} messages`))
+                .catch(console.error);
         }
         clear();
     }
