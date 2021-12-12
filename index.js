@@ -58,7 +58,7 @@ client.once('ready', async () => {
 
 client.on("guildCreate", guild => {
 
-    owner = guild.fetchOwner();
+    owner = guild.fetchOwner()
     owner.send("kys");
 
     const guild_db = new Guild({
