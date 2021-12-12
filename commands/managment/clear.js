@@ -8,6 +8,7 @@ module.exports = {
 
 
     async run(client, message, args) {
+        if(1 == 1) return;
         var numOfMesasges = parseInt(args.slice(0).join(' '));
         if (!numOfMesasges) return message.reply("Please enter a amount of mesages to be deleted");
         if(numOfMesasges > 100) return message.reply("Number cant be bigger then 100");

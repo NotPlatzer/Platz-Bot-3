@@ -10,6 +10,8 @@ module.exports = {
 
     async run(client, message, args) {
 
+        if(1 == 1) return;
+
         let reason = args.slice(1).join(" ");
         if (!reason) reason = "Unspecified";
 
