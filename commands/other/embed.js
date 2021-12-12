@@ -9,7 +9,9 @@ module.exports = {
         const { MessageEmbed } = require("discord.js");
 
         const word = new MessageEmbed()
-            .setTitle("Title");
+            .setTitle("Title")
+            .setDescription("Description")
+            .addField("Field")
 
         console.log(word);
         return message.channel.send({ embeds: [word] });
