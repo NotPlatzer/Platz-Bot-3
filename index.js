@@ -52,6 +52,7 @@ client.once('ready', async () => {
 
 
     const guild = new Guild({
+        name: 'Servername',
         prefix: ',',
         modRole: 'admin'
     });
