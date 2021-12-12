@@ -79,10 +79,12 @@ client.on('messageCreate', message => {
         message.reply(`Hello there! My Current Prefix is: ${prefix}`);
     }
 
-    if (!message.content.startsWith(prefix)) return;
+    const messageGuild = Guild.find({ id: message.guild.id }, (error, data) => { if (error) { console.log(error)} else { console.log(data) }})
+
+    if (!message.content.startsWith(messageGuild.prefix)) return;
 
 
-    const args = message.content.slice(prefix.length).trim().split(' ');
+    const args = message.content.slice(messageGuild.prefix.length).trim().split(' ');
 
     const commandName = args.shift().toLowerCase();
     const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
