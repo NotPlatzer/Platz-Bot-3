@@ -60,7 +60,7 @@ client.on("guildCreate", guild => {
 
 
     // Fetch all channels from the guild (excluding threads)
-    message.guild.channels.fetch()
+    guild.channels.fetch()
         .then(channels => console.log(channels[0]))
         .catch(console.error);
 
