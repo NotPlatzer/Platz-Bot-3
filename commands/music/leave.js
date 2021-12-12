@@ -12,7 +12,7 @@ module.exports = {
 
         if (!message.member.voice.channel) return message.reply("You have to be in a voice channel!");
 
-        client.leaveVoiceChannel(message.member.voiceState.channelID);
+        client.leaveVoiceChannel(message.member.voiceState.channel.id);
         await message.reply("**Left the Channel**");
     }
 }
