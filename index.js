@@ -80,6 +80,7 @@ client.on('messageCreate', message => {
     }
 
     Guild.findOne({ id: message.guild.id }, function (error, messageGuild) {
+        console.log("came here")
         console.log(messageGuild);
     })
 
