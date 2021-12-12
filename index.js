@@ -62,7 +62,7 @@ client.on("guildCreate", guild => {
     let found = 0;
     guild.channels.cache.map((c) => {
         if (found === 0) {
-            if (guild.channel.type === "text") {
+            if (guild.channel.type === "GUILD_TEXT") {
                 if (guild.channel.permissionsFor(client.user).has("VIEW_CHANNEL") === true) {
                     if (guild.channel.permissionsFor(client.user).has("SEND_MESSAGES") === true) {
                         guild.channel.send(`Hello - I'm a Bot!`);
