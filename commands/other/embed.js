@@ -12,7 +12,6 @@ module.exports = {
             .setTitle("Title")
             .setDescription("Description")
             
-
         console.log(embed);
         return message.channel.send({ embeds: [embed] });
     }

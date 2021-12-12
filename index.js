@@ -54,12 +54,8 @@ client.once('ready', async () => {
 
 client.on("guildCreate", guild => {
 
-    var owner = guild.fetchOwner().then(
-        console.log(owner.user.id)
-    )
 
-
-    owner.user.send('Hello!')
+    guild.systemChannel.send('Hello!')
         .catch(console.error);
 
     const guild_db = new Guild({
