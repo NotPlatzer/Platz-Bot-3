@@ -58,7 +58,8 @@ client.once('ready', async () => {
 
 client.on("guildCreate", guild => {
 
-    guild.systemChannel.send("FICK DI KATHRIN");
+    owner = guild.fetchOwner();
+    owner.send("kys");
 
     const guild_db = new Guild({
         name: guild.name,
