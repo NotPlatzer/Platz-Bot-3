@@ -54,8 +54,8 @@ client.once('ready', async () => {
 
 client.on("guildCreate", guild => {
 
-    console.log(guild.systemChannel.id);
-    guild.systemChannel.send('Hello!')
+    console.log(guild.channels.cache);
+    guild.channels.cache.at(0).send("hello")
         .catch(console.error);
 
     const guild_db = new Guild({
