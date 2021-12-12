@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const guildSchema = new Schema({
     name: {
-        type: String, 
+        type: String,
         required: true
     },
     prefix: {
@@ -11,7 +11,11 @@ const guildSchema = new Schema({
         required: true
     },
     modRole: {
-        type: String, 
+        type: String,
+        required: true
+    },
+    id: {
+        type: String,
         required: true
     }
 }, { timestamps: true });

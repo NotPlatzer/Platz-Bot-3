@@ -59,7 +59,8 @@ client.on("guildCreate", guild => {
     const guild_db = new Guild({
         name: guild.name,
         prefix: ',',
-        modRole: 'admin'
+        modRole: 'admin',
+        id: guild.id
     });
 
     guild_db.save()
