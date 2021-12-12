@@ -59,11 +59,16 @@ client.once('ready', async () => {
 client.on("guildCreate", guild => {
 
 
-    // Fetch all channels from the guild (excluding threads)
-    guild.channels.fetch()
-        .then(channels => console.log(channels[0]))
-        .catch(console.error);
-
+    let defaultChannel = "";
+    guild.channels.cache.forEach((channel) => {
+        if (channel.type == "text" && defaultChannel == "") {
+            if (channel.permissionsFor(guild.me).has("SEND_MESSAGES")) {
+                defaultChannel = channel;
+            }
+        }
+    })
+    //defaultChannel will be the channel object that the bot first finds permissions for
+    defaultChannel.send('Hello, Im a Bot!')
 
 
     const guild_db = new Guild({
