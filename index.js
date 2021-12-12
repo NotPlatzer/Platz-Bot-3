@@ -51,13 +51,20 @@ client.once('ready', async () => {
     const testServer = '793644454124453938'
 
 
-    const guild = new Guild({
-        name: 'Servername',
+
+
+
+})
+
+client.on("guildCreate", guild => {
+
+    const guild_db = new Guild({
+        name: guild.name,
         prefix: ',',
         modRole: 'admin'
     });
 
-    guild.save()
+    guild_db.save()
         .then((result) => {
             console.log(result);
         })
@@ -65,8 +72,7 @@ client.once('ready', async () => {
             console.log(err)
         })
 
-
-})
+});
 
 client.on('messageCreate', message => {
     if (message.author === client.user) return;
