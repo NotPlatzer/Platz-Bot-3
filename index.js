@@ -1,5 +1,6 @@
 const Discord = require('discord.js')
 const mongoose = require('mongoose')
+const Guild = require('./db_models/guild');
 
 const fs = require('fs')
 const prefix = ",";
@@ -42,13 +43,21 @@ client.once('ready', async () => {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
-    .then((result) => console.log("\nConnected to db\n"))
-    .catch((err) => console(err));
+        .then((result) => console.log("\nConnected to db\n"))
+        .catch((err) => console(err));
 
     console.log(`\nBot is Online! \nThere are: ${commandCount - 1} commands\n`)
     const botOwner = '608381190336020494'
     const testServer = '793644454124453938'
 
+    client.get('/add-guild', (req, res) => {
+        const guild = new Guild({
+            prefix: ',',
+            modRole: 'admin'
+        });
+
+        guild.save()
+    })
 
 })
 
