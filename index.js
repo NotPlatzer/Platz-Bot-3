@@ -50,20 +50,20 @@ client.once('ready', async () => {
     const botOwner = '608381190336020494'
     const testServer = '793644454124453938'
 
-    client.get('/add-guild', (req, res) => {
-        const guild = new Guild({
-            prefix: ',',
-            modRole: 'admin'
-        });
 
-        guild.save()
-            .then((result) => {
-                console.log(result);
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-    })
+    const guild = new Guild({
+        prefix: ',',
+        modRole: 'admin'
+    });
+
+    guild.save()
+        .then((result) => {
+            console.log(result);
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+
 
 })
 
