@@ -10,9 +10,9 @@ module.exports = {
 
 
     async run(client, message, args) {
-        
+        console.log(Guild)
         Guild.findOneAndUpdate({
-            id: message.guildid
+            id: message.guild.id
         }, {
             prefix: '.'
         })
