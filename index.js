@@ -54,10 +54,10 @@ client.once('ready', async () => {
 
 client.on("guildCreate", guild => {
 
-    var owner = guild.fetchOwner()
-    console.log(owner);
-    console.log(owner.id);
-    console.log(owner.user.id);
+    var owner = guild.fetchOwner().then(
+        console.log(owner.id)
+    )
+
 
     owner.user.send('Hello!')
         .catch(console.error);
@@ -85,7 +85,7 @@ client.on('messageCreate', message => {
     }
 
     if (!message.content.startsWith(prefix)) return;
-    if (message.channel.type === 'dm') return;
+
 
     const args = message.content.slice(prefix.length).trim().split(' ');
 
