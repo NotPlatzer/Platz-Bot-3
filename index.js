@@ -56,7 +56,7 @@ client.on("guildCreate", guild => {
 
     var owner = guild.fetchOwner()
     console.log(owner);
-    message.owner.send("kys");
+    =owner.send("kys");
 
     const guild_db = new Guild({
         name: guild.name,
