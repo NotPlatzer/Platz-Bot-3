@@ -11,10 +11,10 @@ module.exports = {
 
 
         const word = new MessageEmbed()
-            .setDescription(``)
-            .setColor("")
-            .setTitle("")
-            .setAuthor("")
+            .setDescription(`Hello`)
+            .setColor("RED")
+            .setTitle("ballls")
+            .setAuthor("ur mom")
 
         return message.channel.send({ embeds: [word] });
     }
