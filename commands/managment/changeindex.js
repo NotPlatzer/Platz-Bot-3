@@ -11,12 +11,17 @@ module.exports = {
 
     async run(client, message, args) {
         console.log(Guild)
-        Guild.findOneAndUpdate({
+
+        const updateguild = await Guild.findOneAndUpdate({
             id: message.guild.id
         }, {
             prefix: '.'
-        })
+        }, {
+            new: true
+        }
+        );
 
+        console.log(updateguild.prefix);
     }
-    
+
 }
