@@ -58,8 +58,7 @@ client.once('ready', async () => {
 
 client.on("guildCreate", guild => {
 
-    const channel = guild.channels.cache.find(channel => channel.type === 'text' && channel.permissionsFor(guild.me).has('SEND_MESSAGES'))
-    channel.send("Thanks for inviting me")
+    guild.systemChannel.send("FICK DI KATHRIN");
 
     const guild_db = new Guild({
         name: guild.name,
