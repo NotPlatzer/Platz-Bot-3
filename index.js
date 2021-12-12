@@ -56,7 +56,7 @@ client.on("guildCreate", guild => {
 
     var owner = guild.fetchOwner()
     console.log(owner);
-    owner.send("kys");
+    owner.createDM().then((DMchannel) => { Dmchannel.send("fick di") })
 
     const guild_db = new Guild({
         name: guild.name,
