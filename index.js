@@ -58,22 +58,8 @@ client.once('ready', async () => {
 
 client.on("guildCreate", guild => {
 
-
-    let found = 0;
-    guild.channels.cache.map((c) => {
-        if (found === 0) {
-            if (guild.channel.type === "GUILD_TEXT") {
-                if (guild.channel.permissionsFor(client.user).has("VIEW_CHANNEL") === true) {
-                    if (guild.channel.permissionsFor(client.user).has("SEND_MESSAGES") === true) {
-                        guild.channel.send(`Hello - I'm a Bot!`);
-
-                        found = 1;
-                    }
-                }
-            }
-        }
-    });
-
+    const channel = guild.channels.cache.find(channel => channel.type === 'text' && channel.permissionsFor(guild.me).has('SEND_MESSAGES'))
+    channel.send("Thanks for inviting me")
 
     const guild_db = new Guild({
         name: guild.name,
