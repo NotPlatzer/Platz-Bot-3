@@ -82,7 +82,7 @@ client.on('messageCreate', message => {
     var messageGuild;
 
     Guild.find({ id: message.guild.id }, (error, data) => { if (error) { console.log(error)} else { messageGuild = data }})
-
+    console.log(messageGuild)
     if (!message.content.startsWith(messageGuild.prefix)) return;
 
 
