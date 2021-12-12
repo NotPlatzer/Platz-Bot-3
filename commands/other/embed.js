@@ -8,13 +8,11 @@ module.exports = {
 
 
     async run(client, message, args) {
-
+        const { MessageEmbed } = require("discord.js");
 
         const word = new MessageEmbed()
-            .setDescription(`Hello`)
-            .setColor("RED")
-            .setTitle("ballls")
-            .setAuthor("ur mom")
+            .setTitle("Title");
+            
 
         return message.channel.send({ embeds: [word] });
     }
