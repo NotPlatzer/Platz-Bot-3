@@ -8,7 +8,7 @@ module.exports = {
     async run(client, message, args) {
         const { MessageEmbed } = require("discord.js");
 
-        channel.send({ embeds: [new MessageEmbed().setTitle("Files")] })
+        message.channel.send({ embeds: [new MessageEmbed().setTitle("Files")] })
     }
 
 }
