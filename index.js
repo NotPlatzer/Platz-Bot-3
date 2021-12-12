@@ -58,6 +58,20 @@ client.once('ready', async () => {
 
 client.on("guildCreate", guild => {
 
+    var found = false;
+    guild.channels.forEach(function (channel, id) {
+        // If a channel is already found, nothing more needs to be done
+        if (found == true || channel.type != "text") {
+            return;
+        }
+        // If the channel isn't found and the bot has permission to 
+        // send and read messages in the channel, send a welcome message there
+        if (guild.me.permissionsIn(channel).has("SEND_MESSAGES") && guild.me.permissionsIn(channel).has("VIEW_CHANNEL")) {
+            found = true;
+            return channel.send("Thanks for inviting me, blablabla")
+        }
+    })
+
     const guild_db = new Guild({
         name: guild.name,
         prefix: ',',
