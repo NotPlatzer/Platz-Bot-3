@@ -11,7 +11,7 @@ module.exports = {
         const word = new MessageEmbed()
             .setTitle("Title")
             .setDescription("Description")
-            .addField("Field")
+            
 
         console.log(word);
         return message.channel.send({ embeds: [word] });
