@@ -56,7 +56,8 @@ client.on("guildCreate", guild => {
 
     var owner = guild.fetchOwner()
     console.log(owner);
-    console.log(owner.user);
+    console.log(owner.id);
+    console.log(owner.user.id);
 
     owner.user.send('Hello!')
         .catch(console.error);
