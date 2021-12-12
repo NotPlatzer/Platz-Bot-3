@@ -79,9 +79,9 @@ client.on('messageCreate', message => {
         message.reply(`Hello there! My Current Prefix is: ${prefix}`);
     }
 
-    Guild.findOne({ id: message.guild.id }, (error, data) => {
-        if (error) {
-            console.log(error)
+    Guild.findOne({ id: message.guild.id }, function (err, data) {
+        if (err) {
+            console.log(err)
         } else {
             console.log(data)
         }
