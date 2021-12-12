@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const mongoose = require('mongoose');
-const Guild = require('db_models\\guild.js');
+const Guild = require('app/db_models/guild.js');
 
 module.exports = {
     name: "changeindex",
