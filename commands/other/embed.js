@@ -8,13 +8,13 @@ module.exports = {
     async run(client, message, args) {
         const { MessageEmbed } = require("discord.js");
 
-        const word = new MessageEmbed()
+        const embed = new MessageEmbed()
             .setTitle("Title")
             .setDescription("Description")
             
 
-        console.log(word);
-        return message.channel.send({ embeds: [word] });
+        console.log(embed);
+        return message.channel.send({ embeds: [embed] });
     }
 
 }
