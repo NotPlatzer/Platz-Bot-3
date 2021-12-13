@@ -8,7 +8,7 @@ module.exports = {
     async run(client, message, args) {
         const Discord = require("discord.js");
 
-        const embed = new MessageEmbed()
+        const embed = new Discord.MessageEmbed()
             embed.setTitle("Title")
             embed.setDescription("Description");
         
