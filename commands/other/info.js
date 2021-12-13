@@ -14,7 +14,7 @@ module.exports = {
             .setTitle("General Information")
             .setAuthor("Platz Bot v3", "https://cdn.discordapp.com/avatars/917878990478377020/7f147973452d4a6bacbb6132b8e4a18d.png")
             .setColor([37, 150, 190])
-            .setDescription(`This Bot's lead developer is: <@608381190336020494>\nTo get more info about a command use ${client.GuildPrefix}info {command name}`)
+            .setDescription(`This Bot's lead developer is: <@608381190336020494>\nTo get more info about a command use ${GuildPrefix}info {command name}`)
             .setTimestamp()
 
         for (const folder of commandFolders) {
