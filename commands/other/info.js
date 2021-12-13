@@ -14,7 +14,7 @@ module.exports = {
 
         const firstargs = args.join(' ')[0];
         if (!firstargs) return message.reply("Please provide a command to show information");
-
+        console.log(firstargs);
 
         for (const folder of commandFolders) {
             const commandFiles = fs.readdirSync(`/app/commands/${folder}`).filter(file => file.endsWith('.js'));
@@ -23,7 +23,7 @@ module.exports = {
 
                 const command = require(`/app/commands/${folder}/${file}`);
 
-                if (command.name === firstargs) {
+                if (command.name == firstargs) {
                     message.reply(`${command.name} usage: ${GuildPrefix}${command.usage}`)
                 }
             }
