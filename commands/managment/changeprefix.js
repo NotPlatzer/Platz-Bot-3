@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const Guild = require('/app/db_models/guild.js');
 
 module.exports = {
-    name: "changeindex",
-    aliases: ['ci'],
+    name: "changeprefix",
+    aliases: ['cp'],
     cooldown: 1000 * 5,
     description: "ping command",
 
@@ -15,7 +15,7 @@ module.exports = {
         const updateguild = await Guild.findOneAndUpdate({
             id: message.guild.id
         }, {
-            prefix: '.'
+            prefix: args.join(" ")[0]
         }, {
             new: true
         }
