@@ -109,7 +109,6 @@ client.on('messageCreate', message => {
         }
     }).catch((error) => {
         console.log(error)
-        SS
     });
 })
 
