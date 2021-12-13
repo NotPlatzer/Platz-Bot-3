@@ -31,7 +31,7 @@ for (const folder of commandFolders) {
         console.log(`[${commandCount}] ${command.name} Loaded!`)
         commandCount++;
         client.commands.set(command.name, command);
-        
+
     }
 }
 
@@ -80,12 +80,13 @@ client.on('messageCreate', message => {
     if (message.author === client.user) return;
 
     Guild.findOne({ id: message.guild.id }).then((messageGuild) => {
+        const GuildPrefix = messageGuild.prefix;
         if (message.mentions.has(client.user.id)) {
-            message.reply(`Hello there! My Current Prefix is: ${messageGuild.prefix}`);
+            message.reply(`Hello there! My Current Prefix is: ${GuildPrefix}`);
         }
-        if (!message.content.startsWith(messageGuild.prefix)) return;
+        if (!message.content.startsWith(GuildPrefix)) return;
 
-        const args = message.content.slice(messageGuild.prefix.length).trim().split(' ');
+        const args = message.content.slice(GuildPrefix.length).trim().split(' ');
 
         const commandName = args.shift().toLowerCase();
         const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
