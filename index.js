@@ -3,7 +3,6 @@ const mongoose = require('mongoose')
 const Guild = require('./db_models/guild');
 
 const fs = require('fs')
-const prefix = ",";
 const client = new Discord.Client({
     intents: [
         'GUILDS',

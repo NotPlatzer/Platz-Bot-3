@@ -9,8 +9,13 @@ module.exports = {
         const { MessageEmbed } = require("discord.js");
 
         const embed = new MessageEmbed()
-            .setTitle("Title")
-            .setDescription("Description");
+        .setTitle("General Information")
+        .setAuthor("Platz Bot v3", "https://yagami.xyz/content/uploads/2018/11/discord-512-1.png","https://yagami.xyz")
+        .setColor(#002aff)
+        .setDescription("This Bots lead developer is: @platz")
+        .setImage("http://i.imgur.com/yVpymuV.png")
+        .setThumbnail("https://yagami.xyz/content/uploads/2018/11/discord-512-1.png")
+        .setTimestamp()
 
         console.log(embed);
         return message.channel.send({ embeds: [embed] });
