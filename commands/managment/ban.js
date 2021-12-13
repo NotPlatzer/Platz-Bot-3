@@ -28,7 +28,7 @@ module.exports = {
         if (target.id === message.guild.ownerId) {
             return message.reply("You cannot Ban The Server Owner");
         }
-        if(target.id === message.guild.me.id) {
+        if (target.id === message.guild.me.id) {
             return message.reply("You can not Ban the Bot in this way")
         }
 
@@ -43,7 +43,11 @@ module.exports = {
             reason: reason
         }).then(() => {
             message.reply({ embeds: [embed] });
-        });
+        }).catch(error =>
+            message.reply(
+                `Sorry ${message.author} I couldn't ban this person because of : ${error}`
+            )
+        );
 
 
     }
