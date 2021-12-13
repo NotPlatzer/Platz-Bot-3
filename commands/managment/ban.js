@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const { Permissions } = require('discord.js');
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
     name: "ban",
@@ -28,7 +29,7 @@ module.exports = {
             return message.channel.send("You cannot Ban The Server Owner");
         }
 
-        let embed = new discord.MessageEmbed()
+        let embed = new MessageEmbed()
             .setTitle("Action : Ban")
             .setDescription(`Banned ${target} (${target.id})\nReason: ${reason}`)
             .setColor("#ff2050")
