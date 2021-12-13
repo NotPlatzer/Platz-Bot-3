@@ -26,7 +26,7 @@ module.exports = {
 
                 const command = require(`/app/commands/${folder}/${file}`);
 
-                embed.addField(command.name, " " , true)
+                embed.addField(command.name, "‎" , true)
             }
         }
 
