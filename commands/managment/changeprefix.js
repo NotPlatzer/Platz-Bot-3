@@ -21,7 +21,8 @@ module.exports = {
         }
         );
 
-        console.log(updateguild.prefix);
+        message.reply("Changed Prefix to: " + updateguild.prefix)
+        
     }
 
 }
