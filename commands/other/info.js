@@ -16,6 +16,8 @@ module.exports = {
         if (!firstargs) return message.reply("Please provide a command to show information");
         console.log(firstargs);
 
+        var found = false;
+
         for (const folder of commandFolders) {
             const commandFiles = fs.readdirSync(`/app/commands/${folder}`).filter(file => file.endsWith('.js'));
 
@@ -25,14 +27,15 @@ module.exports = {
 
                 if (command.name == firstargs) {
                     message.reply(`${command.name} usage: ${GuildPrefix}${command.usage}`)
+                    found = true;
                 }
-                else{
-                    message.reply("No such Command found")
-                }
+                
             }
         }
 
-
+        if(!found) {
+            message.reply("No such Command");
+        }
 
     }
 
