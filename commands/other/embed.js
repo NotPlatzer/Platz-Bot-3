@@ -1,3 +1,7 @@
+const { MessageEmbed } = require("discord.js");
+const fs = require('fs')
+const commandFolders = fs.readdirSync('commands');
+
 module.exports = {
     name: "embed",
     aliases: ['e'],
@@ -6,8 +10,6 @@ module.exports = {
 
 
     async run(client, message, args) {
-        const { MessageEmbed } = require("discord.js");
-        const commandFolders = fs.readdirSync('commands');
 
         const embed = new MessageEmbed()
             .setTitle("General Information")
@@ -22,7 +24,7 @@ module.exports = {
             for (const file of commandFiles) {
 
                 const command = require(`./commands/${folder}/${file}`);
-                
+
                 embed.addField(command.name, command.description)
             }
         }
