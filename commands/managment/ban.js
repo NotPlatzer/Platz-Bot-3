@@ -9,7 +9,8 @@ module.exports = {
     usage: "ban {user to ban} {reason}",
 
     async run(client, message, args, GuildPrefix) {
-
+        console.log(message.author);
+        console.log(message.author.permissions);
         if (!message.author.permissions.has(Permissions.FLAGS.BAN_MEMBERS)) return message.reply("You dont have permission to do this!");
         if (!message.guild.me.permissions.has(Permissions.FLAGS.BAN_MEMBERS)) return message.reply("I dont have permission to do this!");
 
