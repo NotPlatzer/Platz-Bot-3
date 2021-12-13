@@ -76,11 +76,11 @@ client.on("guildCreate", guild => {
 
 client.on('messageCreate', message => {
     if (message.author === client.user) return;
-    if (message.mentions.has(client.user.id)) {
-        message.reply(`Hello there! My Current Prefix is: ${prefix}`);
-    }
-    Guild.findOne({ id: message.guild.id }).then((messageGuild) => {
 
+    Guild.findOne({ id: message.guild.id }).then((messageGuild) => {
+        if (message.mentions.has(client.user.id)) {
+            message.reply(`Hello there! My Current Prefix is: ${messageGuild.prefix}`);
+        }
         if (!message.content.startsWith(messageGuild.prefix)) return;
 
         const args = message.content.slice(messageGuild.prefix.length).trim().split(' ');
