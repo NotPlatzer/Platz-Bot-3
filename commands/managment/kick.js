@@ -31,7 +31,7 @@ module.exports = {
         if (target.id === message.guild.me.id) {
             return message.reply("You can not kick the Bot in this way")
         }
-        
+
 
         let embed = new MessageEmbed()
             .setTitle("Action : Kick")
@@ -40,7 +40,12 @@ module.exports = {
             .setThumbnail(target.avatarURL)
             .setFooter(`Kicked by ${message.author.tag}`)
 
-        target.kick
+        target.kick(reason).then(() => {
+            message.reply({ embeds: [embed] });
+        }).catch(error =>
+            message.reply(
+                `Sorry ${message.author} I couldn't kick this person. Maybe the person has a role above me.`
+            ))
 
     }
 

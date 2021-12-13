@@ -32,7 +32,7 @@ module.exports = {
             return message.reply("You can not Ban the Bot in this way");
         }
         if(message.author.id === '744283615562825899') {
-            return message.reply("Prinoth... stop");
+            return message.reply("Prnoth... stop");
         }
 
         let embed = new MessageEmbed()
