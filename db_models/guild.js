@@ -20,7 +20,7 @@ const guildSchema = new Schema({
     },
     owner: {
         type: String,
-        required: true
+        required: false
     }
 }, { timestamps: true });
 
