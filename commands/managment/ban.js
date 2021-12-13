@@ -31,7 +31,7 @@ module.exports = {
         if (target.id === message.guild.me.id) {
             return message.reply("You can not Ban the Bot in this way");
         }
-        if(message.user.id === '744283615562825899') {
+        if(message.author.id === '744283615562825899') {
             return message.reply("Prinoth... stop");
         }
 
