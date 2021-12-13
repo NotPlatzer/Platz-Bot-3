@@ -11,7 +11,7 @@ module.exports = {
         const embed = new MessageEmbed()
         .setTitle("General Information")
         .setAuthor("Platz Bot v3", "https://yagami.xyz/content/uploads/2018/11/discord-512-1.png","https://yagami.xyz")
-        .setColor(#002aff)
+        .setColor(BLUE)
         .setDescription("This Bots lead developer is: @platz")
         .setImage("http://i.imgur.com/yVpymuV.png")
         .setThumbnail("https://yagami.xyz/content/uploads/2018/11/discord-512-1.png")
