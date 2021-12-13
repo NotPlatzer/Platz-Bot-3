@@ -84,6 +84,7 @@ client.on('messageCreate', message => {
 
     Guild.findOne({ id: message.guild.id }).then((messageGuild) => {
         console.log(messageGuild)
+        console.log(messageGuild.prefix)
     }).catch((error) => {
         console.log(error)
     SS});
