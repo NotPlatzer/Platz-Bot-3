@@ -10,7 +10,8 @@ module.exports = {
 
     async run(client, message, args, GuildPrefix) {
 
-        if(1 == 1) return;
+        if (!message.author.permissions.has(Permissions.FLAGS.BAN_MEMBERS)) return message.reply("You dont have permission to do this!");
+        if (!message.guild.me.permissions.has(Permissions.FLAGS.BAN_MEMBERS)) return message.reply("I dont have permission to do this!");
 
         let reason = args.slice(1).join(" ");
         if (!reason) reason = "Unspecified";
@@ -18,15 +19,11 @@ module.exports = {
         const target = message.mentions.members.first() || message.guild.users.cache.get(args[0]);
 
         if (!target) {
-            return message.channel.send(
-                `**${message.author.username}**, Please mention the person who you want to ban.`
-            );
+            return message.reply(`Please mention the person who you want to ban`);
         }
 
         if (target.id === message.author.id) {
-            return message.channel.send(
-                `**${message.author.username}**, You can not ban yourself!`
-            );
+            return message.reply(`You can not ban yourself!`);
         }
         if (target.id === message.guild.ownerId) {
             return message.channel.send("You cannot Ban The Server Owner");
