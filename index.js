@@ -79,37 +79,37 @@ client.on('messageCreate', message => {
     if (message.mentions.has(client.user.id)) {
         message.reply(`Hello there! My Current Prefix is: ${prefix}`);
     }
-
-    if (!message.content.startsWith(prefix)) return;
-
     Guild.findOne({ id: message.guild.id }).then((messageGuild) => {
         console.log(messageGuild)
         console.log(messageGuild.prefix)
+
+        if (!message.content.startsWith(messageGuild.prefix)) return;
+
+        const args = message.content.slice(messageGuild.prefix.length).trim().split(' ');
+
+        const commandName = args.shift().toLowerCase();
+        const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+
+        if (!command) return message.reply("No such Command: " + commandName);
+
+        if (command) {
+            if (command.cooldown) {
+                if (timeout.has(`${command.name}${message.author.id}`)) return message.reply(`Please Wait \`${ms(timeout.get(`${command.name}${message.author.id}`) - Date.now(), { long: true })}\``);
+                command.run(client, message, args)
+                console.log(`${message.author.username} executed ${message.content}`)
+                timeout.set(`${command.name}${message.author.id}`, Date.now() + command.cooldown);
+                setTimeout(() => {
+                    timeout.delete(`${command.name}${message.author.id}`)
+                }, command.cooldown)
+            } else {
+                console.log(`${message.author.username} executed ${message.content}`);
+                command.run(client, message, args)
+            }
+        }
     }).catch((error) => {
         console.log(error)
-    SS});
-
-    const args = message.content.slice(prefix.length).trim().split(' ');
-
-    const commandName = args.shift().toLowerCase();
-    const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
-
-    if (!command) return message.reply("No such Command: " + commandName);
-
-    if (command) {
-        if (command.cooldown) {
-            if (timeout.has(`${command.name}${message.author.id}`)) return message.reply(`Please Wait \`${ms(timeout.get(`${command.name}${message.author.id}`) - Date.now(), { long: true })}\``);
-            command.run(client, message, args)
-            console.log(`${message.author.username} executed ${message.content}`)
-            timeout.set(`${command.name}${message.author.id}`, Date.now() + command.cooldown);
-            setTimeout(() => {
-                timeout.delete(`${command.name}${message.author.id}`)
-            }, command.cooldown)
-        } else {
-            console.log(`${message.author.username} executed ${message.content}`);
-            command.run(client, message, args)
-        }
-    }
+        SS
+    });
 })
 
 const distube = require('distube')
