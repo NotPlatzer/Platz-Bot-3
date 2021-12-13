@@ -81,8 +81,8 @@ client.on('messageCreate', message => {
 
     if (!message.content.startsWith(prefix)) return;
 
-    const GUILD = Guild.findOne({ id: message.guild.id })
-    console.log(GUILD.name);
+    const GUILD = Guild.findOne({ id: message.guild.id }).then(console.log(GUILD.name))
+    
 
     const args = message.content.slice(prefix.length).trim().split(' ');
 
