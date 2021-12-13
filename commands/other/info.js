@@ -12,7 +12,7 @@ module.exports = {
 
     async run(client, message, args, GuildPrefix) {
 
-        const firstargs = args.join(' ')[0];
+        const firstargs = args.join(' ');
         if (!firstargs) return message.reply("Please provide a command to show information");
         console.log(firstargs);
 
