@@ -62,7 +62,8 @@ client.on("guildCreate", guild => {
         name: guild.name,
         prefix: ',',
         modRole: 'admin',
-        id: guild.id
+        id: guild.id,
+        owner: guild.ownerId
     });
 
     guild_db.save()

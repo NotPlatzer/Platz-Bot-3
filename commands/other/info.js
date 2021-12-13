@@ -5,7 +5,7 @@ const commandFolders = fs.readdirSync('commands');
 module.exports = {
     name: "info",
     aliases: ['i'],
-    cooldown: 1000 * 5,
+    cooldown: 1000 * 0,
     description: "Information about commands",
     usage: "Info",
 
