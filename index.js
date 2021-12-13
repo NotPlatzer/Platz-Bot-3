@@ -82,7 +82,7 @@ client.on('messageCreate', message => {
     Guild.findOne({ id: message.guild.id }).then((messageGuild) => {
         const GuildPrefix = messageGuild.prefix;
         if (message.mentions.has(client.user.id)) {
-            message.reply(`Hello there! My Current Prefix is: ${GuildPrefix}`);
+            message.reply(`Hello there! My Current Prefix is: ${GuildPrefix}\nUse ${GuildPrefix}help for more Information`);
         }
         if (!message.content.startsWith(GuildPrefix)) return;
 
