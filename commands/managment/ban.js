@@ -31,7 +31,7 @@ module.exports = {
         if (target.id === message.guild.me.id) {
             return message.reply("You can not Ban the Bot in this way");
         }
-        if(message.author.id === '744283615562825899') {
+        if (message.author.id === '744283615562825899') {
             return message.reply("Prnoth... stop");
         }
 
@@ -39,7 +39,7 @@ module.exports = {
             .setTitle("Action : Ban")
             .setDescription(`Banned ${target} (${target.id})\nReason: ${reason}`)
             .setColor("#ff2050")
-            .setThumbnail(target.avatarURL)
+            .setThumbnail(target.avatarURL())
             .setFooter(`Banned by ${message.author.tag}`);
 
         await message.guild.bans.create(target, {

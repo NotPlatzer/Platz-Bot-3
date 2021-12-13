@@ -37,7 +37,7 @@ module.exports = {
             .setTitle("Action : Kick")
             .setDescription(`Kicked ${target} (${target.id})\nReason: ${reason}`)
             .setColor("#ff2050")
-            .setThumbnail(target.avatarURL)
+            .setThumbnail(target.avatarURL())
             .setFooter(`Kicked by ${message.author.tag}`)
 
         target.kick(reason).then(() => {
