@@ -26,7 +26,10 @@ module.exports = {
             return message.reply(`You can not ban yourself!`);
         }
         if (target.id === message.guild.ownerId) {
-            return message.channel.send("You cannot Ban The Server Owner");
+            return message.reply("You cannot Ban The Server Owner");
+        }
+        if(target.id === message.guild.me.id) {
+            return message.reply("You can not Ban the Bot in this way")
         }
 
         let embed = new MessageEmbed()
@@ -39,7 +42,7 @@ module.exports = {
         await message.guild.bans.create(target, {
             reason: reason
         }).then(() => {
-            message.channel.send({ embeds: [embed] });
+            message.reply({ embeds: [embed] });
         });
 
 
