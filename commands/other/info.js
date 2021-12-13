@@ -26,6 +26,9 @@ module.exports = {
                 if (command.name == firstargs) {
                     message.reply(`${command.name} usage: ${GuildPrefix}${command.usage}`)
                 }
+                else{
+                    message.reply("No such Command found")
+                }
             }
         }
 
