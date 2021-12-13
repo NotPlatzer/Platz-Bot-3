@@ -27,7 +27,7 @@ module.exports = {
                 client.distube.play(message, "https://open.spotify.com/playlist/1OsViAzNJKTiP5sKrAuSNF?si=cff65e21de1f401b");
                 break;
             default:
-                message.reply("Current Playlists: **sad**, **og**, **vibe**, **party**, **rock**\nUsage: ,plist {playlist}");
+                message.reply("Current Playlists: **sad**, **og**, **vibe**, **party**, **rock**");
         }
 
     }
