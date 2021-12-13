@@ -14,7 +14,7 @@ module.exports = {
             message.reply('Nothing playing right now!')
         } else {
             console.log(typeof queue)
-            console.log(queue.songs.size)
+            console.log(typeof queue.songs)
             message.reply(
                 `${queue.songs.size} Songs in current queue:\n${queue.songs
                     .map(
