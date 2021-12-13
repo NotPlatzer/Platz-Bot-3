@@ -5,6 +5,7 @@ module.exports = {
     aliases: ['pa'],
     cooldown: 1000 * 5,
     description: "Pauses the Music",
+    usage: "pause",
 
 
     async run(client, message, args, GuildPrefix) {

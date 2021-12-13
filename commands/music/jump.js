@@ -5,6 +5,7 @@ module.exports = {
     aliases: ['j'],
     cooldown: 1000 * 0,
     description: "Jumps to a song in the queue",
+    usage: "jump {number in queue to which to jump to}",
 
 
     async run(client, message, args, GuildPrefix) {

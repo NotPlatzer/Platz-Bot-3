@@ -5,6 +5,7 @@ module.exports = {
   aliases: ['lo'],
   cooldown: 1000 * 5,
   description: "Loops the song/queue",
+  usage: "loop [use once for 'All Queue', twice for 'This Song', three times for 'Off'",
 
 
   async run(client, message, args, GuildPrefix) {

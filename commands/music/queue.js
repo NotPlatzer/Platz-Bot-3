@@ -5,6 +5,7 @@ module.exports = {
     aliases: ['q'],
     cooldown: 1000 * 5,
     description: "Shows the current Queue",
+    usage: "queue",
 
 
     async run(client, message, args, GuildPrefix) {

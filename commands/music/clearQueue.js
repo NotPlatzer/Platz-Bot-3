@@ -6,7 +6,7 @@ module.exports = {
     aliases: ['cq', 'clearqueue', 'clearQueue'],
     cooldown: 1000 * 1,
     description: "Clears the Queue",
-
+    usage: "clearQueue",
 
     async run(client, message, args, GuildPrefix) {
         const queue = client.distube.getQueue(message)

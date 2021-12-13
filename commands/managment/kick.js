@@ -5,6 +5,7 @@ module.exports = {
     aliases: ['pi'],
     cooldown: 1000 * 5,
     description: "Kicks a member",
+    usage: "kick {member to kick} {reason}",
 
 
     async run(client, message, args, GuildPrefix) {

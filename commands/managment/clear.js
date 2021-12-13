@@ -5,7 +5,7 @@ module.exports = {
     aliases: ['cl'],
     cooldown: 1000 * 0,
     description: "Clears messages",
-
+    usage: "clear {amount of messages to clear}",
 
     async run(client, message, args, GuildPrefix) {
         if(1 == 1) return;

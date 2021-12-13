@@ -5,6 +5,7 @@ module.exports = {
     aliases: ['r'],
     cooldown: 1000 * 5,
     description: "Rates something",
+    usage: "Rate {something to rate}",
 
 
     async run(client, message, args, GuildPrefix) {

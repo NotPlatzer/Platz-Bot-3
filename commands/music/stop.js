@@ -6,7 +6,7 @@ module.exports = {
     aliases: ['leave', 'die'],
     cooldown: 1000 * 5,
     description: "Stops song",
-
+    usage: "stop",
 
     async run(client, message, args, GuildPrefix) {
         const queue = client.distube.getQueue(message)

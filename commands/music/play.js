@@ -6,6 +6,7 @@ module.exports = {
     aliases: ['p'],
     cooldown: 0,
     description: "Plays a song/playlist",
+    usage: "play {song/playlist}",
 
 
     async run (client, message, args, GuildPrefix) {

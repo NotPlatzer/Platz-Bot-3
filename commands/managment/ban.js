@@ -6,7 +6,7 @@ module.exports = {
     aliases: ['b'],
     cooldown: 1000 * 0,
     description: "Bans a member",
-
+    usage: "ban {user to ban} {reason}",
 
     async run(client, message, args, GuildPrefix) {
 

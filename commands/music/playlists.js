@@ -5,6 +5,7 @@ module.exports = {
     aliases: ['plist'],
     cooldown: 1000 * 3,
     description: "Adds a selected Playlist to the Queue",
+    usage: "playlist {playlist to play}",
 
 
     async run(client, message, args, GuildPrefix) {

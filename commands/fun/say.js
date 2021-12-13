@@ -5,6 +5,7 @@ module.exports = {
     aliases: ['say'],
     cooldown: 1000 * 3,
     description: "Repeats everything you say",
+    usage: "say {something to say}",
 
 
     async run(client, message, args, GuildPrefix) {

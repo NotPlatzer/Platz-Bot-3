@@ -6,6 +6,7 @@ module.exports = {
     aliases: ['leave', 'die'],
     cooldown: 1000 * 5,
     description: "Leaves the VC",
+    usage: "leave",
 
 
     async run(client, message, args, GuildPrefix) {

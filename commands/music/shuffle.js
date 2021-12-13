@@ -5,6 +5,7 @@ module.exports = {
     aliases: ['su'],
     cooldown: 1000 * 0,
     description: "Shuffles the Queue",
+    usage: "shuffle",
 
 
     async run(client, message, args, GuildPrefix) {

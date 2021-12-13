@@ -7,6 +7,7 @@ module.exports = {
     aliases: ['cp'],
     cooldown: 1000 * 5,
     description: "Changes the prefix",
+    usage: "changePrefix {new prefix}",
 
 
     async run(client, message, args, GuildPrefix) {

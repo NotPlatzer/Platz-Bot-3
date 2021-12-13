@@ -149,7 +149,7 @@ client.distube
         ))
 
 
-    .on("error", (message, err) => message.channel.send(
+    .on("error", (message, err) => message.reply(
         "An error encountered: " + err
     ));
 

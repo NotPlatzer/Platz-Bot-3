@@ -5,6 +5,7 @@ module.exports = {
     aliases: ['pi'],
     cooldown: 1000 * 5,
     description: "ping/test command",
+    usage: "ping",
 
 
     async run(client, message, args, GuildPrefix) {

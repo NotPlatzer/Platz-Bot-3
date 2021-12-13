@@ -7,6 +7,7 @@ module.exports = {
     aliases: ['h'],
     cooldown: 1000 * 5,
     description: "Shows general information about the Bot",
+    usage: "help",
 
 
     async run(client, message, args, GuildPrefix) {

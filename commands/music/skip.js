@@ -6,6 +6,7 @@ module.exports = {
     aliases: ['sk', 'ski'],
     cooldown: 1000 * 1,
     description: "Skips song",
+    usage: "skip",
 
 
     async run(client, message, args, GuildPrefix) {

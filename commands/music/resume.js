@@ -5,6 +5,7 @@ module.exports = {
     aliases: ['re'],
     cooldown: 1000 * 5,
     description: "Resumes the Music",
+    usage: "resume",
 
 
     async run(client, message, args, GuildPrefix) {
