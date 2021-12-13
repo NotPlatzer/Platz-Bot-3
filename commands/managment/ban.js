@@ -21,7 +21,7 @@ module.exports = {
         if (!target) {
             return message.reply(`Please mention the person who you want to ban`);
         }
-
+        console.log(target.avatarURL());
         if (target.id === message.author.id) {
             return message.reply(`You can not ban yourself!`);
         }
