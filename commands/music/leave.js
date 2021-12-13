@@ -13,7 +13,6 @@ module.exports = {
 
         if (!message.member.voice.channel) return message.reply("You have to be in a voice channel!");
         if (!message.guild.me.voice.channel) return message.reply("Im not in a voice channel!");
-        console.log(message.member.me.voice.channel)
 
         message.guild.me.voice.disconnect();
         await message.reply("**Left the Channel**");
