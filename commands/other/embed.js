@@ -11,7 +11,7 @@ module.exports = {
         const embed = new MessageEmbed()
         .setTitle("General Information")
         .setAuthor("Platz Bot v3")
-        .setColor("GREYPLE")
+        .setColor([37, 150, 190])
         .setDescription("This Bots lead developer is: <@608381190336020494>")
         .setTimestamp()
 
