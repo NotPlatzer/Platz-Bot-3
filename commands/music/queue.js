@@ -13,7 +13,7 @@ module.exports = {
         if (!queue) {
             message.reply('Nothing playing right now!')
         } else {
-            console.log(queue.songs)
+            console.log(typeof queue)
             console.log(queue.songs.size)
             message.reply(
                 `${queue.songs.size} Songs in current queue:\n${queue.songs
@@ -22,7 +22,7 @@ module.exports = {
                             `**${id ? id : 'Playing'}**. ${song.name} - \`${song.formattedDuration
                             }\``,
                     )
-                    .slice(0, 10)
+                    .slice(0, 11)
                     .join('\n')}`,
             )
         }
