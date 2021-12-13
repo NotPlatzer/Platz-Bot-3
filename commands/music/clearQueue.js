@@ -8,7 +8,7 @@ module.exports = {
     description: "Clears the Queue",
 
 
-    async run(client, message, args) {
+    async run(client, message, args, GuildPrefix) {
         const queue = client.distube.getQueue(message)
         if (!message.member.voice.channel) return message.reply("You have to be in a voice channel!");
         if (!queue || queue.songs.length <= 1) return message.reply("There is nothing to clear!");

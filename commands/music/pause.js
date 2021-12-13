@@ -7,7 +7,7 @@ module.exports = {
     description: "Pauses the Music",
 
 
-    async run(client, message, args) {
+    async run(client, message, args, GuildPrefix) {
         const queue = client.distube.getQueue(message)
         if (!queue) return message.reply("There is nothing to pause!");
         if (!message.member.voice.channel) return message.reply("You have to be in a voice channel!");

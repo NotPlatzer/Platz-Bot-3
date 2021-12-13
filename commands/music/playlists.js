@@ -7,7 +7,7 @@ module.exports = {
     description: "Adds a selected Playlist to the Queue",
 
 
-    async run(client, message, args) {
+    async run(client, message, args, GuildPrefix) {
 
         switch (args.join(" ")) {
             case "sad":

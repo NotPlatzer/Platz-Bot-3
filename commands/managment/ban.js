@@ -8,7 +8,7 @@ module.exports = {
     description: "Bans a member",
 
 
-    async run(client, message, args) {
+    async run(client, message, args, GuildPrefix) {
 
         if(1 == 1) return;
 

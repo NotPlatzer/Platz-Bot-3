@@ -7,7 +7,7 @@ module.exports = {
     description: "Clears messages",
 
 
-    async run(client, message, args) {
+    async run(client, message, args, GuildPrefix) {
         if(1 == 1) return;
         var numOfMesasges = parseInt(args.slice(0).join(' '));
         if (!numOfMesasges) return message.reply("Please enter a amount of mesages to be deleted");

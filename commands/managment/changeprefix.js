@@ -9,7 +9,7 @@ module.exports = {
     description: "Changes the prefix",
 
 
-    async run(client, message, args) {
+    async run(client, message, args, GuildPrefix) {
         console.log(Guild)
 
         const updateguild = await Guild.findOneAndUpdate({

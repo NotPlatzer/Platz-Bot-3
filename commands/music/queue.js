@@ -7,7 +7,7 @@ module.exports = {
     description: "Shows the current Queue",
 
 
-    async run(client, message, args) {
+    async run(client, message, args, GuildPrefix) {
         const queue = client.distube.getQueue(message)
         if (!queue) {
             message.reply('Nothing playing right now!')

@@ -7,7 +7,7 @@ module.exports = {
     description: "Repeats everything you say",
 
 
-    async run(client, message, args) {
+    async run(client, message, args, GuildPrefix) {
         if (args.length <= 0) return message.reply("Please tell me what to say")
         if (args.join(" ").includes("nigger") || args.join(" ").includes("https://discord.com")) return message.reply("nahhh i dont say that shit")
         message.reply(args.join(" "));

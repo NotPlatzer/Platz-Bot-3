@@ -8,7 +8,7 @@ module.exports = {
     description: "Leaves the VC",
 
 
-    async run(client, message, args) {
+    async run(client, message, args, GuildPrefix) {
 
         if (!message.member.voice.channel) return message.reply("You have to be in a voice channel!");
 
