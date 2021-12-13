@@ -73,10 +73,6 @@ client.on("guildCreate", guild => {
 
 });
 
-async function findPrefix(message) {
-    const GUILD = await Guild.findOne({ id: message.guild.id })
-    return GUILD;
-}
 
 client.on('messageCreate', message => {
     if (message.author === client.user) return;
@@ -86,7 +82,11 @@ client.on('messageCreate', message => {
 
     if (!message.content.startsWith(prefix)) return;
 
-    console.log(findPrefix(message));
+    Guild.findOne({ id: message.guild.id }).then((messageGuild) => {
+        console.log(messageGuild)
+    }).catch((error) => {
+        console.log(error)
+    SS});
 
     const args = message.content.slice(prefix.length).trim().split(' ');
 
