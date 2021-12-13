@@ -18,7 +18,6 @@ module.exports = {
 
         const firstargs = args.join(' ');
         if (!firstargs) return message.reply("Please provide a command to show information");
-        console.log(firstargs);
 
         var found = false;
 
