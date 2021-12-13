@@ -6,14 +6,14 @@ module.exports = {
 
 
     async run(client, message, args) {
-        const { MessageEmbed } = require("discord.js");
+        const Discord = require("discord.js");
 
         const embed = new MessageEmbed()
-            .setTitle("Title")
-            .setDescription("Description")
-            
+            embed.setTitle("Title")
+            embed.setDescription("Description");
+        
         console.log(embed);
-        return message.channel.send({ embeds: [embed] });
+        return message.channel.send(embed);
     }
 
 }
