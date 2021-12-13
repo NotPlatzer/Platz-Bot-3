@@ -12,7 +12,7 @@ module.exports = {
     async run(client, message, args) {
         const embed = new MessageEmbed()
             .setTitle("General Information")
-            .setAuthor("Platz Bot v3")
+            .setAuthor("Platz Bot v3", "https://cdn.discordapp.com/avatars/917878990478377020/7f147973452d4a6bacbb6132b8e4a18d.png")
             .setColor([37, 150, 190])
             .setDescription("This Bot's lead developer is: <@608381190336020494>")
             .setTimestamp()
@@ -24,7 +24,7 @@ module.exports = {
 
                 const command = require(`/app/commands/${folder}/${file}`);
 
-                embed.addField(command.name, command.description)
+                embed.addField(command.name, command.description, true)
             }
         }
 
