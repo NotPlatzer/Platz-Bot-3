@@ -13,6 +13,8 @@ module.exports = {
         if (!queue) {
             message.reply('Nothing playing right now!')
         } else {
+            console.log(queue)
+            console.log(queue.lenght)
             message.reply(
                 `${queue.lenght} Songs in current queue:\n${queue.songs
                     .map(
