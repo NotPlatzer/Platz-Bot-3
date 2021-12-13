@@ -5,7 +5,7 @@ module.exports = {
     name: "play",
     aliases: ['p'],
     cooldown: 0,
-    description: "play a song!",
+    description: "Plays a song/playlist",
 
 
     async run (client, message, args) {

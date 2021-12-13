@@ -4,7 +4,7 @@ module.exports = {
     name: "clear",
     aliases: ['cl'],
     cooldown: 1000 * 0,
-    description: "clears mesages",
+    description: "Clears messages",
 
 
     async run(client, message, args) {

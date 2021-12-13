@@ -5,7 +5,7 @@ module.exports = {
     name: "leave",
     aliases: ['leave', 'die'],
     cooldown: 1000 * 5,
-    description: "leaves the vc",
+    description: "Leaves the VC",
 
 
     async run(client, message, args) {

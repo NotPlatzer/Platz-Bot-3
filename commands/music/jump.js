@@ -4,7 +4,7 @@ module.exports = {
     name: "jump",
     aliases: ['j'],
     cooldown: 1000 * 0,
-    description: "Jumps to a Song in the Queue",
+    description: "Jumps to a song in the queue",
 
 
     async run(client, message, args) {

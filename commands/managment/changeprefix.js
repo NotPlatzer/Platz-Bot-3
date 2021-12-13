@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
 const Guild = require('/app/db_models/guild.js');
 
 module.exports = {
-    name: "changeprefix",
+    name: "changePrefix",
     aliases: ['cp'],
     cooldown: 1000 * 5,
-    description: "ping command",
+    description: "Changes the prefix",
 
 
     async run(client, message, args) {

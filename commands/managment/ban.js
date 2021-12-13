@@ -5,7 +5,7 @@ module.exports = {
     name: "ban",
     aliases: ['b'],
     cooldown: 1000 * 0,
-    description: "bans a member",
+    description: "Bans a member",
 
 
     async run(client, message, args) {

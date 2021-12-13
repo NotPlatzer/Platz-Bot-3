@@ -4,7 +4,7 @@ module.exports = {
     name: "rate",
     aliases: ['r'],
     cooldown: 1000 * 5,
-    description: "ping command",
+    description: "Rates something",
 
 
     async run(client, message, args) {

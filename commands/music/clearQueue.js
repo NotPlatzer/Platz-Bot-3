@@ -5,7 +5,7 @@ module.exports = {
     name: "clearQueue",
     aliases: ['cq', 'clearqueue', 'clearQueue'],
     cooldown: 1000 * 1,
-    description: "clears the queue",
+    description: "Clears the Queue",
 
 
     async run(client, message, args) {

@@ -5,7 +5,7 @@ module.exports = {
     name: "stop",
     aliases: ['leave', 'die'],
     cooldown: 1000 * 5,
-    description: "stops song",
+    description: "Stops song",
 
 
     async run(client, message, args) {
