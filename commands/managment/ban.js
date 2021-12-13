@@ -7,7 +7,7 @@ module.exports = {
     aliases: ['b'],
     cooldown: 1000 * 0,
     description: "Bans a member",
-    usage: "ban {user to ban} {reason}",
+    usage: "ban {user to ban} {optional reason}",
 
     async run(client, message, args, GuildPrefix) {
         if (!message.member.permissions.has(Permissions.FLAGS.BAN_MEMBERS)) return message.reply("You dont have permission to do this!");
@@ -45,7 +45,7 @@ module.exports = {
             message.reply({ embeds: [embed] });
         }).catch(error =>
             message.reply(
-                `Sorry ${message.author} I couldn't ban this person because of : ${error}`
+                `Sorry ${message.author} I couldn't ban this person. Maybe the person has a role above me.`
             )
         );
 
