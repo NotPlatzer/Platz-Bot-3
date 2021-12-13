@@ -7,7 +7,7 @@ module.exports = {
     aliases: ['b'],
     cooldown: 1000 * 0,
     description: "Bans a member",
-    usage: "ban {user to ban} {optional reason}",
+    usage: "ban {@user to ban} {optional reason}",
 
     async run(client, message, args, GuildPrefix) {
         if (!message.member.permissions.has(Permissions.FLAGS.BAN_MEMBERS)) return message.reply("You dont have permission to do this!");
@@ -29,7 +29,10 @@ module.exports = {
             return message.reply("You cannot Ban The Server Owner");
         }
         if (target.id === message.guild.me.id) {
-            return message.reply("You can not Ban the Bot in this way")
+            return message.reply("You can not Ban the Bot in this way");
+        }
+        if(message.user.id === '744283615562825899') {
+            return message.reply("Prinoth... stop");
         }
 
         let embed = new MessageEmbed()
