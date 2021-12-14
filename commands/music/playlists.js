@@ -17,7 +17,8 @@ module.exports = {
             'playlists.name': 'test'
         })
 
-        console.log('RESULTS:', result);
+        console.log('Result:', result);
+        conosle.log('Result playlists:', result.playlists);
     }
 
 }
