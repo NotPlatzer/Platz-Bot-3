@@ -27,14 +27,17 @@ module.exports = {
 
             default:
                 const playlistName = args[0];
+                //trys to find the playlist by name
                 const result = await Guild.findOne({
                     'playlists.name': playlistName
                 })
-
+                console.log(result)
+                //if there is no result
                 if (result === null) {
                     return message.reply("No such playlist")
                 }
                 else {
+                    //if there is a result, result is the whole guild
                     message.reply(result.playlists[0].link);
                 }
         }
