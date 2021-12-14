@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
     name: "queue",
@@ -14,16 +15,23 @@ module.exports = {
             message.reply('Nothing playing right now!')
         } else {
 
-            message.reply(
-                `**${queue.songs.length}** Songs in current queue!\nQueue duration: \`${queue.formattedDuration}\`\n${queue.songs
-                    .map(
-                        (song, id) =>
-                            `**${id ? id : 'Playing'}**. ${song.name} - \`${song.formattedDuration
-                            }\` ${console.log(song.name + ' Song added to queue listing')}`,
-                    )
-                    .slice(0, 11)
-                    .join('\n')}`,
-            )
+            const queueembed = new MessageEmbed()
+                .setTitle("Current Queue")
+                .setAuthor("Platz Bot v3", "https://cdn.discordapp.com/avatars/917878990478377020/7f147973452d4a6bacbb6132b8e4a18d.png")
+                .setColor([37, 150, 190])
+                .setDescription(`Queue lenght: **${queue.songs.length}**\nQueue duration: \`${queue.formattedDuration}\``)
+                .setFooter(`To report bugs send a message to the dev`)
+
+
+            queue.songs
+                .map((song, id) =>
+                    queueembed.addField(`**${id ? id : 'Playing'}**. ${song.name}`, `\`${song.formattedDuration}\``),
+                )
+                .slice(0, 11)
+                .join('\n')
+            
+                message.reply({ embeds: [queueembed] });
+
         }
     }
 }
