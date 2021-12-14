@@ -27,11 +27,11 @@ module.exports = {
 
             queue.songs
                 .map((song, id) => {
-                    if(id === 0) {
-                        queueembed.setThumbnail(song.thumbnail)
+                    if (id === 0) {
+                        queueembed.setImage(song.thumbnail)
                     }
                     if (displayedQueueSongs <= 10) {
-                        queueembed.addField(`**${id ? id : 'Currently Playing' }**. ${song.name}`, `\`${song.formattedDuration}\``)
+                        queueembed.addField(`**${id ? id : 'Currently Playing'}**. ${song.name}`, `\`${song.formattedDuration}\``)
                         displayedQueueSongs++;
                     }
                 }
