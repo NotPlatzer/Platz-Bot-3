@@ -1,17 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const playlistSchema = new Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    link: {
-        type: String,
-        required: true
-    }
-})
-
 const guildSchema = new Schema({
     name: {
         type: String,
@@ -33,7 +22,16 @@ const guildSchema = new Schema({
         type: String,
         required: false
     },
-    playlists: [playlistSchema]
+    playlists: [
+        {
+            name: {
+                type: String,
+            },
+            link: {
+                type: String,
+            },
+        },
+    ],
 
 
 }, { timestamps: true });

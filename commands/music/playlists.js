@@ -18,14 +18,17 @@ module.exports = {
             case "add":
 
                 if (!message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return message.reply("You dont have permission to do this!");
+
                 break;
 
             case "remove":
 
                 if (!message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return message.reply("You dont have permission to do this!");
+
                 break;
 
             default:
+                if (!message.member.voice.channel) return message.reply("You have to be in a voice channel!");
                 const playlistName = args[0];
                 //trys to find the playlist by name
                 const result = await Guild.findOne({
@@ -38,13 +41,13 @@ module.exports = {
                 }
                 else {
                     //if there is a result, result is the whole guild
-                    result.playlists.forEach(playlist =>{
-                        if(playlist.name === playlistName) {
+                    result.playlists.forEach(playlist => {
+                        if (playlist.name === playlistName) {
                             //do something with the playlist
                             client.distube.play(message, playlist.link);
                         }
                     })
-                    
+
                 }
         }
 
