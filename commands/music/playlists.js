@@ -32,7 +32,7 @@ module.exports = {
                 })
 
                 if(result === 'null') return message.reply("No such playlist")
-
+                console.log(result);
                 message.reply(result.playlists[0].link); 
         }
 
