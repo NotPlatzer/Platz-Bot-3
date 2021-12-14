@@ -36,8 +36,8 @@ module.exports = {
             queue.songs
                 .map((song, id) => {
                     if (id === 0) {
-                        queueembed.setImage(song.thumbnail)
-                            .setDescription(`Queue lenght: **${queue.songs.length}**\nQueue duration: \`${queue.formattedDuration}\`\n**Current Song: ${song.name}** \`${song.formattedDuration}\`\n${status(queue)}`)
+                        queueembed.setThumbnail(song.thumbnail)
+                            .setDescription(`Queue lenght: **${queue.songs.length}**\nQueue duration: \`${queue.formattedDuration}\`\n\n**Current Song: ${song.name}** \`${song.formattedDuration}\`\n\n${status(queue)}`)
 
                         displayedQueueSongs++;
                     }
