@@ -38,7 +38,7 @@ module.exports = {
                     console.log(id);
                     if (id === 0) {
                         queueembed.setImage(song.thumbnail)
-                            .setDescription(`Queue lenght: **${queue.songs.length}**\nQueue duration: \`${queue.formattedDuration}\`\nCurrent Song: ${song.name} \`${song.formattedDuration}\`}\n${status(queue)}`)
+                            .setDescription(`Queue lenght: **${queue.songs.length}**\nQueue duration: \`${queue.formattedDuration}\`\n**Current Song: ${song.name}** \`${song.formattedDuration}\`\n${status(queue)}`)
 
                         displayedQueueSongs++;
                     }
