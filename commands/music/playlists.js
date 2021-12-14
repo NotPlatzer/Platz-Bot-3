@@ -32,10 +32,10 @@ module.exports = {
                 })
 
                 if (result === 'null') {
+                    console.log(result);
                     return message.reply("No such playlist")
                 }
                 else {
-                    console.log(result);
                     await message.reply(result.playlists[0].link);
                 }
         }
@@ -43,7 +43,6 @@ module.exports = {
     }
 
 }
-
 //, plist add remove oder nichts
 //bei ,plist add {nome} {link}
 // ,plist remove {nome} {link}
