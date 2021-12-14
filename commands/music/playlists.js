@@ -12,7 +12,7 @@ module.exports = {
 
 
     async run(client, message, args, GuildPrefix, messageGuild) {
-
+        console.log()
         switch (args.join(" ")) {
 
             case "add":
@@ -48,25 +48,19 @@ module.exports = {
             default:
                 if (!message.member.voice.channel) return message.reply("You have to be in a voice channel!");
                 const playlistName = args[0];
+                var found = false;
                 //trys to find the playlist by name
 
-                const result = await messageGuild.findOne({
-                    'playlists.name': playlistName
+                messageGuild.playlists.forEach(playlist => {
+                    if (playlist.name === playlistName) {
+                        //do something with the playlist
+                        found = true;
+                        client.distube.play(message, playlist.link);
+                    }
                 })
-                //if there is no result
-                if (result === null) {
-                    return message.reply("No such playlist or you havent made any Playlists yet")
-                }
-                else {
-                    //if there is a result, result is the whole guild
-                    result.playlists.forEach(playlist => {
-                        if (playlist.name === playlistName) {
-                            //do something with the playlist
-                            client.distube.play(message, playlist.link);
-                        }
-                    })
+                if(!found) return message.reply("No Playlist found!");
 
-                }
+
         }
 
     }
