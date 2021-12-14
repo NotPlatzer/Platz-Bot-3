@@ -11,6 +11,8 @@ module.exports = {
 
     async run(client, message, args, GuildPrefix) {
         const queue = client.distube.getQueue(message)
+        const displayedQueueSongs = 0;
+
         if (!queue) {
             message.reply('Nothing playing right now!')
         } else {
@@ -24,13 +26,15 @@ module.exports = {
 
 
             queue.songs
-                .map((song, id) =>
-                    queueembed.addField(`**${id ? id : 'Playing'}**. ${song.name}`, `\`${song.formattedDuration}\``),
+                .map((song, id) => {
+                    if (displayedQueueSongs <= 10) {
+                        queueembed.addField(`**${id ? id : 'Currently Playing'}**. ${song.name}`, `\`${song.formattedDuration}\``)
+                        displayedQueueSongs++;
+                    }
+                }
                 )
-                .slice(0, 11)
-                .join('\n')
-            
-                message.reply({ embeds: [queueembed] });
+
+            message.reply({ embeds: [queueembed] });
 
         }
     }
