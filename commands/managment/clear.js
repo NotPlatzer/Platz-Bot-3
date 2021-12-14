@@ -8,7 +8,8 @@ module.exports = {
     usage: "clear {amount of messages to clear}",
 
     async run(client, message, args, GuildPrefix) {
-        if(1 == 1) return;
+        if (!message.member.permissions.has(Permissions.FLAGS.MANAGE_MESSAGES)) return message.reply("You dont have permission to do this!");
+
         var numOfMesasges = parseInt(args.slice(0).join(' '));
         if (!numOfMesasges) return message.reply("Please enter a amount of mesages to be deleted");
         if(numOfMesasges > 100) return message.reply("Number cant be bigger then 100");

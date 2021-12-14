@@ -11,6 +11,7 @@ module.exports = {
 
 
     async run(client, message, args, GuildPrefix) {
+        if (!message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return message.reply("You dont have permission to do this!");
         console.log(Guild)
 
         const updateguild = await Guild.findOneAndUpdate({
