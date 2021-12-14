@@ -15,7 +15,7 @@ module.exports = {
         } else {
 
             message.reply(
-                `${queue.songs.length} Songs in current queue!\nQueue duration: ${queue.formattedDuration}\n${queue.songs
+                `**${queue.songs.length}** Songs in current queue!\nQueue duration: \`${queue.formattedDuration}\`\n${queue.songs
                     .map(
                         (song, id) =>
                             `**${id ? id : 'Playing'}**. ${song.name} - \`${song.formattedDuration
