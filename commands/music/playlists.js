@@ -45,7 +45,7 @@ module.exports = {
 
                 if (!message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return message.reply("You dont have permission to do this!");
 
-                const nameOfPlaylist = args[1];
+                const nameOfPlaylistToDelete = args[1];
 
                 await Guild.findOneAndUpdate({
                     id: message.guild.id
@@ -53,7 +53,7 @@ module.exports = {
                     {
                         $pull: {
                             playlists: {
-                                name: nameOfPlaylist,
+                                name: nameOfPlaylistToDelete,
                             }
                         }
                     })
