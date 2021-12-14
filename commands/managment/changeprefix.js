@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const mongoose = require('mongoose');
+const { Permissions } = require('discord.js');
 const Guild = require('/app/db_models/guild.js');
 
 module.exports = {
@@ -24,7 +25,7 @@ module.exports = {
         );
 
         message.reply("Changed Prefix to: " + updateguild.prefix)
-        
+
     }
 
 }
