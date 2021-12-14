@@ -50,8 +50,10 @@ client.once('ready', async () => {
         .catch((err) => console(err));
 
     console.log(`\nBot is Online! \nThere are: ${commandCount - 1} commands\nBot is in ${client.guilds.cache.size} Servers`)
-    const botOwner = '608381190336020494'
-    const testServer = '793644454124453938'
+    const botOwner = '608381190336020494';
+    const testServer = '793644454124453938';
+    client.users.cache.get(botOwner).createDM();
+    client.users.cache.get(botOwner).send("Hey im online");
 
 })
 
