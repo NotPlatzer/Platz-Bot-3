@@ -13,7 +13,7 @@ module.exports = {
 
     async run(client, message, args, GuildPrefix, messageGuild) {
         console.log()
-        switch (args.join(" ")) {
+        switch (args[0]) {
 
             case "add":
 
