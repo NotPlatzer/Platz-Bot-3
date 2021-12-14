@@ -31,12 +31,12 @@ module.exports = {
                     'playlists.name': playlistName
                 })
 
-                if (result === 'null') {
+                if (result === null) {
                     console.log(result);
                     return message.reply("No such playlist")
                 }
                 else {
-                    await message.reply(result.playlists[0].link);
+                    message.reply(result.playlists[0].link);
                 }
         }
 
