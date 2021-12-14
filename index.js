@@ -68,6 +68,10 @@ client.on("guildCreate", guild => {
         playlists: [{
             name: 'test',
             link: 'https://open.spotify.com/playlist/7J1ouozeOpduMbzvDl1rAR?si=18006fab0155469a'
+        },
+        {
+            name: 'vibe',
+            link: 'https://open.spotify.com/playlist/0gVGrs8jZ856kFIleLXHVX?si=ae48af33cba24d66'
         }],
     });
 

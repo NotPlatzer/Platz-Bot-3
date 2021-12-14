@@ -32,7 +32,6 @@ module.exports = {
                 })
 
                 if (result === null) {
-                    console.log(result);
                     return message.reply("No such playlist")
                 }
                 else {
