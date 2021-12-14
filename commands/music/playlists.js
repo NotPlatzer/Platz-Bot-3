@@ -18,7 +18,7 @@ module.exports = {
             case "add":
 
                 if (!message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return message.reply("You dont have permission to do this!");
-                if(messageGuild.playlists.length >= 10) return message.reply("There can only be 10 safed playlists. There are: " + messageGuild.playlists.length);
+                if (messageGuild.playlists.length >= 10) return message.reply("There can only be 10 safed playlists. There are: " + messageGuild.playlists.length);
                 const nameOfPlaylist = args[1];
                 const linkOfPlaylist = args[2];
 
@@ -40,6 +40,7 @@ module.exports = {
                         }
                     })
 
+                message.reply(`Added ${nameOfPlaylist} to the Safed Playlists!`)
                 break;
 
             case "remove":
@@ -59,7 +60,7 @@ module.exports = {
                         }
                     })
 
-
+                message.reply(`Removed ${nameOfPlaylistToDelete} from the Safed Playlists!`)
                 break;
 
             case "list":

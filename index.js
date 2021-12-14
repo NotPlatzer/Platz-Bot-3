@@ -65,14 +65,7 @@ client.on("guildCreate", guild => {
         modRole: 'admin',
         id: guild.id,
         owner: guild.ownerId,
-        playlists: [{
-            name: 'rock',
-            link: 'https://open.spotify.com/playlist/1OsViAzNJKTiP5sKrAuSNF?si=0d7e3a2aee4c41ff'
-        },
-        {
-            name: 'vibe',
-            link: 'https://open.spotify.com/playlist/0gVGrs8jZ856kFIleLXHVX?si=ae48af33cba24d66'
-        }],
+        playlists: [],
     });
 
     guild_db.save()
@@ -163,6 +156,7 @@ client.distube
             .setImage(song.thumbnail)
 
         queue.textChannel.send({ embeds: [playembed] });
+        console.log(`Playing ${song.name}, Requested by: ${song.user}`)
     })
     .on('addSong', (queue, song) =>
         queue.textChannel.send(
