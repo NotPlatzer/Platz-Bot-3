@@ -64,7 +64,11 @@ client.on("guildCreate", guild => {
         prefix: ',',
         modRole: 'admin',
         id: guild.id,
-        owner: guild.ownerId
+        owner: guild.ownerId,
+        playlists: [{
+            name: 'test',
+            link: 'https://open.spotify.com/playlist/7J1ouozeOpduMbzvDl1rAR?si=18006fab0155469a'
+        }],
     });
 
     guild_db.save()
@@ -119,6 +123,7 @@ const distube = require('distube')
 
 const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
+const playlists = require('./commands/music/playlists');
 
 
 

@@ -1,4 +1,7 @@
 const Discord = require("discord.js");
+const mongoose = require('mongoose');
+const { Permissions } = require('discord.js');
+const Guild = require('/app/db_models/guild.js');
 
 module.exports = {
     name: "playlists",
@@ -11,25 +14,25 @@ module.exports = {
     async run(client, message, args, GuildPrefix) {
 
         switch (args.join(" ")) {
-            case "sad":
-                client.distube.play(message, "https://open.spotify.com/playlist/27DlO8pYxgN8AttiE4L6RV?si=cfd817a3acc9407c");
+            case "add":
+                if (!message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return message.reply("You dont have permission to do this!");
+
                 break;
-            case "og":
-                client.distube.play(message, "https://open.spotify.com/playlist/3RviHWVcqSpD6Ye7zjCllD?si=f6ec0f65acb149b9");
+
+            case "remove":
+                if (!message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return message.reply("You dont have permission to do this!");
+                
                 break;
-            case "vibe":
-                client.distube.play(message, "https://open.spotify.com/playlist/0gVGrs8jZ856kFIleLXHVX?si=c9e7024792b94b91");
-                break;
-            case "party":
-                client.distube.play(message, "https://open.spotify.com/playlist/1tzIp6T8rhOJFdgbRKHVxS?si=7feadcdae25b466e");
-                break;
-            case "rock":
-                client.distube.play(message, "https://open.spotify.com/playlist/1OsViAzNJKTiP5sKrAuSNF?si=cff65e21de1f401b");
-                break;
+
             default:
-                message.reply("Current Playlists: **sad**, **og**, **vibe**, **party**, **rock**");
+                message.reply("Please add a Playlist name and then the Link");
         }
 
     }
 
 }
+
+//, plist add remove oder nichts
+//bei ,plist add {nome} {link}
+// ,plist remove {nome} {link}
+// ,plist {nome} spielt di playlist

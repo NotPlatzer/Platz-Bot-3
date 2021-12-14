@@ -1,6 +1,17 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const playlistSchema = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    link: {
+        type: String,
+        required: true
+    }
+})
+
 const guildSchema = new Schema({
     name: {
         type: String,
@@ -21,7 +32,10 @@ const guildSchema = new Schema({
     owner: {
         type: String,
         required: false
-    }
+    },
+    playlists: [playlistSchema]
+
+
 }, { timestamps: true });
 
 const Guild = mongoose.model('Guild', guildSchema);
