@@ -13,9 +13,9 @@ module.exports = {
         if (!queue) {
             message.reply('Nothing playing right now!')
         } else {
-            console.log(queue.songs.length);
+
             message.reply(
-                `Current queue:\n${queue.songs
+                `${queue.songs.length} Songs in current queue!\nQueue duration: ${queue.formattedDuration}\n${queue.songs
                     .map(
                         (song, id) =>
                             `**${id ? id : 'Playing'}**. ${song.name} - \`${song.formattedDuration
