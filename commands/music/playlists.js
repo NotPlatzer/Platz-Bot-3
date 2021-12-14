@@ -30,7 +30,10 @@ module.exports = {
                 const result = await Guild.findOne({
                     'playlists.name': playlistName
                 })
-                console.log(result.playlists[0].link); 
+
+                if(result === 'null') return message.reply("No such playlist")
+
+                message.reply(result.playlists[0].link); 
         }
 
     }
