@@ -19,7 +19,7 @@ module.exports = {
                     .map(
                         (song, id) =>
                             `**${id ? id : 'Playing'}**. ${song.name} - \`${song.formattedDuration
-                            }\``,
+                            }\` ${console.log(song.name + ' Song added to queue listing')}`,
                     )
                     .slice(0, 11)
                     .join('\n')}`,
