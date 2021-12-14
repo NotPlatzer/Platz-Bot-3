@@ -1,6 +1,7 @@
 const Discord = require('discord.js')
 const mongoose = require('mongoose')
 const Guild = require('./db_models/guild');
+const { MessageEmbed } = require("discord.js");
 
 const fs = require('fs')
 const client = new Discord.Client({
@@ -128,14 +129,29 @@ client.distube = new distube.default(client, {
     plugins: [new SoundCloudPlugin(), new SpotifyPlugin()]
 })
 
+const status = queue =>
+    `Volume: \`${queue.volume}%\` | Filter: \`${queue.filters.join(', ')
+    || 'Off'}\` | Loop: \`${queue.repeatMode
+        ? queue.repeatMode === 2
+            ? 'All Queue'
+            : 'This Song'
+        : 'Off'
+    }\` | Autoplay: \`${queue.autoplay ? 'On' : 'Off'}\``
+
+
 client.distube
     .on('finish', queue => queue.textChannel.send('Finish queue!'))
 
-    .on('playSong', (queue, song) =>
-        queue.textChannel.send(
-            `Playing \`${song.name}\` - \`${song.formattedDuration
-            }\``,
-        ))
+    .on('playSong', (queue, song) => {
+        const playembed = new MessageEmbed()
+            .setTitle(song.name)
+            .setAuthor("Platz Bot v3", "https://cdn.discordapp.com/avatars/917878990478377020/7f147973452d4a6bacbb6132b8e4a18d.png")
+            .setColor([37, 150, 190])
+            .setDescription(`Song Duration: ${song.formattedDuration}\nRequested by: ${song.user}\n${status(queue)}`)
+            .setFooter(`To report bugs send a message to the dev`)
+
+            queue.textChannel.send({ embeds: [queueembed] });
+    })
     .on('addSong', (queue, song) =>
         queue.textChannel.send(
             `Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user}`,
