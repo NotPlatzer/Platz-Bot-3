@@ -41,7 +41,7 @@ module.exports = {
                     result.playlists.forEach(playlist =>{
                         if(playlist.name === playlistName) {
                             //do something with the playlist
-                            await client.distube.play(message, playlist.link);
+                            client.distube.play(message, playlist.link);
                         }
                     })
                     
