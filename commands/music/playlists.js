@@ -34,13 +34,14 @@ module.exports = {
                 console.log(result)
                 //if there is no result
                 if (result === null) {
-                    return message.reply("No such playlist")
+                    return message.reply("No such playlist or you havent made any Playlists yet")
                 }
                 else {
                     //if there is a result, result is the whole guild
                     result.playlists.forEach(playlist =>{
                         if(playlist.name === playlistName) {
-                            message.reply(playlist.link);
+                            //do something with the playlist
+                            await client.distube.play(message, playlist.link);
                         }
                     })
                     

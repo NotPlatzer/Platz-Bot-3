@@ -66,8 +66,8 @@ client.on("guildCreate", guild => {
         id: guild.id,
         owner: guild.ownerId,
         playlists: [{
-            name: 'test',
-            link: 'https://open.spotify.com/playlist/7J1ouozeOpduMbzvDl1rAR?si=18006fab0155469a'
+            name: 'rock',
+            link: 'https://open.spotify.com/playlist/1OsViAzNJKTiP5sKrAuSNF?si=0d7e3a2aee4c41ff'
         },
         {
             name: 'vibe',
