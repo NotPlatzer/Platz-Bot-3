@@ -11,6 +11,15 @@ module.exports = {
 
     async run(client, message, args, GuildPrefix) {
         const queue = client.distube.getQueue(message)
+        const status = queue =>
+            `Volume: \`${queue.volume}%\` | Filter: \`${queue.filters.join(', ')
+            || 'Off'}\` | Loop: \`${queue.repeatMode
+                ? queue.repeatMode === 2
+                    ? 'All Queue'
+                    : 'This Song'
+                : 'Off'
+            }\` | Autoplay: \`${queue.autoplay ? 'On' : 'Off'}\``
+
         var displayedQueueSongs = 0;
 
         if (!queue) {
@@ -21,7 +30,7 @@ module.exports = {
                 .setTitle("Current Queue")
                 .setAuthor("Platz Bot v3", "https://cdn.discordapp.com/avatars/917878990478377020/7f147973452d4a6bacbb6132b8e4a18d.png")
                 .setColor([37, 150, 190])
-                .setDescription(`Queue lenght: **${queue.songs.length}**\nQueue duration: \`${queue.formattedDuration}\`\n\n${client.status(queue)}`)
+                .setDescription(`Queue lenght: **${queue.songs.length}**\nQueue duration: \`${queue.formattedDuration}\`\n\n${status(queue)}`)
                 .setFooter(`To report bugs send a message to the dev`)
 
 
