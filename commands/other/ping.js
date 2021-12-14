@@ -8,7 +8,7 @@ module.exports = {
     usage: "ping",
 
 
-    async run(client, message, args, GuildPrefix) {
+    async run(client, message, args, GuildPrefix, messageGuild) {
         message.reply("Pong");
 
     }

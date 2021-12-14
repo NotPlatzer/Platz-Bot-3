@@ -9,7 +9,7 @@ module.exports = {
     description: "Bans a member",
     usage: "ban {@user to ban} {optional reason}",
 
-    async run(client, message, args, GuildPrefix) {
+    async run(client, message, args, GuildPrefix, messageGuild) {
         if (!message.member.permissions.has(Permissions.FLAGS.BAN_MEMBERS)) return message.reply("You dont have permission to do this!");
         if (!message.guild.me.permissions.has(Permissions.FLAGS.BAN_MEMBERS)) return message.reply("I dont have permission to do this!");
 

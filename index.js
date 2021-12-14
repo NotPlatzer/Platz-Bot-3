@@ -107,7 +107,7 @@ client.on('messageCreate', message => {
         if (command) {
             if (command.cooldown) {
                 if (timeout.has(`${command.name}${message.author.id}`)) return message.reply(`Please Wait \`${ms(timeout.get(`${command.name}${message.author.id}`) - Date.now(), { long: true })}\``);
-                command.run(client, message, args, GuildPrefix)
+                command.run(client, message, args, GuildPrefix, messageGuild)
                 console.log(`${message.author.tag} executed ${message.content} on ${message.guild.name}`)
                 timeout.set(`${command.name}${message.author.id}`, Date.now() + command.cooldown);
                 setTimeout(() => {
@@ -115,7 +115,7 @@ client.on('messageCreate', message => {
                 }, command.cooldown)
             } else {
                 console.log(`${message.author.tag} executed ${message.content} on ${message.guild.name}`);
-                command.run(client, message, args, GuildPrefix)
+                command.run(client, message, args, GuildPrefix, messageGuild)
             }
         }
     }).catch((error) => {

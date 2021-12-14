@@ -8,7 +8,7 @@ module.exports = {
     usage: "shuffle",
 
 
-    async run(client, message, args, GuildPrefix) {
+    async run(client, message, args, GuildPrefix, messageGuild) {
         const queue = client.distube.getQueue(message)
         if (!queue) return message.reply("There is nothing to Shuffle!");
         if (!message.member.voice.channel) return message.reply("You have to be in a voice channel!");

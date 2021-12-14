@@ -9,7 +9,7 @@ module.exports = {
     usage: "skip",
 
 
-    async run(client, message, args, GuildPrefix) {
+    async run(client, message, args, GuildPrefix, messageGuild) {
         const queue = client.distube.getQueue(message)
         if (!queue || queue.songs.length === 1) return message.reply("There is nothing to skip!");
         if (!message.member.voice.channel) return message.reply("You have to be in a voice channel!");

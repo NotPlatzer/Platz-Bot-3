@@ -11,17 +11,17 @@ module.exports = {
     usage: "playlist {playlist to play}",
 
 
-    async run(client, message, args, GuildPrefix) {
+    async run(client, message, args, GuildPrefix, messageGuild) {
 
         switch (args.join(" ")) {
 
             case "add":
-                console.log(Guild.name);
+                console.log(messageGuild.name)
                 if (!message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return message.reply("You dont have permission to do this!");
                 const nameOfPlaylist = args[0];
                 const linkOfPlaylist = args[1];
                 if(!nameOfPlaylist) return message.reply("Please provide a name for the playlist")
-                if(nameofPlaylist.includes("https://open.spotify.com/playlist/") || nameofPlaylist.includes("https://youtube.com/playlist")) return message.reply("The name cant be a link to a playlist")
+                if(nameOfPlaylist.includes("https://open.spotify.com/playlist/") || nameofPlaylist.includes("https://youtube.com/playlist")) return message.reply("The name cant be a link to a playlist")
                 if(!linkOfPlaylist) return message.reply("Please provide a Link for the playlist");
                 if(!linkOfPlaylist.includes("https://open.spotify.com/playlist/") || !linkOfPlaylist.includes("https://youtube.com/playlist")) return message.reply("Please provide a valid URL for the playlist")
 
@@ -39,6 +39,9 @@ module.exports = {
                 if (!message.member.voice.channel) return message.reply("You have to be in a voice channel!");
                 const playlistName = args[0];
                 //trys to find the playlist by name
+                const currentGuild = await Guild.findOne({
+                    'playlists.name': playlistName
+                })
                 const result = await Guild.findOne({
                     'playlists.name': playlistName
                 })

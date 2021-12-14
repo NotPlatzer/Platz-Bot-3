@@ -11,7 +11,7 @@ module.exports = {
     usage: "changePrefix {new prefix}",
 
 
-    async run(client, message, args, GuildPrefix) {
+    async run(client, message, args, GuildPrefix, messageGuild) {
         if (!message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return message.reply("You dont have permission to do this!");
         console.log(Guild)
 

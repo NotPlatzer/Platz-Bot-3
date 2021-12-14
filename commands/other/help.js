@@ -10,7 +10,7 @@ module.exports = {
     usage: "help",
 
 
-    async run(client, message, args, GuildPrefix) {
+    async run(client, message, args, GuildPrefix, messageGuild) {
         
         const embed = new MessageEmbed()
             .setTitle("General Information")

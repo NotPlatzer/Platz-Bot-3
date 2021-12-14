@@ -8,7 +8,7 @@ module.exports = {
     description: "Clears messages",
     usage: "clear {amount of messages to clear}",
 
-    async run(client, message, args, GuildPrefix) {
+    async run(client, message, args, GuildPrefix, messageGuild) {
         if (!message.member.permissions.has(Permissions.FLAGS.MANAGE_MESSAGES)) return message.reply("You dont have permission to do this!");
 
         var numOfMesasges = parseInt(args.slice(0).join(' '));

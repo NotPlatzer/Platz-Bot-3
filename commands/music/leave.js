@@ -9,7 +9,7 @@ module.exports = {
     usage: "leave",
 
 
-    async run(client, message, args, GuildPrefix) {
+    async run(client, message, args, GuildPrefix, messageGuild) {
 
         if (!message.member.voice.channel) return message.reply("You have to be in a voice channel!");
         if (!message.guild.me.voice.channel) return message.reply("Im not in a voice channel!");

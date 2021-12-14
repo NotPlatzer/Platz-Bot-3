@@ -10,7 +10,7 @@ module.exports = {
     usage: "Info",
 
 
-    async run(client, message, args, GuildPrefix) {
+    async run(client, message, args, GuildPrefix, messageGuild) {
         const infoembed = new MessageEmbed()
             .setAuthor("Platz Bot v3", "https://cdn.discordapp.com/avatars/917878990478377020/7f147973452d4a6bacbb6132b8e4a18d.png")
             .setColor([37, 150, 190])

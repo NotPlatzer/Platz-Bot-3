@@ -8,7 +8,7 @@ module.exports = {
     usage: "jump {number in queue to which to jump to}",
 
 
-    async run(client, message, args, GuildPrefix) {
+    async run(client, message, args, GuildPrefix, messageGuild) {
         const queue = client.distube.getQueue(message)
         if (!queue) return message.reply("There is nothing to Jump!");
         if (!message.member.voice.channel) return message.reply("You have to be in a voice channel!");

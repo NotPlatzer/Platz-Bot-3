@@ -8,7 +8,7 @@ module.exports = {
     usage: "rate {something to rate}",
 
 
-    async run(client, message, args, GuildPrefix) {
+    async run(client, message, args, GuildPrefix, messageGuild) {
 
         const random = Math.floor(Math.random() * 11);
 

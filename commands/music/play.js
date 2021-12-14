@@ -9,7 +9,7 @@ module.exports = {
     usage: "play {song/playlist}",
 
 
-    async run (client, message, args, GuildPrefix) {
+    async run (client, message, args, GuildPrefix, messageGuild) {
         if(!message.member.voice.channel) return message.reply("You have to be in a voice channel!");
 
         const music = args.join(" ");

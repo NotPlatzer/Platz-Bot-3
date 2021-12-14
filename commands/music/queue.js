@@ -9,7 +9,7 @@ module.exports = {
     usage: "queue",
 
 
-    async run(client, message, args, GuildPrefix) {
+    async run(client, message, args, GuildPrefix, messageGuild) {
         const queue = client.distube.getQueue(message)
         const status = queue =>
             `Volume: \`${queue.volume}%\` | Filter: \`${queue.filters.join(', ')
