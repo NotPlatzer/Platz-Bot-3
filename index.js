@@ -119,7 +119,7 @@ const distube = require('distube')
 const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
 
-new SpotifyPlugin({emitEventsAfterFetching: true});
+
 
 client.distube = new distube.default(client, {
     searchSongs: 0,
@@ -128,7 +128,7 @@ client.distube = new distube.default(client, {
     emptyCooldown: 0,
     leaveOnFinish: false,
     leaveOnStop: false,
-    plugins: [new SoundCloudPlugin(), new SpotifyPlugin()]
+    plugins: [new SoundCloudPlugin(), new SpotifyPlugin({ emitEventsAfterFetching: true })]
 })
 
 const status = queue =>
