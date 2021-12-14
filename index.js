@@ -82,6 +82,7 @@ client.on("guildCreate", guild => {
 
 client.on('messageCreate', message => {
     if (message.author === client.user) return;
+    if (message.channel.type === 'DM') return;
 
     Guild.findOne({ id: message.guild.id }).then((messageGuild) => {
         const GuildPrefix = messageGuild.prefix;
