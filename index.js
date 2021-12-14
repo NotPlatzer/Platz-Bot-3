@@ -150,7 +150,7 @@ client.distube
             .setDescription(`Song Duration: ${song.formattedDuration}\nRequested by: ${song.user}\n${status(queue)}`)
             .setFooter(`To report bugs send a message to the dev`)
 
-            queue.textChannel.send({ embeds: [queueembed] });
+            queue.textChannel.send({ embeds: [playembed] });
     })
     .on('addSong', (queue, song) =>
         queue.textChannel.send(
