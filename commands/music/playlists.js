@@ -30,7 +30,7 @@ module.exports = {
                 const result = await Guild.findOne({
                     'playlists.name': playlistName
                 })
-                console.log(result); 
+                console.log(result.playlists[0].link); 
         }
 
     }
