@@ -26,11 +26,11 @@ module.exports = {
                 break;
 
             default:
-                console.log(args[0]);
-
+                const playlistName = args[0];
                 const result = await Guild.findOne({
-                    'playlists.name': 'test'
+                    'playlists.name': playlistName
                 })
+                console.log(result); 
         }
 
     }
