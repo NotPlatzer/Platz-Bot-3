@@ -21,7 +21,7 @@ module.exports = {
                 const nameOfPlaylist = args[1];
                 const linkOfPlaylist = args[2];
                 console.log(nameOfPlaylist + ": " + linkOfPlaylist)
-                console.log(linkOfPlaylist.includes("https://open.spotify.com/playlist/") + linkOfPlaylist.includes("https://youtube.com/playlist"))
+                console.log(linkOfPlaylist.includes("https://open.spotify.com/playlist/") + " " + linkOfPlaylist.includes("https://youtube.com/playlist"))
                 if (!nameOfPlaylist) return message.reply("Please provide a name for the playlist")
                 if (nameOfPlaylist.includes("https://open.spotify.com/playlist/") || nameOfPlaylist.includes("https://youtube.com/playlist")) return message.reply("The name cant be a link to a playlist")
                 if (!linkOfPlaylist) return message.reply("Please provide a Link for the playlist");
@@ -60,7 +60,7 @@ module.exports = {
                         client.distube.play(message, playlist.link);
                     }
                 })
-                if(!found) return message.reply("No Playlist found!");
+                if (!found) return message.reply("No Playlist found!");
 
 
         }
