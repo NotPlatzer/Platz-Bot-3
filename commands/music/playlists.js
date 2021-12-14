@@ -16,7 +16,7 @@ module.exports = {
         switch (args.join(" ")) {
 
             case "add":
-                console.log(Guild);
+                console.log(Guild.name);
                 if (!message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return message.reply("You dont have permission to do this!");
                 const nameOfPlaylist = args[0];
                 const linkOfPlaylist = args[1];
