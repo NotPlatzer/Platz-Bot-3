@@ -162,7 +162,7 @@ client.distube
         const listembed = new MessageEmbed()
             .setTitle("Added Playlist:")
             .setColor([37, 150, 190])
-            .setDescription(`**${playlist.name}**\n${playlist.songs.length} Songs added`)
+            .setDescription(`**${playlist.name}**\n${playlist.songs.length} Songs added\nDuration: \`${playlist.formattedDuration}\``)
             .setFooter(`To report bugs send a message to the dev`)
             .setImage(playlist.thumbnail)
 
