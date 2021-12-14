@@ -5,10 +5,10 @@ const Guild = require('/app/db_models/guild.js');
 
 module.exports = {
     name: "playlists",
-    aliases: ['plist'],
+    aliases: ['plist', 'li'],
     cooldown: 1000 * 3,
-    description: "Adds a selected Playlist to the Queue",
-    usage: "playlist {playlist to play}",
+    description: "Adds a selected Playlist to the Queue, or safes one for future use",
+    usage: "playlists {name of Playlist to play} {add {name of playlist to add} {link to playlist}} or {remove {name of playlist to remove}} or {list}",
 
 
     async run(client, message, args, GuildPrefix, messageGuild) {
@@ -18,6 +18,7 @@ module.exports = {
             case "add":
 
                 if (!message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return message.reply("You dont have permission to do this!");
+                if(messageGuild.playlists.length >= 10) return message.reply("There can only be 10 safed playlists. There are: " + messageGuild.playlists.length);
                 const nameOfPlaylist = args[1];
                 const linkOfPlaylist = args[2];
 
@@ -93,7 +94,4 @@ module.exports = {
     }
 
 }
-//, plist add remove oder nichts
-//bei ,plist add {nome} {link}
-// ,plist remove {nome} {link}
-// ,plist {nome} spielt di playlist
+
