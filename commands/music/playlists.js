@@ -45,6 +45,20 @@ module.exports = {
 
                 if (!message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return message.reply("You dont have permission to do this!");
 
+                const nameOfPlaylist = args[1];
+
+                await Guild.findOneAndUpdate({
+                    id: message.guild.id
+                },
+                    {
+                        $pull: {
+                            playlists: {
+                                name: nameOfPlaylist,
+                            }
+                        }
+                    })
+
+
                 break;
 
             case "list":
