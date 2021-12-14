@@ -30,17 +30,20 @@ module.exports = {
                 .setTitle("Current Queue")
                 .setAuthor("Platz Bot v3", "https://cdn.discordapp.com/avatars/917878990478377020/7f147973452d4a6bacbb6132b8e4a18d.png")
                 .setColor([37, 150, 190])
-                .setDescription(`Queue lenght: **${queue.songs.length}**\nQueue duration: \`${queue.formattedDuration}\`\n\n${status(queue)}`)
                 .setFooter(`To report bugs send a message to the dev`)
 
 
             queue.songs
                 .map((song, id) => {
+                    console.log(id);
                     if (id === 0) {
                         queueembed.setImage(song.thumbnail)
+                            .setDescription(`Queue lenght: **${queue.songs.length}**\nQueue duration: \`${queue.formattedDuration}\`\nCurrent Song: ${song.name} \`${song.formattedDuration}\`}\n${status(queue)}`)
+
+                        displayedQueueSongs++;
                     }
-                    if (displayedQueueSongs <= 10) {
-                        queueembed.addField(`**${id ? id : 'Currently Playing'}**. ${song.name}`, `\`${song.formattedDuration}\``)
+                    else if (displayedQueueSongs <= 10) {
+                        queueembed.addField(`**${id}**. ${song.name}`, `\`${song.formattedDuration}\``)
                         displayedQueueSongs++;
                     }
                 }
