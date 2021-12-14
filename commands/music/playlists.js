@@ -18,7 +18,7 @@ module.exports = {
         })
 
         console.log('Result:', result);
-        console.log('Result playlists:', result.playlists[0]);
+        console.log('Result playlists:', result.playlists[0].name);
     }
 
 }
