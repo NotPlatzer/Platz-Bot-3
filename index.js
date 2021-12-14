@@ -119,6 +119,8 @@ const distube = require('distube')
 const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
 
+new SpotifyPlugin({emitEventsAfterFetching: true});
+
 client.distube = new distube.default(client, {
     searchSongs: 0,
     searchCooldown: 3,
