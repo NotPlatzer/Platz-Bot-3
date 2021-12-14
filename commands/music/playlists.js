@@ -38,7 +38,12 @@ module.exports = {
                 }
                 else {
                     //if there is a result, result is the whole guild
-                    message.reply(result.playlists[0].link);
+                    result.playlists.forEach(playlist =>{
+                        if(playlist.name === playlistName) {
+                            message.reply(playlist.link);
+                        }
+                    })
+                    
                 }
         }
 
