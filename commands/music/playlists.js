@@ -20,12 +20,11 @@ module.exports = {
                 if (!message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return message.reply("You dont have permission to do this!");
                 const nameOfPlaylist = args[1];
                 const linkOfPlaylist = args[2];
-                console.log(nameOfPlaylist + ": " + linkOfPlaylist)
-                console.log(linkOfPlaylist.includes("https://open.spotify.com/playlist/") + " " + linkOfPlaylist.includes("https://youtube.com/playlist"))
+
                 if (!nameOfPlaylist) return message.reply("Please provide a name for the playlist")
                 if (nameOfPlaylist.includes("https://open.spotify.com/playlist/") || nameOfPlaylist.includes("https://youtube.com/playlist")) return message.reply("The name cant be a link to a playlist")
                 if (!linkOfPlaylist) return message.reply("Please provide a Link for the playlist");
-                if (!linkOfPlaylist.includes("https://open.spotify.com/playlist/") || !linkOfPlaylist.includes("https://youtube.com/playlist")) return message.reply("Please provide a valid URL for the playlist")
+                if (!linkOfPlaylist.includes("https://open.spotify.com/playlist/") && !linkOfPlaylist.includes("https://youtube.com/playlist")) return message.reply("Please provide a valid URL for the playlist")
 
                 await Guild.findOneAndUpdate({
                     id: message.guild.id
