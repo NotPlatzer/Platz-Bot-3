@@ -158,11 +158,16 @@ client.distube
         ))
     .on('searchNoResult', message => message.reply(`No result found!`))
 
-    .on('addList', (queue, playlist) =>
-        queue.textChannel.send(
-            `Added \`${playlist.name}\` playlist (${playlist.songs.length
-            } songs) to queue by ${playlist.user}`,
-        ))
+    .on('addList', (queue, playlist) => {
+        const listembed = new MessageEmbed()
+            .setTitle("Added Playlist:")
+            .setColor([37, 150, 190])
+            .setDescription(`**${playlist.name}**\n${playlist.songs.length} Songs added`)
+            .setFooter(`To report bugs send a message to the dev`)
+            .setImage(playlist.thumbnail)
+
+        queue.textChannel.send({ embeds: [listembed] });
+    })
 
 
     .on("error", (message, err) => console.log(
