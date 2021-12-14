@@ -147,10 +147,11 @@ client.distube
             .setTitle(song.name)
             .setAuthor("Platz Bot v3", "https://cdn.discordapp.com/avatars/917878990478377020/7f147973452d4a6bacbb6132b8e4a18d.png")
             .setColor([37, 150, 190])
-            .setDescription(`Song Duration: ${song.formattedDuration}\nRequested by: ${song.user}\n${status(queue)}`)
+            .setDescription(`Song Duration: \`${song.formattedDuration}\`\nRequested by: ${song.user}\n\n${status(queue)}`)
             .setFooter(`To report bugs send a message to the dev`)
+            .setImage(song.thumbnail)
 
-            queue.textChannel.send({ embeds: [playembed] });
+        queue.textChannel.send({ embeds: [playembed] });
     })
     .on('addSong', (queue, song) =>
         queue.textChannel.send(
