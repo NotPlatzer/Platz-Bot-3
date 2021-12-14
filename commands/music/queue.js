@@ -11,7 +11,7 @@ module.exports = {
 
     async run(client, message, args, GuildPrefix) {
         const queue = client.distube.getQueue(message)
-        const displayedQueueSongs = 0;
+        var displayedQueueSongs = 0;
 
         if (!queue) {
             message.reply('Nothing playing right now!')
