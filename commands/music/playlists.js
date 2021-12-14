@@ -13,12 +13,26 @@ module.exports = {
 
     async run(client, message, args, GuildPrefix) {
 
-        const result = await Guild.findOne({
-            'playlists.name': 'test'
-        })
+        switch (args.join(" ")) {
 
-        console.log('Result:', result);
-        console.log('Result playlists:', result.playlists[0].name);
+            case "add":
+
+                if (!message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return message.reply("You dont have permission to do this!");
+                break;
+
+            case "remove":
+
+                if (!message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)) return message.reply("You dont have permission to do this!");
+                break;
+
+            default:
+                console.log(args);
+
+                const result = await Guild.findOne({
+                    'playlists.name': 'test'
+                })
+        }
+
     }
 
 }
