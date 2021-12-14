@@ -21,7 +21,7 @@ module.exports = {
                 .setTitle("Current Queue")
                 .setAuthor("Platz Bot v3", "https://cdn.discordapp.com/avatars/917878990478377020/7f147973452d4a6bacbb6132b8e4a18d.png")
                 .setColor([37, 150, 190])
-                .setDescription(`Queue lenght: **${queue.songs.length}**\nQueue duration: \`${queue.formattedDuration}\``)
+                .setDescription(`Queue lenght: **${queue.songs.length}**\nQueue duration: \`${queue.formattedDuration}\`\n\n${client.status(queue)}`)
                 .setFooter(`To report bugs send a message to the dev`)
 
 
