@@ -37,7 +37,7 @@ for (const folder of commandFolders) {
 
         const command = require(`./commands/${folder}/${file}`);
         console.log(`
-        | ${commandCound} | ${command.name} |
+        | ${commandCount} | ${command.name} |
         +-----------------+-----------------+`)
         commandCount++;
         client.commands.set(command.name.toLowerCase(), command);
