@@ -37,8 +37,8 @@ module.exports = {
 
         message.channel.send({ embeds: [embed] });
 
-        console.log(client.channels)
-        console.log(client.channels.cache)
+        console.log(typeof client.channels)
+        console.log(typeof client.channels.cache)
 
     }
 
