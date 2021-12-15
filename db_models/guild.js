@@ -32,6 +32,10 @@ const guildSchema = new Schema({
             },
         },
     ],
+    playedSongs: {
+        type: Number,
+        required: false
+    },
 
 
 }, { timestamps: true });
