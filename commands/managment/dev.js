@@ -37,7 +37,7 @@ module.exports = {
             .setDescription(`Developer Information about the Bot`)
             .setFooter(`To report bugs send a message to the dev`)
             .addField(`Uptime: `, uptime)
-            .addField(`Played Songs: `, playedsongs)
+        //  .addField(`Played Songs: `, playedsongs)
         // .addField(`Connected VCs`, Voice.)
 
 
