@@ -25,6 +25,18 @@ module.exports = {
 
         let uptime = `${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`;
 
+        let connectedVCChannels = [];
+
+        client.channels.cache.forEach(channel => {
+
+            if (channel.type === 'GUILD_VOICE') {
+                connectedVCChannels.push(channel)
+            }
+
+        })
+
+        console.log(connectedVCChannels.length)
+
         const embed = new MessageEmbed()
             .setTitle("Developer Information")
             .setAuthor("Platz Bot v3", "https://cdn.discordapp.com/avatars/917878990478377020/7f147973452d4a6bacbb6132b8e4a18d.png")
@@ -37,8 +49,6 @@ module.exports = {
 
         message.channel.send({ embeds: [embed] });
 
-        console.log(typeof client.channels)
-        console.log(typeof client.channels.cache)
 
     }
 
