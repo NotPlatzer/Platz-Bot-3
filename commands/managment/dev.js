@@ -28,7 +28,7 @@ module.exports = {
         let uptime = `${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`;
 
         Guild.findOne({ id: '809835346450710598' }, function (err, doc) {
-            console.log(doc)
+            console.log(doc.playedSongs)
             embed.addField(`Played Songs: `, doc.playedSongs)
         });
 
