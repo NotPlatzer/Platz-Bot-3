@@ -68,9 +68,6 @@ client.once('ready', async () => {
         | Servers:  | ${client.guilds.cache.size}                           |
         +-----------+-----------------------------+`));
 
-    const botOwner = '608381190336020494';
-    const testServer = '793644454124453938';
-
 })
 
 client.on("guildCreate", guild => {
