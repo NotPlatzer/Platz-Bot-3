@@ -30,7 +30,8 @@ module.exports = {
             return newsongscount;
         });
 
-
+        console.log(playedsongs)
+        
         const embed = new MessageEmbed()
             .setTitle("Developer Information")
             .setAuthor("Platz Bot v3", "https://cdn.discordapp.com/avatars/917878990478377020/7f147973452d4a6bacbb6132b8e4a18d.png")
