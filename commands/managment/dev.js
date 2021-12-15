@@ -16,6 +16,11 @@ module.exports = {
         if (message.author.id !== '608381190336020494') return;
 
         const embed = new MessageEmbed()
+            .setTitle("Developer Information")
+            .setAuthor("Platz Bot v3", "https://cdn.discordapp.com/avatars/917878990478377020/7f147973452d4a6bacbb6132b8e4a18d.png")
+            .setColor([37, 150, 190])
+            .setDescription(`Developer Information about the Bot`)
+            .setFooter(`To report bugs send a message to the dev`)
 
         let totalSeconds = (client.uptime / 1000);
         let days = Math.floor(totalSeconds / 86400);
@@ -34,14 +39,7 @@ module.exports = {
 
 
         embed
-            .setTitle("Developer Information")
-            .setAuthor("Platz Bot v3", "https://cdn.discordapp.com/avatars/917878990478377020/7f147973452d4a6bacbb6132b8e4a18d.png")
-            .setColor([37, 150, 190])
-            .setDescription(`Developer Information about the Bot`)
-            .setFooter(`To report bugs send a message to the dev`)
             .addField(`Uptime: `, uptime)
-
-        // .addField(`Connected VCs`, Voice.)
 
 
         message.channel.send({ embeds: [embed] });
