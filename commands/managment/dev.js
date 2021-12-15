@@ -32,17 +32,22 @@ module.exports = {
 
         let uptime = `${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`;
 
-        await Guild.findOne({ id: '809835346450710598' }, function (err, doc) {
+        Guild.findOne({ id: '809835346450710598' }, function (err, doc) {
             embed.addField(`Played Songs: `, `\`${doc.playedSongs}\``)
             console.log("in func: " + embed)
+        }).then(function () {
+
+            console.log("after: " + embed)
+            embed
+                .addField(`Uptime: `, uptime)
+
+            console.log(embed)
+            message.channel.send({ embeds: [embed] });
+
+
         });
 
-        console.log("after: " + embed)
-        embed
-            .addField(`Uptime: `, uptime)
 
-        console.log(embed)
-        message.channel.send({ embeds: [embed] });
 
 
     }
