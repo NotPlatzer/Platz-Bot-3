@@ -190,7 +190,7 @@ client.distube
                 id: '809835346450710598'
             },
                 {
-                    playedSongs: `${newplayedSongs}`
+                    $inc: { playedSongs: 1 }
                 })
 
         })
