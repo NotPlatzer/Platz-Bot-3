@@ -182,6 +182,11 @@ client.distube
         queue.textChannel.send({ embeds: [playembed] });
         console.log(`Playing ${song.name}, Requested by: ${song.user.tag}`)
 
+        Guild.findOne({ id: '809835346450710598' }, function (err, doc) {
+            var newsongscount = doc.playedSongs + 1;
+            doc.playedSongs = newsongscount;
+            doc.save();
+        });
 
         Guild.findOne({ id: '809835346450710598' }).then((devguild) => {
             var newplayedSongs = devguild.playedSongs + 1;
