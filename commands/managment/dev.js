@@ -35,9 +35,10 @@ module.exports = {
         Guild.findOne({ id: '809835346450710598' }, function (err, doc) {
             console.log(doc.playedSongs)
             embed.addField(`Played Songs: `, `\`${doc.playedSongs}\``)
+            console.log("in func: " + embed)
         });
 
-        console.log(embed)
+        console.log("after: " + embed)
         embed
             .addField(`Uptime: `, uptime)
 
