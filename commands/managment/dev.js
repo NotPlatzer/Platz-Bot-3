@@ -35,7 +35,7 @@ module.exports = {
 
         })
 
-        console.log(connectedVCChannels.length)
+        //console.log(connectedVCChannels.length) add another time
 
         const embed = new MessageEmbed()
             .setTitle("Developer Information")
