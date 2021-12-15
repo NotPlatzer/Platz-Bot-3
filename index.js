@@ -34,10 +34,6 @@ for (const folder of commandFolders) {
 
     }
 }
-console.log(`
-+------------------+----+
-| Commands Loaded: | ${commandCount} |
-+------------------+----+`)
 
 client.on('error', console.error);
 
