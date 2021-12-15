@@ -25,17 +25,11 @@ module.exports = {
 
         let uptime = `${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`;
 
-        let connectedVCChannels = [];
+        const playedsongs = Guild.findOne({ id: '809835346450710598' }, function (err, doc) {
+            var newsongscount = doc.playedSongs;
+            return newsongscount;
+        });
 
-        client.channels.cache.forEach(channel => {
-
-            if (channel.type === 'GUILD_VOICE') {
-                connectedVCChannels.push(channel)
-            }
-
-        })
-
-        //console.log(connectedVCChannels.length) add another time
 
         const embed = new MessageEmbed()
             .setTitle("Developer Information")
@@ -44,6 +38,7 @@ module.exports = {
             .setDescription(`Developer Information about the Bot`)
             .setFooter(`To report bugs send a message to the dev`)
             .addField(`Uptime: `, uptime)
+            .addField(`Played Songs: `, playedsongs)
         // .addField(`Connected VCs`, Voice.)
 
 
