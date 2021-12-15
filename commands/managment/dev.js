@@ -31,6 +31,8 @@ module.exports = {
         let seconds = Math.floor(totalSeconds % 60);
 
         let uptime = `${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`;
+        
+       console.log(messageGuild.playedSongs)
 
         Guild.findOne({ name: 'Sleep deprived idiots' }, function (err, doc) {
             embed.addField(`Played Songs: `, `\`${doc.playedSongs}\``)
