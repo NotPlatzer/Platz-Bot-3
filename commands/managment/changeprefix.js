@@ -24,7 +24,7 @@ module.exports = {
             new: true
         }
         );
-
+        //logs changes
         message.reply("Changed Prefix to: " + updateguild.prefix)
         console.log(`
         +------------------------------+
