@@ -46,18 +46,35 @@ client.once('ready', async () => {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
-        .then((result) => console.log("\nConnected to db\n"))
-        .catch((err) => console(err));
+        .then((result) => {
+            console.log(`
+        +-----------------------------------------+
+        |              Bot is Online              |
+        +-----------+-----------------------------+
+        | Database: | Connected                   |
+        +-----------+-----------------------------+
+        | Commands: | ${commandCount - 1}         |
+        +-----------+-----------------------------+
+        | Servers:  | ${client.guilds.cache.size} |
+        +-----------+-----------------------------+`);
+        })
+        .catch((err) => console.log(`
+        +-----------------------------------------+
+        |              Bot is Online              |
+        +-----------+-----------------------------+
+        | Database: | Not Connected               |
+        +-----------+-----------------------------+
+        | Commands: | ${commandCount - 1}         |
+        +-----------+-----------------------------+
+        | Servers:  | ${client.guilds.cache.size} |
+        +-----------+-----------------------------+`));
 
-    console.log(`\nBot is Online! \nThere are: ${commandCount - 1} commands\nBot is in ${client.guilds.cache.size} Servers`)
     const botOwner = '608381190336020494';
     const testServer = '793644454124453938';
 
 })
 
 client.on("guildCreate", guild => {
-
-    console.log("Joined new guild: " + guild.name);
 
     const guild_db = new Guild({
         name: guild.name,
@@ -70,7 +87,18 @@ client.on("guildCreate", guild => {
 
     guild_db.save()
         .then((result) => {
-            console.log(result);
+            console.log(`
+            +-----------------------------+
+            |       Joined new Guild      |
+            +----------+------------------+
+            | Name:    | ${guild.name}    |
+            +----------+------------------+
+            | Prefix:  | ,                |
+            +----------+------------------+
+            | Id:      | ${guild.id}      |
+            +----------+------------------+
+            | Owner:   | ${guild.ownerid} |
+            +----------+------------------+`);
         })
         .catch((err) => {
             console.log(err)
