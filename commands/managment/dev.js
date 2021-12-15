@@ -38,7 +38,7 @@ module.exports = {
             console.log(embed)
         });
 
-
+        console.log(embed)
         embed
             .addField(`Uptime: `, uptime)
 
