@@ -29,7 +29,8 @@ module.exports = {
         const embed = new MessageEmbed()
             .setTitle("Changed Server Information")
             .setColor([37, 150, 190])
-            .setDescription(`Changed Prefix on "${messageGuild.name}" to: ${updateguild.prefix}`)
+            .setDescription(`**${messageGuild.name}**`)
+            .addField(`Prefix:`, `${updateguild.prefix}`)
             .setFooter(`To report bugs send a message to the dev`)
 
         message.reply({ embeds: [embed] });
