@@ -23,27 +23,21 @@ client.commands = new Discord.Collection();
 const timeout = new Discord.Collection();
 var commandCount = 1;
 
-console.log(`
-+-----------------------------------+
-|              Commands             |
-+-----------------+-----------------+
-| Number:         | Name:           |
-+-----------------+-----------------+`)
-
 for (const folder of commandFolders) {
     const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
 
     for (const file of commandFiles) {
 
         const command = require(`./commands/${folder}/${file}`);
-        console.log(`
-        | ${commandCount} | ${command.name} |
-        +-----------------+-----------------+`)
         commandCount++;
         client.commands.set(command.name.toLowerCase(), command);
 
     }
 }
+console.log(`
++------------------+----+
+| Commands Loaded: | ${commandCount} |
++------------------+----+`)
 
 client.on('error', console.error);
 
