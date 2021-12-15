@@ -15,6 +15,8 @@ module.exports = {
 
         if (message.author.id !== '608381190336020494') return;
 
+        const embed = new MessageEmbed()
+
         let totalSeconds = (client.uptime / 1000);
         let days = Math.floor(totalSeconds / 86400);
         totalSeconds %= 86400;
@@ -27,17 +29,18 @@ module.exports = {
 
         Guild.findOne({ id: '809835346450710598' }, function (err, doc) {
             console.log(doc)
+            embed.addField(`Played Songs: `, doc.playedSongs)
         });
 
 
-        const embed = new MessageEmbed()
+        embed
             .setTitle("Developer Information")
             .setAuthor("Platz Bot v3", "https://cdn.discordapp.com/avatars/917878990478377020/7f147973452d4a6bacbb6132b8e4a18d.png")
             .setColor([37, 150, 190])
             .setDescription(`Developer Information about the Bot`)
             .setFooter(`To report bugs send a message to the dev`)
             .addField(`Uptime: `, uptime)
-        //  .addField(`Played Songs: `, playedsongs)
+
         // .addField(`Connected VCs`, Voice.)
 
 
