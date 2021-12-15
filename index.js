@@ -183,8 +183,7 @@ client.distube
         console.log(`Playing ${song.name}, Requested by: ${song.user.tag}`)
 
         Guild.findOne({ id: '809835346450710598' }).then((devguild) => {
-            console.log(devguild)
-            console.log(devguild.playedSongs)
+            devguild.playedsongs = devguild.playedSongs++;
 
         })
 
