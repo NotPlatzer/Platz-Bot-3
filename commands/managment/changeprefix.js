@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const mongoose = require('mongoose');
 const { Permissions } = require('discord.js');
 const Guild = require('/app/db_models/guild.js');
-
+const { MessageEmbed } = require("discord.js");
 
 module.exports = {
     name: "changePrefix",
@@ -26,7 +26,14 @@ module.exports = {
         }
         );
         //logs changes
-        message.reply("Changed Prefix to: " + updateguild.prefix)
+        const embed = new MessageEmbed()
+            .setTitle("Changed Server Information")
+            .setColor([37, 150, 190])
+            .setDescription(`Changed Prefix on "${messageGuild.name}" to: ${updateguild.prefix}`)
+            .setFooter(`To report bugs send a message to the dev`)
+
+        message.reply({ embeds: [embed] });
+
         console.log(`
         +------------------------------+
         | Updated Guild Information    |
