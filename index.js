@@ -53,9 +53,9 @@ client.once('ready', async () => {
         +-----------+-----------------------------+
         | Database: | Connected                   |
         +-----------+-----------------------------+
-        | Commands: | ${commandCount - 1}               |
+        | Commands: | ${commandCount - 1}                          |
         +-----------+-----------------------------+
-        | Servers:  | ${client.guilds.cache.size}                |
+        | Servers:  | ${client.guilds.cache.size}                           |
         +-----------+-----------------------------+`);
         })
         .catch((err) => console.log(`
@@ -64,9 +64,9 @@ client.once('ready', async () => {
         +-----------+-----------------------------+
         | Database: | Not Connected               |
         +-----------+-----------------------------+
-        | Commands: | ${commandCount - 1}               |
+        | Commands: | ${commandCount - 1}                          |
         +-----------+-----------------------------+
-        | Servers:  | ${client.guilds.cache.size}                |
+        | Servers:  | ${client.guilds.cache.size}                           |
         +-----------+-----------------------------+`));
 
     const botOwner = '608381190336020494';
@@ -88,17 +88,17 @@ client.on("guildCreate", guild => {
     guild_db.save()
         .then((result) => {
             console.log(`
-            +-----------------------------+
-            |       Joined new Guild      |
-            +----------+------------------+
-            | Name:    | ${guild.name}    |
-            +----------+------------------+
-            | Prefix:  | ,                |
-            +----------+------------------+
-            | Id:      | ${guild.id}      |
-            +----------+------------------+
-            | Owner:   | ${guild.ownerid} |
-            +----------+------------------+`);
+            +-----------------------------
+            |       Joined new Guild     |
+            +----------+------------------
+            | Name:    | ${guild.name}    
+            +----------+------------------
+            | Prefix:  | ,                
+            +----------+------------------
+            | Id:      | ${guild.id}      
+            +----------+------------------
+            | Owner:   | ${guild.ownerid} 
+            +----------+------------------`);
         })
         .catch((err) => {
             console.log(err)
