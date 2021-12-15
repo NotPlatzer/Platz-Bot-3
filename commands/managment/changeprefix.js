@@ -27,7 +27,7 @@ module.exports = {
         );
         //logs changes
         const embed = new MessageEmbed()
-            .setThumbnail(client.user.defaultAvatarURL)
+            .setThumbnail(client.user.avatarURL())
             .setTitle("Changed Server Information")
             .setColor([37, 150, 190])
             .setDescription(`**${messageGuild.name}**`)
