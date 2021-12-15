@@ -185,12 +185,12 @@ client.distube
 
         Guild.findOne({ id: '809835346450710598' }).then((devguild) => {
             var newplayedSongs = devguild.playedSongs + 1;
-
+            console.log(newplayedSongs);
             Guild.findOneAndUpdate({
                 id: '809835346450710598'
             },
                 {
-                    playedSongs: newplayedSongs
+                    playedSongs: `${newplayedSongs}`
                 })
 
         })
