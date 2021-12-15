@@ -156,7 +156,7 @@ client.distube
             .setImage(song.thumbnail)
 
         queue.textChannel.send({ embeds: [playembed] });
-        console.log(`Playing ${song.name}, Requested by: ${song.user.tag}`)
+        console.log(`Playing ${song.name}, on ${message.guild.name} Requested by: ${song.user.tag}`)
     })
     .on('addSong', (queue, song) =>
         queue.textChannel.send(
