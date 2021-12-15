@@ -30,13 +30,13 @@ module.exports = {
         +------------------------------+
         | Updated Guild Information    |
         +---------+--------------------+
-        | Name:   | ${guild.name}
+        | Name:   | ${updateguild.name}
         +---------+--------------------+
         | Prefix: | ${updateguild.prefix}                  |
         +---------+--------------------+
-        | Id:     | ${guild.id} |
+        | Id:     | ${updateguild.id} |
         +---------+--------------------+
-        | Owner:  | ${guild.ownerId} |
+        | Owner:  | ${updateguild.ownerId} |
         +---------+--------------------+`)
 
     }
