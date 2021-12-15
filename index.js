@@ -95,9 +95,9 @@ client.on("guildCreate", guild => {
             +----------+------------------
             | Prefix:  | ,                
             +----------+------------------
-            | Id:      | ${guild.id}      
+            | Id:      | ${guild.id} |      
             +----------+------------------
-            | Owner:   | ${guild.ownerid} 
+            | Owner:   | ${guild.ownerId} 
             +----------+------------------`);
         })
         .catch((err) => {
