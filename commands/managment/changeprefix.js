@@ -36,7 +36,7 @@ module.exports = {
         +---------+--------------------+
         | Id:     | ${updateguild.id} |
         +---------+--------------------+
-        | Owner:  | ${updateguild.ownerId} |
+        | Owner:  | ${message.guild.id} |
         +---------+--------------------+`)
 
     }
