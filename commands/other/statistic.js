@@ -20,6 +20,7 @@ module.exports = {
                 .setFooter(`To report bugs send a message to the dev`)
                 .addField(`🤖Servers: `, `${client.guilds.cache.size}`)
                 .addField(`:musical_note:Played Songs: `, `\`${modGuild.playedSongs}\``)
+                .setThumbnail(client.user.avatarURL())
 
             let totalSeconds = (client.uptime / 1000);
             let days = Math.floor(totalSeconds / 86400);
