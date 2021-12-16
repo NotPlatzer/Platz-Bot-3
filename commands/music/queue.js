@@ -36,7 +36,9 @@ module.exports = {
             queue.songs
                 .map((song, id) => {
                     if (id === 0) {
-                        console.log(song)
+                        console.log(song.duration)
+                        console.log(queue.currentTime)
+                        console.log(song.duration - queue.currentTime)
                         queueembed.setThumbnail(song.thumbnail)
                             .setDescription(`
                             Queue lenght: **${queue.songs.length}**\n
