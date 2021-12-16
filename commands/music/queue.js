@@ -32,21 +32,19 @@ module.exports = {
                 .setColor([37, 150, 190])
                 .setFooter(`To report bugs send a message to the dev`)
 
-            //refferticorona@sabes.it
             queue.songs
                 .map((song, id) => {
                     if (id === 0) {
                         var songDur = Number(song.formattedDuration.replace(':', '.'));
-                        var timePlayed = Number(queue.formattedCurrentTime.replace(':', '.'))
-                        console.log(songDur)
-                        console.log(timePlayed)
-                        console.log(songDur - timePlayed)
+                        var timePlayed = Number(queue.formattedCurrentTime.replace(':', '.'));
+                        var time = songDur - timePlayed;
+                        var timetillfinish = time.toString().replace('.', ':');
 
                         queueembed.setThumbnail(song.thumbnail)
                             .setDescription(`
                             Queue lenght: **${queue.songs.length}**\n
                             Queue duration: \`${queue.formattedDuration}\`\n
-                            Remaining Time on current Song: \`${song.duration - queue.currentTime}\`\n
+                            Remaining Time on current Song: \`${timetillfinish}\`\n
                             \n**Current Song: ${song.name}** \`${song.formattedDuration}\`\n
                             \n${status(queue)}`)
 
