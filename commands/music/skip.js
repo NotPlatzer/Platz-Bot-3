@@ -19,8 +19,6 @@ module.exports = {
             await message.reply("Skipped")
         }
         else {
-
-
             if (isNaN(args[0])) return message.reply("Invalid song number.");
 
             await client.distube.jump(message, parseInt(args[0]))
