@@ -21,7 +21,7 @@ module.exports = {
         else {
             await client.distube.jump(message, parseInt(args[0]))
                 .catch(err => { return message.channel.send("Invalid song number.") });
-            message.reply("Jumped to song no: " + parseInt(args[0]) + " in Queue");
+            await message.reply("Jumped to song no: " + parseInt(args[0]) + " in Queue");
         }
 
     }
