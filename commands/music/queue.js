@@ -38,6 +38,8 @@ module.exports = {
                     if (id === 0) {
                         console.log(song.duration)
                         console.log(song.formattedDuration)
+                        var songDur = parseInt(song.formattedDuration.replace(':', '.'));
+                        console.log(typeof songDur)
                         console.log(queue.currentTime)
                         console.log(queue.formattedCurrentTime)
                         console.log(song.duration - queue.currentTime)
