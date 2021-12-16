@@ -36,8 +36,8 @@ module.exports = {
             queue.songs
                 .map((song, id) => {
                     if (id === 0) {
-                        var songDur = parseInt(song.formattedDuration.replace(':', '.'));
-                        var timePlayed = parseInt(queue.formattedCurrentTime.replace(':', '.'))
+                        var songDur = Number(song.formattedDuration.replace(':', '.'));
+                        var timePlayed = Number(queue.formattedCurrentTime.replace(':', '.'))
                         console.log(songDur)
                         console.log(timePlayed)
                         console.log(songDur - timePlayed)
