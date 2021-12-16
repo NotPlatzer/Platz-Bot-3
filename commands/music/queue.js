@@ -39,10 +39,9 @@ module.exports = {
                         console.log(song.duration)
                         console.log(song.formattedDuration)
                         var songDur = parseInt(song.formattedDuration.replace(':', '.'));
-                        console.log(typeof songDur)
-                        console.log(queue.currentTime)
-                        console.log(queue.formattedCurrentTime)
-                        console.log(song.duration - queue.currentTime)
+                        var timePlayed = parseInt(queue.formattedCurrentTime.replace(':', '.'))
+                        console.log(songDur - timePlayed)
+
                         queueembed.setThumbnail(song.thumbnail)
                             .setDescription(`
                             Queue lenght: **${queue.songs.length}**\n
