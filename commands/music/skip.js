@@ -14,7 +14,15 @@ module.exports = {
         if (!queue || queue.songs.length === 1) return message.reply("There is nothing to skip!");
         if (!message.member.voice.channel) return message.reply("You have to be in a voice channel!");
 
-        await client.distube.skip(message)
-        await message.reply("Skipped")
+        if (!args[0]) {
+            await client.distube.skip(message)
+            await message.reply("Skipped")
+        }
+        else {
+            await client.distube.jump(message, parseInt(args[0]))
+                .catch(err => message.channel.send("Invalid song number."));
+            message.reply("Jumped to song no: " + parseInt(args[0]) + " in Queue");
+        }
+
     }
 }
