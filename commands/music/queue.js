@@ -39,7 +39,7 @@ module.exports = {
                         console.log(song.duration)
                         console.log(song.formattedDuration)
                         console.log(queue.currentTime)
-                        console.log(queue.formattetCurrentTime)
+                        console.log(queue.formattedCurrentTime)
                         console.log(song.duration - queue.currentTime)
                         queueembed.setThumbnail(song.thumbnail)
                             .setDescription(`
