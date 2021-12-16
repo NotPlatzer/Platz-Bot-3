@@ -37,7 +37,7 @@ module.exports = {
                 .map((song, id) => {
                     if (id === 0) {
                         queueembed.setThumbnail(song.thumbnail)
-                            .setDescription(`Queue lenght: **${queue.songs.length}**\nQueue duration: \`${queue.formattedDuration}\`\nRemaining Time on current Song: \`${((song.duration * 1000) - queue.currentTime) / 1000}\`\n\n**Current Song: ${song.name}** \`${song.formattedDuration}\`\n\n${status(queue)}`)
+                            .setDescription(`Queue lenght: **${queue.songs.length}**\nQueue duration: \`${queue.formattedDuration}\`\nRemaining Time on current Song: \`${song.duration - queue.currentTime}\`\n\n**Current Song: ${song.name}** \`${song.formattedDuration}\`\n\n${status(queue)}`)
 
                         displayedQueueSongs++;
                     }
