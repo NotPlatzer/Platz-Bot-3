@@ -20,7 +20,7 @@ module.exports = {
         }
         else {
             console.log(parseInt(args[0]))
-            if (parseInt(args[0]) === 'NaN') return message.reply("Invalid song number.")
+            if (parseInt(args[0]) === NaN) return message.reply("Invalid song number.")
 
             await client.distube.jump(message, parseInt(args[0]))
             message.reply("Jumped to song no: " + parseInt(args[0]) + " in Queue");
