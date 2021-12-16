@@ -37,7 +37,7 @@ module.exports = {
                     if (id === 0) {
                         var songDur = Number(song.formattedDuration.replace(':', '.'));
                         var timePlayed = Number(queue.formattedCurrentTime.replace(':', '.'));
-                        var time = songDur - timePlayed;
+                        var time = (songDur - timePlayed).toFixed(2);
                         var timetillfinish = time.toString().replace('.', ':');
 
                         queueembed.setThumbnail(song.thumbnail)
