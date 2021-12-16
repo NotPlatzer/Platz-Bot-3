@@ -36,10 +36,10 @@ module.exports = {
             queue.songs
                 .map((song, id) => {
                     if (id === 0) {
-                        console.log(song.duration)
-                        console.log(song.formattedDuration)
                         var songDur = parseInt(song.formattedDuration.replace(':', '.'));
                         var timePlayed = parseInt(queue.formattedCurrentTime.replace(':', '.'))
+                        console.log(songDur)
+                        console.log(timePlayed)
                         console.log(songDur - timePlayed)
 
                         queueembed.setThumbnail(song.thumbnail)
