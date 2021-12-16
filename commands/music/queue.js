@@ -32,7 +32,7 @@ module.exports = {
                 .setColor([37, 150, 190])
                 .setFooter(`To report bugs send a message to the dev`)
 
-
+            //refferticorona@sabes.it
             queue.songs
                 .map((song, id) => {
                     if (id === 0) {
