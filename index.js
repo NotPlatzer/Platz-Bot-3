@@ -140,6 +140,11 @@ client.on('messageCreate', message => {
     });
 })
 
+client.on("voiceStateUpdate", (oldstate, newstate) => {
+    console.log(oldstate);
+    console.log(newstate);
+})
+
 const distube = require('distube')
 
 const { SpotifyPlugin } = require("@distube/spotify");
@@ -188,7 +193,7 @@ client.distube
             doc.save();
         });
 
-        
+
 
     })
     .on('addSong', (queue, song) =>
