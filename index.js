@@ -148,6 +148,8 @@ client.on("voiceStateUpdate", (oldstate, newstate) => {
     let newUserChannel = newstate.channel
     let oldUserChannel = oldstate.channel
 
+    console.log(newUserChannel)
+    console.log(oldUserChannel)
 
 
     if (oldUserChannel === undefined && newUserChannel !== undefined) {
