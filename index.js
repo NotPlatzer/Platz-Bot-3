@@ -141,8 +141,22 @@ client.on('messageCreate', message => {
 })
 
 client.on("voiceStateUpdate", (oldstate, newstate) => {
-    console.log(oldstate);
-    console.log(newstate);
+
+    let newUserChannel = newstate.channel
+    let oldUserChannel = oldstate.channel
+
+    console.log(newUserChannel)
+    console.log(oldUserChannel)
+
+    if (oldUserChannel === undefined && newUserChannel !== undefined) {
+
+
+
+    } else if (newUserChannel === undefined) {
+
+        // User leaves a voice channel
+
+    }
 })
 
 const distube = require('distube')
