@@ -142,19 +142,18 @@ client.on('messageCreate', message => {
 
 client.on("voiceStateUpdate", (oldstate, newstate) => {
 
+    if(newstate.member.id !== client.user.id) return;
+
     let newUserChannel = newstate.channel
     let oldUserChannel = oldstate.channel
 
-    console.log(newUserChannel)
-    console.log(oldUserChannel)
-
     if (oldUserChannel === undefined && newUserChannel !== undefined) {
 
-
+        console.log("joined")
 
     } else if (newUserChannel === undefined) {
 
-        // User leaves a voice channel
+        console.log("left")
 
     }
 })
