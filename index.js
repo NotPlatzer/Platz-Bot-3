@@ -141,11 +141,14 @@ client.on('messageCreate', message => {
 })
 
 client.on("voiceStateUpdate", (oldstate, newstate) => {
+    console.log(newstate.member.id + ", " + client.user.id)
 
-    if(newstate.member.id !== client.user.id) return;
+    if (newstate.member.id !== client.user.id) return;
 
     let newUserChannel = newstate.channel
     let oldUserChannel = oldstate.channel
+
+
 
     if (oldUserChannel === undefined && newUserChannel !== undefined) {
 
