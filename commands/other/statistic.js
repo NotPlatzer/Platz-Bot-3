@@ -20,7 +20,7 @@ module.exports = {
                 .setFooter(`To report bugs send a message to the dev`)
                 .addField(`🤖Servers: `, `${client.guilds.cache.size}`)
                 .addField(`:musical_note:Played Songs: `, `\`${modGuild.playedSongs}\``)
-                .addField(`Connected Vcs: `, `\`${modGuild.connectedVcs}\``)
+                .addField(`Connected Vcs: `, `\`${modGuild.connectedVCs}\``)
                 .setThumbnail(client.user.avatarURL())
 
             let totalSeconds = (client.uptime / 1000);
