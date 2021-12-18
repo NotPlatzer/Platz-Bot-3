@@ -151,7 +151,8 @@ client.on("voiceStateUpdate", (oldstate, newstate) => {
 
         console.log("joined a voice channel")
 
-        Guild.findOne({ id: '809835346450710598' }, function (err, doc) {
+        Guild.findOne({ id: '809835346450710598' }, function (err, Doc) {
+            doc = Doc[0]
             console.log(doc)
             console.log(doc.connectedVCs)
             var vcCount = doc.connectedVCs + 1;
@@ -163,7 +164,8 @@ client.on("voiceStateUpdate", (oldstate, newstate) => {
 
         console.log("left a voice channel")
 
-        Guild.findOne({ id: '809835346450710598' }, function (err, doc) {
+        Guild.findOne({ id: '809835346450710598' }, function (err, Doc) {
+            doc = Doc[0]
             var vcCount = doc.connectedVCs - 1;
             doc.connectedVCs = vcCount;
             doc.save();
