@@ -149,11 +149,23 @@ client.on("voiceStateUpdate", (oldstate, newstate) => {
 
     if (oldUserChannel === null && newUserChannel !== null) {
 
-        console.log("joined")
+        console.log("joined a voice channel")
+
+        Guild.findOne({ id: '809835346450710598' }, function (err, doc) {
+            var vcCount = doc.connectedVCs + 1;
+            doc.connectedVCs = vcCount;
+            doc.save();
+        });
 
     } else if (newUserChannel === null) {
 
-        console.log("left")
+        console.log("left a voice channel")
+
+        Guild.findOne({ id: '809835346450710598' }, function (err, doc) {
+            var vcCount = doc.connectedVCs - 1;
+            doc.connectedVCs = vcCount;
+            doc.save();
+        });
 
     }
 })
