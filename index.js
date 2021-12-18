@@ -140,40 +140,6 @@ client.on('messageCreate', message => {
     });
 })
 
-client.on("voiceStateUpdate", (oldstate, newstate) => {
-
-    if (newstate.member.id !== client.user.id) return;
-
-    let newUserChannel = newstate.channel
-    let oldUserChannel = oldstate.channel
-
-    if (oldUserChannel === null && newUserChannel !== null) {
-
-        console.log("joined a voice channel")
-
-        Guild.findOne({ id: '809835346450710598' }, function (err, Doc) {
-            doc = Doc[0]
-            console.log(doc)
-            console.log(doc.connectedVCs)
-            var vcCount = doc.connectedVCs + 1;
-            doc.connectedVCs = vcCount;
-            doc.save();
-        });
-
-    } else if (newUserChannel === null) {
-
-        console.log("left a voice channel")
-
-        Guild.findOne({ id: '809835346450710598' }, function (err, Doc) {
-            doc = Doc[0]
-            var vcCount = doc.connectedVCs - 1;
-            doc.connectedVCs = vcCount;
-            doc.save();
-        });
-
-    }
-})
-
 const distube = require('distube')
 
 const { SpotifyPlugin } = require("@distube/spotify");
