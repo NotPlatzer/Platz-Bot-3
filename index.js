@@ -152,11 +152,11 @@ client.on("voiceStateUpdate", (oldstate, newstate) => {
     console.log(oldUserChannel)
 
 
-    if (oldUserChannel === undefined && newUserChannel !== undefined) {
+    if (oldUserChannel === null && newUserChannel !== null) {
 
         console.log("joined")
 
-    } else if (newUserChannel === undefined) {
+    } else if (newUserChannel === null) {
 
         console.log("left")
 
