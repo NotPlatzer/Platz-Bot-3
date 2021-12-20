@@ -35,6 +35,12 @@ for (const folder of commandFolders) {
     }
 }
 
+
+process.on('uncaughtException', function (err) {
+    console.error(err);
+    console.log("Node NOT Exiting...");
+});
+
 client.on('error', console.error);
 
 client.once('ready', async () => {
