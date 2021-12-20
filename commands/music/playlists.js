@@ -40,7 +40,7 @@ module.exports = {
                         }
                     })
 
-                message.reply(`Added ${nameOfPlaylist} to the Safed Playlists!`)
+                message.reply(`Added ${nameOfPlaylist} to the Saved Playlists!`)
                 break;
 
             case "remove":
