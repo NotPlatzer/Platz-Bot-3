@@ -21,7 +21,7 @@ module.exports = {
                 if (id === 0) {
                     //Do things to first song
                     lyricsFinder.LyricsFinder(song.name).then(data => {
-                        console.log(data);
+                        message.channel.send(data, { split: true })
                     }).catch(err => {
                         console.log(err);
                     })
