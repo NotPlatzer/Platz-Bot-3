@@ -22,7 +22,10 @@ module.exports = {
                     //Do things to first song
                     lyricsFinder.LyricsFinder(song.name).then(data => {
                         console.log(data);
-                    });
+                    }).catch(err => {
+                        console.log(err);
+                    })
+
                 }
             })
     }
