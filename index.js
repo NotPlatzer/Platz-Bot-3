@@ -2,8 +2,9 @@ const Discord = require('discord.js')
 const mongoose = require('mongoose')
 const Guild = require('./db_models/guild');
 const { MessageEmbed } = require("discord.js");
-
+const ms = require('ms')
 const fs = require('fs')
+
 const client = new Discord.Client({
     intents: [
         'GUILDS',
@@ -14,15 +15,14 @@ const client = new Discord.Client({
     ],
 })
 
-const ms = require('ms')
-//clear the console
-console.clear();
-
-const commandFolders = fs.readdirSync('./commands');
 client.commands = new Discord.Collection();
+const commandFolders = fs.readdirSync('./commands');
+
 const timeout = new Discord.Collection();
+
 var commandCount = 1;
 
+//Looping for every command and putting it into the "client.commands" collection
 for (const folder of commandFolders) {
     const commandFiles = fs.readdirSync(`./commands/${folder}`).filter(file => file.endsWith('.js'));
 
@@ -35,16 +35,16 @@ for (const folder of commandFolders) {
     }
 }
 
-
+//Node error handling
 process.on('uncaughtException', function (err) {
     console.error(err);
     console.log("Node NOT Exiting...");
 });
-
+//Discord error handling
 client.on('error', console.error);
-
+//gets called once the client is online
 client.once('ready', async () => {
-
+    //Connecting to the DB
     await mongoose.connect(
         process.env.DB_URI, {
         keepAlive: true,
@@ -75,9 +75,9 @@ client.once('ready', async () => {
         +-----------+-----------------------------+`));
 
 })
-
+//Gets Called once client joins a new guild
 client.on("guildCreate", guild => {
-
+    //Makes new db Guild Document
     const guild_db = new Guild({
         name: guild.name,
         prefix: ',',
@@ -108,27 +108,30 @@ client.on("guildCreate", guild => {
 
 });
 
-
+//Gets called once a message is received
 client.on('messageCreate', message => {
     if (message.author === client.user) return;
     if (message.channel.type === 'DM') return;
-
+    //finds the prefix of the current Guild and puts it into the "GuildPrefix" variable
     Guild.findOne({ id: message.guild.id }).then((messageGuild) => {
         const GuildPrefix = messageGuild.prefix;
         if (message.mentions.has(client.user.id)) {
             message.reply(`Hello there! My Current Prefix is: ${GuildPrefix}\nUse ${GuildPrefix}help for more Information`);
         }
+        //Return if the message doesn't start with the prefix
         if (!message.content.startsWith(GuildPrefix)) return;
-
+        //"args" is a Array and it contains the arguments after the command
         const args = message.content.slice(GuildPrefix.length).trim().split(' ');
 
         const commandName = args.shift().toLowerCase();
+        //Find all the commands by name or alias
         const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
         if (!command) return message.reply("No such Command: " + commandName);
 
         if (command) {
             if (command.cooldown) {
+                //If command has cooldown
                 if (timeout.has(`${command.name}${message.author.id}`)) return message.reply(`Please Wait \`${ms(timeout.get(`${command.name}${message.author.id}`) - Date.now(), { long: true })}\``);
                 command.run(client, message, args, GuildPrefix, messageGuild)
                 console.log(`${message.author.tag} executed ${message.content} on ${message.guild.name}`)
@@ -137,6 +140,7 @@ client.on('messageCreate', message => {
                     timeout.delete(`${command.name}${message.author.id}`)
                 }, command.cooldown)
             } else {
+                //If  no cooldown
                 console.log(`${message.author.tag} executed ${message.content} on ${message.guild.name}`);
                 command.run(client, message, args, GuildPrefix, messageGuild)
             }
@@ -153,7 +157,7 @@ const { SoundCloudPlugin } = require("@distube/soundcloud");
 const playlists = require('./commands/music/playlists');
 
 
-
+ //Makes new Distube Client
 client.distube = new distube.default(client, {
     searchSongs: 0,
     searchCooldown: 3,

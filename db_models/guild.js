@@ -36,6 +36,10 @@ const guildSchema = new Schema({
         type: Number,
         required: false
     },
+    botStartTime: {
+        type: Number,
+        required: false
+    },
 
 
 }, { timestamps: true });
