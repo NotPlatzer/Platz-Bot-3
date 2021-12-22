@@ -74,7 +74,7 @@ module.exports = {
 
                         var messageData = toDiscordTextformat(data);
 
-                        message.channel.send(`Lyrics for: **${song.name}**`)
+                        message.channel.send(`Lyrics for: **${song.name}**\n`)
                         messageData.forEach(datafraction => {
                             message.channel.send(datafraction)
                         })
