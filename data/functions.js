@@ -1,6 +1,6 @@
 
 
-function toDiscordTextformat(text) {
+module.exports = function toDiscordTextformat(text) {
     var array = [];
     const textlen = text.length / 2000;
     if (textlen < 1) {
