@@ -1,6 +1,8 @@
 
 module.exports = function toDiscordTextformat(text) {
-    var text = text.toString();
+
+    if (text === undefined) return;
+
     var array = [];
     const textlen = text.length / 2000;
     if (textlen < 1) {
