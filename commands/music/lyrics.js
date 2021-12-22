@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const lyricsFinder = require('@sujalgoel/lyrics-finder');
-
+const functions = require('/app/data/functions.js');
 
 module.exports = {
     name: "lyrics",
