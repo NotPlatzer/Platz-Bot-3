@@ -21,7 +21,7 @@ module.exports = {
                 if (id === 0) {
                     //Do things to first song
                     lyricsFinder.LyricsFinder(song.name).then(data => {
-
+                        console.log(typeof functions.toDiscordTextformat)
                         var messageData = functions.toDiscordTextformat(data);
                         messageData.forEach(datafraction => {
                             message.channel.send(datafraction)
