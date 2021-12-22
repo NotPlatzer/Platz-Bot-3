@@ -1,5 +1,5 @@
 
-export function toDiscordTextformat(text) {
+module.export = function toDiscordTextformat(text) {
     var array = [];
 
     if (text === undefined) return array;
