@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const lyricsFinder = require('@sujalgoel/lyrics-finder');
-import { toDiscordTextformat } from '/app/data/functions.js';
+const functions = require('/app/data/functions.js');
 
 module.exports = {
     name: "lyrics",
@@ -22,7 +22,7 @@ module.exports = {
                     //Do things to first song
                     lyricsFinder.LyricsFinder(song.name).then(data => {
                         console.log(typeof functions.toDiscordTextformat)
-                        var messageData = toDiscordTextformat(data);
+                        var messageData = functions.toDiscordTextformat(data);
                         messageData.forEach(datafraction => {
                             message.channel.send(datafraction)
                         })
