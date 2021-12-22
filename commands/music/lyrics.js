@@ -22,7 +22,7 @@ module.exports = {
                     //Do things to first song
                     lyricsFinder.LyricsFinder(song.name).then(data => {
 
-                        var messageData = functions.toDiscordTextformat;
+                        var messageData = functions.toDiscordTextformat(data);
                         messageData.forEach(datafraction => {
                             message.channel.send(datafraction)
                         })
