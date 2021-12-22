@@ -157,7 +157,7 @@ const { SoundCloudPlugin } = require("@distube/soundcloud");
 const playlists = require('./commands/music/playlists');
 
 
- //Makes new Distube Client
+//Makes new Distube Client
 client.distube = new distube.default(client, {
     searchSongs: 0,
     searchCooldown: 3,
@@ -219,9 +219,10 @@ client.distube
     })
 
 
-    .on("error", (message, err) => console.log(
-        "An error encountered: " + err
-    ));
+    .on("error", (message, err) => {
+        console.log("An error encountered: " + err)
+        message.reply("An error occurred: " + err)
+    });
 
 
 

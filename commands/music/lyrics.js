@@ -63,7 +63,7 @@ module.exports = {
         }
 
         const queue = client.distube.getQueue(message)
-        if (!queue) return message.reply("There is nothing to stop!");
+        if (!queue) return message.reply("There is nothing playing!");
         if (!message.member.voice.channel) return message.reply("You have to be in a voice channel!");
 
         queue.songs
@@ -71,8 +71,10 @@ module.exports = {
                 if (id === 0) {
                     //Do things to first song
                     lyricsFinder.LyricsFinder(song.name).then(data => {
-                        console.log(typeof toDiscordTextformat)
+
                         var messageData = toDiscordTextformat(data);
+
+                        message.channel.send(`Lyrics for: **${song.name}**`)
                         messageData.forEach(datafraction => {
                             message.channel.send(datafraction)
                         })
