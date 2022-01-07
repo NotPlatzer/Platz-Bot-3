@@ -38,7 +38,7 @@ for (const folder of commandFolders) {
 //Node error handling
 process.on("uncaughtException", function (err) {
   console.error(err);
-  console.log("Node NOT Exiting...");
+  console.log("NODE CRASHED");
 });
 //Discord error handling
 client.on("error", console.error);
