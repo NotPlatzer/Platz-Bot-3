@@ -22,6 +22,14 @@ module.exports = {
         if (!messageGuild.muteRole) {
           args.shift();
           const rolename = args.join(" ");
+          if (
+            message.guild.roles.cache.find((role) => role.name == rolename) ===
+            undefined
+          ) {
+            return message.reply(
+              `There already exists a role with the name \`${rolename}\``
+            );
+          }
           message.guild.roles
             .create({
               name: rolename,
@@ -59,7 +67,7 @@ module.exports = {
           { muteRole: roleOBJ.id },
           { new: true }
         );
-        message.reply(`Changed Mute Role to: \`${updateguild.muteRole.name}\``);
+        message.reply(`Changed Mute Role to: \`${rolename}\``);
         break;
 
       default:
@@ -71,7 +79,7 @@ module.exports = {
         let defroleOBJ = message.guild.roles.cache.find(
           (role) => role.id == messageGuild.muteRole
         );
-        message.reply(`Current Mute Role is: ${defroleOBJ.name}`);
+        message.reply(`Current Mute Role is: \`${defroleOBJ.name}\``);
         break;
     }
   },
