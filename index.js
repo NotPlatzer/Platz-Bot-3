@@ -114,6 +114,11 @@ client.on('messageCreate', message => {
     if (message.channel.type === 'DM') return;
     //finds the prefix of the current Guild and puts it into the "GuildPrefix" variable
     Guild.findOne({ id: message.guild.id }).then((messageGuild) => {
+
+        if(!messageGuild) {
+            console.log("HELLO")
+        }
+        
         const GuildPrefix = messageGuild.prefix;
         if (message.mentions.has(client.user.id)) {
             message.reply(`Hello there! My Current Prefix is: ${GuildPrefix}\nUse ${GuildPrefix}help for more Information`);
