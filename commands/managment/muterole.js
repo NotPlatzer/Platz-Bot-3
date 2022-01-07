@@ -59,10 +59,19 @@ module.exports = {
           { muteRole: roleOBJ.id },
           { new: true }
         );
-        message.reply(`Changed Mute Role to: \`${updateguild.muteRole}\``);
+        message.reply(`Changed Mute Role to: \`${updateguild.muteRole.name}\``);
         break;
 
       default:
+        if (!messageGuild.muteRole) {
+          return message.reply(
+            `There is no Mute Role on this Server. Use \`${messageGuild.prefix}info muterole\` for more information`
+          );
+        }
+        const roleOBJ = message.guild.roles.cache.find(
+          (role) => role.id == messageGuild.muteRole
+        );
+        message.reply(`Current Mute Role is: ${roleOBJ.name}`);
         break;
     }
   },
