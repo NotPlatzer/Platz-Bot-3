@@ -3,11 +3,11 @@ const { Permissions } = require("discord.js");
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
-  name: "kick",
-  aliases: ["pi"],
+  name: "muterole",
+  aliases: ["mur"],
   cooldown: 1000 * 5,
-  description: "Kicks a member",
-  usage: "kick {@member to kick} {reason}",
+  description: "Creates/Changes the Muterole",
+  usage: "muterole [create] {role}",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     if (!message.member.permissions.has(Permissions.FLAGS.MANAGE_ROLES))
