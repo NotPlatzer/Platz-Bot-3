@@ -35,6 +35,9 @@ module.exports = {
             { new: true }
           );
         }
+        else{
+            message.reply("There already is a muterole on the Server")
+        }
         break;
 
       case "set":
