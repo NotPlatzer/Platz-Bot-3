@@ -50,6 +50,8 @@ module.exports = {
       .setThumbnail(target.avatarURL())
       .setFooter(`Muted by ${message.author.tag}`);
 
-    //mute
+    var role = message.guild.roles.find((role) => role.id === muteRole);
+    target.roles.add(role);
+    return message.reply(embed);
   },
 };
