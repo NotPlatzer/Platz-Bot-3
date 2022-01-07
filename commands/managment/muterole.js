@@ -31,7 +31,7 @@ module.exports = {
               message.channel.send(`Role \`${rolename}}\` created!`);
             });
 
-          const roleOBJ = message.guild.roles.cache.find(
+          let roleOBJ = message.guild.roles.cache.find(
             (role) => role.name == rolename
           );
 
@@ -48,7 +48,7 @@ module.exports = {
       case "set":
         args.shift();
         const rolename = args.join(" ");
-        const roleOBJ = message.guild.roles.cache.find(
+        let roleOBJ = message.guild.roles.cache.find(
           (role) => role.name == rolename
         );
         if (roleOBJ === undefined) {
@@ -68,7 +68,7 @@ module.exports = {
             `There is no Mute Role on this Server. Use \`${messageGuild.prefix}info muterole\` for more information`
           );
         }
-        const roleOBJ = message.guild.roles.cache.find(
+        let roleOBJ = message.guild.roles.cache.find(
           (role) => role.id == messageGuild.muteRole
         );
         message.reply(`Current Mute Role is: ${roleOBJ.name}`);
