@@ -40,6 +40,10 @@ const guildSchema = new Schema({
         type: Number,
         required: false
     },
+    muteRole: {
+        type: String,
+        required: false
+    }
 
 
 }, { timestamps: true });
