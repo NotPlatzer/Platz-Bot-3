@@ -17,7 +17,8 @@ module.exports = {
 
     switch (args[0]) {
       case "create":
-        if (!messageGuild.modRole) {
+          console.log(messageGuild.muteRole)
+        if (!messageGuild.muteRole) {
           args.shift();
           const name = args.join(" ");
           message.guild.roles
