@@ -25,7 +25,8 @@ module.exports = {
           const i = message.guild.roles.cache.find(
             (role) => role.name == rolename
           );
-          if (i == undefined) {
+          console.log(i)
+          if (i !== undefined) {
             return message.reply(
               `There already exists a role with the name \`${rolename}\``
             );
