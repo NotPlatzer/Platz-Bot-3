@@ -22,10 +22,10 @@ module.exports = {
         if (!messageGuild.muteRole) {
           args.shift();
           const rolename = args.join(" ");
-          if (
-            message.guild.roles.cache.find((role) => role.name == rolename) ===
-            undefined
-          ) {
+          const i = message.guild.roles.cache.find(
+            (role) => role.name == rolename
+          );
+          if (i == undefined) {
             return message.reply(
               `There already exists a role with the name \`${rolename}\``
             );
@@ -36,7 +36,7 @@ module.exports = {
               color: "#ff0000",
             })
             .then((role) => {
-              message.channel.send(`Role \`${rolename}}\` created!`);
+              message.channel.send(`Role \`${rolename}\` created!`);
             });
 
           let roleOBJ = message.guild.roles.cache.find(
