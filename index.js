@@ -134,20 +134,20 @@ client.on("messageCreate", (message) => {
             +------------------------------+
             |       Joined new Guild       |
             +---------+--------------------+
-            | Name:   | ${guild.name}      
+            | Name:   | ${message.guild.name}      
             +---------+--------------------+
             | Prefix: | ,                  |
             +---------+--------------------+
-            | Id:     | ${guild.id} |
+            | Id:     | ${message.guild.id} |
             +---------+--------------------+
-            | Owner:  | ${guild.ownerId} |
+            | Owner:  | ${message.guild.ownerId} |
             +---------+--------------------+`);
           })
           .catch((err) => {
             console.log(err);
           });
 
-         var messageGuild = guild_db;
+        var messageGuild = guild_db;
       }
 
       const GuildPrefix = messageGuild.prefix;
