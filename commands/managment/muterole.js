@@ -21,19 +21,23 @@ module.exports = {
         console.log(messageGuild.muteRole);
         if (!messageGuild.muteRole) {
           args.shift();
-          const name = args.join(" ");
+          const rolename = args.join(" ");
           message.guild.roles
             .create({
-              name: name,
+              name: rolename,
               color: "#ff0000",
             })
             .then((role) => {
-              message.channel.send(`Role \`${role.name}\` created!`);
+              message.channel.send(`Role \`${rolename}}\` created!`);
             });
+
+          const roleOBJ = message.guild.roles.cache.find(
+            (role) => role.name == rolename
+          );
 
           const updateguild = await Guild.findOneAndUpdate(
             { id: message.guild.id },
-            { muteRole: name },
+            { muteRole: roleOBJ.id },
             { new: true }
           );
         } else {
@@ -43,13 +47,19 @@ module.exports = {
 
       case "set":
         args.shift();
-        const name = args.join(" ");
+        const rolename = args.join(" ");
+        const roleOBJ = message.guild.roles.cache.find(
+          (role) => role.name == rolename
+        );
+        if (roleOBJ === undefined) {
+          return message.reply("No such Role on the Server");
+        }
         const updateguild = await Guild.findOneAndUpdate(
           { id: message.guild.id },
-          { muteRole: name },
+          { muteRole: roleOBJ.id },
           { new: true }
         );
-        message.reply("Changed Mute Role to: " + updateguild.muteRole)
+        message.reply(`Changed Mute Role to: \`${updateguild.muteRole}\``);
         break;
 
       default:
