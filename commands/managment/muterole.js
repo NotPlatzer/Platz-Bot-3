@@ -18,11 +18,8 @@ module.exports = {
     if (args[0] == "create") {
       message.guild.roles
         .create({
-          // Creating the role since it doesn't exist.
-          data: {
             name: "MUTED",
             color: "#ff0000",
-          },
         })
         .then((role) => {
           message.channel.send(`Role \`${role.name}\` created!`);
