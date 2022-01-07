@@ -15,15 +15,33 @@ module.exports = {
     if (!message.guild.me.permissions.has(Permissions.FLAGS.MANAGE_ROLES))
       return message.reply("I dont have permission to do this!");
 
-    if (args[0] == "create") {
-      message.guild.roles
-        .create({
-            name: args[1],
-            color: "#ff0000",
-        })
-        .then((role) => {
-          message.channel.send(`Role \`${role.name}\` created!`);
-        });
+    switch (args[0]) {
+      case "create":
+        if (!messageGuild.modRole) {
+          args.shift();
+          const name = args.join(" ");
+          message.guild.roles
+            .create({
+              name: name,
+              color: "#ff0000",
+            })
+            .then((role) => {
+              message.channel.send(`Role \`${role.name}\` created!`);
+            });
+
+          const updateguild = await Guild.findOneAndUpdate(
+            { id: message.guild.id },
+            { muteRole: "muted" },
+            { new: true }
+          );
+        }
+        break;
+
+      case "set":
+        break;
+
+      default:
+        break;
     }
   },
 };
