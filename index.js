@@ -146,6 +146,8 @@ client.on("messageCreate", (message) => {
           .catch((err) => {
             console.log(err);
           });
+
+         var messageGuild = guild_db;
       }
 
       const GuildPrefix = messageGuild.prefix;
