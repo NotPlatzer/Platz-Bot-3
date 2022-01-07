@@ -68,10 +68,10 @@ module.exports = {
             `There is no Mute Role on this Server. Use \`${messageGuild.prefix}info muterole\` for more information`
           );
         }
-        let roleOBJ = message.guild.roles.cache.find(
+        let defroleOBJ = message.guild.roles.cache.find(
           (role) => role.id == messageGuild.muteRole
         );
-        message.reply(`Current Mute Role is: ${roleOBJ.name}`);
+        message.reply(`Current Mute Role is: ${defroleOBJ.name}`);
         break;
     }
   },
