@@ -18,7 +18,7 @@ module.exports = {
     if (args[0] == "create") {
       message.guild.roles
         .create({
-            name: "MUTED",
+            name: args[1],
             color: "#ff0000",
         })
         .then((role) => {
