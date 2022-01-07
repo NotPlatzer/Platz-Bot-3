@@ -116,15 +116,14 @@ client.on("messageCreate", (message) => {
   //finds the prefix of the current Guild and puts it into the "GuildPrefix" variable
   Guild.findOne({ id: message.guild.id })
     .then((messageGuild) => {
-        
       if (!messageGuild) {
         //Makes new db Guild Document
         const guild_db = new Guild({
-          name: guild.name,
+          name: message.guild.name,
           prefix: ",",
           modRole: "admin",
-          id: guild.id,
-          owner: guild.ownerId,
+          id: message.guild.id,
+          owner: message.guild.ownerId,
           playlists: [],
         });
 
