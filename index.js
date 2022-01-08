@@ -12,6 +12,7 @@ const client = new Discord.Client({
     "GUILD_MESSAGES",
     "GUILD_BANS",
     "GUILD_MEMBERS",
+    "MANAGE_ROLES",
   ],
 });
 
