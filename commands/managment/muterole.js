@@ -50,6 +50,7 @@ module.exports = {
             let EmptyroleOBJ = message.guild.roles.cache.find(
               (role) => role.name == "muted"
             );
+            console.log(EmptyroleOBJ);
 
             const updateguild = await Guild.findOneAndUpdate(
               { id: message.guild.id },
