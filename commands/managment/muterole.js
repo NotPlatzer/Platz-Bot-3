@@ -18,9 +18,9 @@ module.exports = {
 
     switch (args[0]) {
       case "create":
-        if(!messageGuild.muteRole) {
+        if (!messageGuild.muteRole) {
           var msgMuteRole = 1;
-        }else{
+        } else {
           var msgMuteRole = messageGuild.muteRole;
         }
         let CreateRoleOBJ = message.guild.roles.cache.find(
@@ -38,7 +38,24 @@ module.exports = {
             );
           }
           if (rolename === "" || rolename === "``") {
-            return message.reply(`Please Provide a Valid Role Name`);
+            message.guild.roles
+              .create({
+                name: "muted",
+                color: "#ff0000",
+              })
+              .then((role) => {
+                message.channel.send(`Role \`muted\` created!`);
+              });
+
+            let EmptyroleOBJ = message.guild.roles.cache.find(
+              (role) => role.name == "muted"
+            );
+
+            const updateguild = await Guild.findOneAndUpdate(
+              { id: message.guild.id },
+              { muteRole: EmptyroleOBJ.id },
+              { new: true }
+            );
           }
           message.guild.roles
             .create({
