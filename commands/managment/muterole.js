@@ -90,7 +90,7 @@ module.exports = {
 
         message.channel
           .awaitMessages(filter, { max: 1, time: 10000 })
-          .then((collected) => {
+          .then(async (collected) => {
 
             if(collected.first().content === 'NO' || collected.first().content === 'no')
             {
