@@ -44,7 +44,8 @@ module.exports = {
                 color: "#ff0000",
               })
               .then((role) => {
-                message.channel.send(`Role \`muted\` created!`);
+                message.channel.send(`Role \`${role.name}\` created!`);
+                conosle.log(role)
               });
 
             let EmptyroleOBJ = message.guild.roles.cache.find(
