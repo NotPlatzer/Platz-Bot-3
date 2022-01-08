@@ -38,7 +38,7 @@ module.exports = {
             );
           }
           if (rolename === "" || rolename === "``") {
-            message.reply(`Please Provide a Valid Role Name`);
+            return message.reply(`Please Provide a Valid Role Name`);
           }
           message.guild.roles
             .create({
