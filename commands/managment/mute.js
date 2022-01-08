@@ -41,6 +41,18 @@ module.exports = {
     if (target.id === message.guild.me.id) {
       return message.reply("You can not Mute the Bot in this way");
     }
+    let Role = message.guild.roles.cache.find(
+      (role) => role.id == messageGuild.muteRole
+    );
+
+    message.guild.channels.cache
+      .filter((c) => c.type === "GUILD_TEXT")
+      .forEach(async (channel, id) => {
+        await channel.createOverwrite(Role, {
+          SEND_MESSAGES: false,
+          ADD_REACTIONS: false
+        });
+      });
 
     let embed = new MessageEmbed()
       .setTitle("Action : Mute")
@@ -49,9 +61,6 @@ module.exports = {
       .setThumbnail(target.avatarURL())
       .setFooter(`Muted by ${message.author.tag}`);
 
-    let Role = message.guild.roles.cache.find(
-      (role) => role.id == messageGuild.muteRole
-    );
     target.roles.add(Role);
     message.reply({ embeds: [embed] });
   },
