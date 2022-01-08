@@ -18,8 +18,15 @@ module.exports = {
 
     switch (args[0]) {
       case "create":
-        console.log(messageGuild.muteRole);
-        if (!messageGuild.muteRole) {
+        if(!messageGuild.muteRole) {
+          var msgMuteRole = 1;
+        }else{
+          var msgMuteRole = messageGuild.muteRole;
+        }
+        let CreateRoleOBJ = message.guild.roles.cache.find(
+          (role) => role.id == msgMuteRole
+        );
+        if (CreateRoleOBJ == undefined) {
           args.shift();
           const rolename = args.join(" ");
           const i = message.guild.roles.cache.find(
