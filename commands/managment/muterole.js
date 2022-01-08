@@ -104,7 +104,7 @@ module.exports = {
           { muteRole: roleOBJ.id },
           { new: true }
         );
-        message.reply(`Changed Mute Role to: \`${rolename}\``);
+        message.reply(`Changed Mute Role to: \`${roleOBJ.name}\``);
         break;
 
       default:
