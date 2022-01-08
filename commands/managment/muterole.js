@@ -25,7 +25,6 @@ module.exports = {
           const i = message.guild.roles.cache.find(
             (role) => role.name == rolename
           );
-          console.log(i)
           if (i !== undefined) {
             return message.reply(
               `There already exists a role with the name \`${rolename}\``
@@ -80,6 +79,11 @@ module.exports = {
         let defroleOBJ = message.guild.roles.cache.find(
           (role) => role.id == messageGuild.muteRole
         );
+        if (defroleOBJ == undefined) {
+          return message.reply(
+            `There is no Mute Role on this Server. Use \`${messageGuild.prefix}info muterole\` for more information`
+          );
+        }
         message.reply(`Current Mute Role is: \`${defroleOBJ.name}\``);
         break;
     }

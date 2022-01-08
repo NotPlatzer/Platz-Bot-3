@@ -19,7 +19,7 @@ module.exports = {
     const muteRole = messageGuild.muteRole;
 
     if (!muteRole) {
-      message.reply(
+     return message.reply(
         `This server does not have a mute role, use ${messageGuild.prefix}muterole <role> to set one or ${messageGuild.prefix}muterole create [name] to create one.`
       );
     }
