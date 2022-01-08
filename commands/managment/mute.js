@@ -49,10 +49,10 @@ module.exports = {
       .setThumbnail(target.avatarURL())
       .setFooter(`Muted by ${message.author.tag}`);
 
-    let muteRole = message.guild.roles.cache.find(
+    let Role = message.guild.roles.cache.find(
       (role) => role.id == messageGuild.muteRole
     );
-    target.roles.add(muteRole);
+    target.roles.add(Role);
     return message.reply(embed);
   },
 };
