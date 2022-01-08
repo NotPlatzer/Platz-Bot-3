@@ -19,7 +19,7 @@ module.exports = {
     const muteRole = messageGuild.muteRole;
 
     if (!muteRole) {
-     return message.reply(
+      return message.reply(
         `This server does not have a mute role, use ${messageGuild.prefix}muterole <role> to set one or ${messageGuild.prefix}muterole create [name] to create one.`
       );
     }
@@ -32,7 +32,6 @@ module.exports = {
     if (!target) {
       return message.reply(`Please mention the person who you want to mute`);
     }
-    console.log(target.avatarURL());
     if (target.id === message.author.id) {
       return message.reply(`You can not mute yourself!`);
     }
@@ -50,8 +49,10 @@ module.exports = {
       .setThumbnail(target.avatarURL())
       .setFooter(`Muted by ${message.author.tag}`);
 
-    var role = message.guild.roles.find((role) => role.id === muteRole);
-    target.roles.add(role);
+    let muteRole = message.guild.roles.cache.find(
+      (role) => role.id == messageGuild.muteRole
+    );
+    target.roles.add(muteRole);
     return message.reply(embed);
   },
 };
