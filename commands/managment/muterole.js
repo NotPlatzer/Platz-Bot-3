@@ -53,11 +53,12 @@ module.exports = {
             );
             console.log(EmptyroleOBJ);
 
-            const updateguild = await Guild.findOneAndUpdate(
+            await Guild.findOneAndUpdate(
               { id: message.guild.id },
               { muteRole: EmptyroleOBJ.id },
               { new: true }
-            );
+            ); 
+            return;
           }
           message.guild.roles
             .create({
