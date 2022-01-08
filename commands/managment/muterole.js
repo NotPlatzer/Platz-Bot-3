@@ -38,14 +38,14 @@ module.exports = {
             );
           }
           if (rolename === "" || rolename === "``") {
-            message.guild.roles
+            await message.guild.roles
               .create({
                 name: "muted",
                 color: "#ff0000",
               })
               .then((role) => {
                 message.channel.send(`Role \`${role.name}\` created!`);
-                conosle.log(role)
+                console.log(role);
               });
 
             let EmptyroleOBJ = message.guild.roles.cache.find(
