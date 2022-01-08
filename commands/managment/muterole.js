@@ -45,19 +45,16 @@ module.exports = {
               })
               .then((role) => {
                 message.channel.send(`Role \`${role.name}\` created!`);
-                console.log(role);
               });
 
             let EmptyroleOBJ = message.guild.roles.cache.find(
               (role) => role.name == "muted"
             );
-            console.log(EmptyroleOBJ);
-
             await Guild.findOneAndUpdate(
               { id: message.guild.id },
               { muteRole: EmptyroleOBJ.id },
               { new: true }
-            ); 
+            );
             return;
           }
           message.guild.roles
@@ -86,6 +83,9 @@ module.exports = {
       case "set":
         args.shift();
         const rolename = args.join(" ");
+        if (rolename === "" || rolename === "``") {
+          return message.reply(`Please provide a Name for the new Mute Role`);
+        }
         let roleOBJ = message.guild.roles.cache.find(
           (role) => role.name == rolename
         );
