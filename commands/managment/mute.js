@@ -49,6 +49,7 @@ module.exports = {
       .setThumbnail(target.avatarURL())
       .setFooter(`Muted by ${message.author.tag}`);
 
+    console.log(embed);
     message.reply(embed);
 
     let Role = message.guild.roles.cache.find(
