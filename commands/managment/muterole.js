@@ -90,6 +90,7 @@ module.exports = {
         message.channel
           .awaitMessages(filter, { max: 1, time: 10000 })
           .then(async (collected) => {
+            console.log("RECIEVED")
 
             if(collected.first().content === 'NO' || collected.first().content === 'no')
             {
