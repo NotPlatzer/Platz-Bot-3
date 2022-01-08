@@ -37,6 +37,9 @@ module.exports = {
               `There already exists a role with the name \`${rolename}\``
             );
           }
+          if (rolename === "" || rolename === "``") {
+            message.reply(`Please Provide a Valid Role Name`);
+          }
           message.guild.roles
             .create({
               name: rolename,
