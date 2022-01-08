@@ -82,15 +82,22 @@ module.exports = {
 
       case "set":
         args.shift();
-        const rolename = args.join(" ");
+        var rolename = args.join(" ");
+        rolename = rolename.replace("<@&", "");
+        rolename = rolename.replace(">", "");
         if (rolename === "" || rolename === "``") {
           return message.reply(`Please provide a Name for the new Mute Role`);
         }
-        let roleOBJ = message.guild.roles.cache.find(
+        var roleOBJ = message.guild.roles.cache.find(
           (role) => role.name == rolename
         );
         if (roleOBJ === undefined) {
-          return message.reply("No such Role on the Server");
+          roleOBJ = message.guild.roles.cache.find(
+            (role) => role.id == rolename
+          );
+          if (roleOBJ === undefined) {
+            return message.reply("No such Role on the Server");
+          }
         }
         const updateguild = await Guild.findOneAndUpdate(
           { id: message.guild.id },
