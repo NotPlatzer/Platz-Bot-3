@@ -48,9 +48,9 @@ module.exports = {
     message.guild.channels.cache
       .filter((c) => c.type === "GUILD_TEXT")
       .forEach(async (channel, id) => {
-        await channel.createOverwrite(Role, {
+        await channel.permissionOverwrites.create(Role, {
           SEND_MESSAGES: false,
-          ADD_REACTIONS: false
+          ADD_REACTIONS: false,
         });
       });
 
