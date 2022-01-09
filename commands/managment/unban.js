@@ -25,9 +25,8 @@ module.exports = {
 
     let embed = new MessageEmbed()
       .setTitle("Action : Un-Ban")
-      .setDescription(`Un-Banned ${target} (${target.id})`)
+      .setDescription(`Un-Banned ${target}`)
       .setColor("#ff2050")
-      .setThumbnail(target.displayAvatarURL())
       .setFooter(`Un-Banned by ${message.author.tag}`);
 
     await message.guild.bans.remove(target).then(() => {
