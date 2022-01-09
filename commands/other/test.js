@@ -17,7 +17,7 @@ module.exports = {
     message.reply(
       `⚠This will cause everyone that has the new OR old muterole to be Muted!!!!\nType YES or NO (Will expire in 10 seconds)`
     );
-    channel
+    message.channel
       .awaitMessages({ filter, max: 4, time: 60_000, errors: ["time"] })
       .then(async (collected) => {
         console.log(collected);
