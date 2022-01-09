@@ -25,7 +25,7 @@ module.exports = {
             for (const file of commandFiles) {
 
                 const command = require(`/app/commands/${folder}/${file}`);
-                if (command.name !== 'dev') {
+                if (command.name !== 'test') {
                     embed.addField(command.name, command.description, true)
                 }
 
