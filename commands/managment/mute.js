@@ -24,7 +24,7 @@ module.exports = {
     console.log(muteRole)
     console.log(mutedRole)
 
-    if (!muteRole || mutedRole == undefined) {
+    if (!muteRole && mutedRole == undefined) {
       return message.reply(
         `This server does not have a mute role, use \`${messageGuild.prefix}muterole <role>\` to set one or \`${messageGuild.prefix}muterole create [name]\` to create one.`
       );
