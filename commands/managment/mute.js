@@ -49,12 +49,11 @@ module.exports = {
       (role) => role.id == messageGuild.muteRole
     );
     //make mute embed
-    console.log(target.displayAvatarURL());
     let embed = new MessageEmbed()
       .setTitle("Action : Mute")
       .setDescription(`Muted ${target} (${target.id})\nReason: ${reason}`)
       .setColor("#ff2050")
-      .setThumbnail(target.avatarURL())
+      .setThumbnail(target.displayAvatarURL())
       .setFooter(`Muted by ${message.author.tag}`);
 
     target.roles.add(Role);
