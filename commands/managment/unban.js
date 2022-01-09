@@ -16,6 +16,7 @@ module.exports = {
       return message.reply("I dont have permission to do this!");
 
     const target = args[1];
+    console.log(args)
     console.log(target)
 
     if (!target) {
