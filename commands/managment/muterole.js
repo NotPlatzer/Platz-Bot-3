@@ -90,13 +90,12 @@ module.exports = {
             message.channel
               .awaitMessages({ filter, max: 1, time: 10000, errors: ["time"]})
               .then(async (collected) => {
-                console.log(collected.size);
 
                 if (
-                  collected.first().content === "NO" ||
-                  collected.first().content === "no" ||
-                  collected.first().content === "N" ||
-                  collected.first().content === "n"
+                  collected.first().content !== "YES" ||
+                  collected.first().content !== "yes" ||
+                  collected.first().content !== "Y" ||
+                  collected.first().content !== "y"
                 ) {
                   return message.reply(`OK, cancelled`);
                 } else {
