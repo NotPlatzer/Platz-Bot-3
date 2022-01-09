@@ -23,7 +23,9 @@ module.exports = {
           .awaitMessages({ filter, max: 1, time: 15000, errors: ["time"] })
           .then(async (collected) => {
             var msg = collected.first().content;
-            console.log(msg);
+            if(msg === "no" || msg === "NO") return message.reply(`DON HOLT NET`);;
+
+            message.reply(`OKE`);
           })
           .catch((err) => {
             console.log(err);
