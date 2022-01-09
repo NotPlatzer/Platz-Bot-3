@@ -82,16 +82,14 @@ module.exports = {
 
       case "set":
         const filter = (m) => m.author.id === message.author.id;
-        message
-          .reply(
-            `⚠This will cause everyone that has the new OR old muterole to be Muted!!!!\nType YES or NO (Will expire in 10 seconds)`
-          )
-          .then((r) => r.delete(10000));
+        message.reply(
+          `⚠This will cause everyone that has the new OR old muterole to be Muted!!!!\nType YES or NO (Will expire in 10 seconds)`
+        );
 
         message.channel
-          .awaitMessages(filter, { max: 1, time: 10000 })
+          .awaitMessages(filter, { max: 1, time: 10000, errors: ["time"] })
           .then(async (collected) => {
-            console.log("RECIEVED");
+            console.log(collected.size);
 
             if (
               collected.first().content === "NO" ||
