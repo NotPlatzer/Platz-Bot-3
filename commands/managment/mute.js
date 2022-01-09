@@ -53,7 +53,8 @@ module.exports = {
           ADD_REACTIONS: false,
         });
       });
-
+      
+    //make mute embed
     let embed = new MessageEmbed()
       .setTitle("Action : Mute")
       .setDescription(`Muted ${target} (${target.id})\nReason: ${reason}`)
