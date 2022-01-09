@@ -15,12 +15,12 @@ module.exports = {
     if (!message.guild.me.permissions.has(Permissions.FLAGS.BAN_MEMBERS))
       return message.reply("I dont have permission to do this!");
 
-    const target = args[1];
-    console.log(args)
-    console.log(target)
+    const target = args[0];
 
     if (!target) {
-      return message.reply(`Please provide the persons id who you want to unban`);
+      return message.reply(
+        `Please provide the persons id who you want to unban`
+      );
     }
 
     let embed = new MessageEmbed()
@@ -30,10 +30,8 @@ module.exports = {
       .setThumbnail(target.displayAvatarURL())
       .setFooter(`Un-Banned by ${message.author.tag}`);
 
-    await message.guild.bans
-      .remove(target)
-      .then(() => {
-        message.reply({ embeds: [embed] });
-      });
+    await message.guild.bans.remove(target).then(() => {
+      message.reply({ embeds: [embed] });
+    });
   },
 };
