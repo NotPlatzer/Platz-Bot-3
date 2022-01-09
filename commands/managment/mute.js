@@ -21,6 +21,8 @@ module.exports = {
     const mutedRole = message.guild.roles.cache.find(
       (role) => role.name == muteRole
     );
+    console.log(muteRole)
+    console.log(mutedRole)
 
     if (!muteRole || mutedRole == undefined) {
       return message.reply(
