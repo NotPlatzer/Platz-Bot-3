@@ -88,7 +88,7 @@ module.exports = {
           )
           .then(() => {
             message.channel
-              .awaitMessages({ filter, max: 1, time: 10000, errors: ["time"] })
+              .awaitMessages({ filter, max: 1, time: 10000, errors: ["time"]})
               .then(async (collected) => {
                 console.log(collected.size);
 
@@ -106,9 +106,13 @@ module.exports = {
                     )
                     .then(() => {
                       message.channel
-                        .awaitMessages({ filter, max: 1, time: 10000, errors })
+                        .awaitMessages({
+                          filter,
+                          max: 1,
+                          time: 10000,
+                          errors: ["time"],
+                        })
                         .then(async (collected) => {
-                          
                           var rolename = collected.first().content;
                           rolename = rolename.replace("<@&", "");
                           rolename = rolename.replace(">", "");
