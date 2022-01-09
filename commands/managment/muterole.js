@@ -82,51 +82,69 @@ module.exports = {
 
       case "set":
         const filter = (m) => m.author.id === message.author.id;
-        message.reply(
-          `⚠This will cause everyone that has the new OR old muterole to be Muted!!!!\nType YES or NO (Will expire in 10 seconds)`
-        );
+        message
+          .reply(
+            `⚠This will cause everyone that has the new OR old muterole to be Muted!!!!\nType YES or NO (Will expire in 10 seconds)`
+          )
+          .then(() => {
+            message.channel
+              .awaitMessages({ filter, max: 1, time: 10000, errors: ["time"] })
+              .then(async (collected) => {
+                console.log(collected.size);
 
-        message.channel
-          .awaitMessages(filter, { max: 1, time: 10000, errors: ["time"] })
-          .then(async (collected) => {
-            console.log(collected.size);
-
-            if (
-              collected.first().content === "NO" ||
-              collected.first().content === "no"
-            ) {
-              return message.reply(`OK, cancelled`);
-            }
-
-            args.shift();
-            var rolename = args.join(" ");
-            rolename = rolename.replace("<@&", "");
-            rolename = rolename.replace(">", "");
-            if (rolename === "" || rolename === "``") {
-              return message.reply(
-                `Please provide a Name for the new Mute Role`
-              );
-            }
-            var roleOBJ = message.guild.roles.cache.find(
-              (role) => role.name == rolename
-            );
-            if (roleOBJ === undefined) {
-              roleOBJ = message.guild.roles.cache.find(
-                (role) => role.id == rolename
-              );
-              if (roleOBJ === undefined) {
-                return message.reply("No such Role on the Server");
-              }
-            }
-            const updateguild = await Guild.findOneAndUpdate(
-              { id: message.guild.id },
-              { muteRole: roleOBJ.id },
-              { new: true }
-            );
-            message.reply(`Changed Mute Role to: \`${roleOBJ.name}\``);
-          })
-          .catch((err) => {
-            console.error(err);
+                if (
+                  collected.first().content === "NO" ||
+                  collected.first().content === "no" ||
+                  collected.first().content === "N" ||
+                  collected.first().content === "n"
+                ) {
+                  return message.reply(`OK, cancelled`);
+                } else {
+                  message
+                    .reply(
+                      `Please Provide the Name of the new Mute Role! (Will expire in 10 seconds)`
+                    )
+                    .then(() => {
+                      message.channel
+                        .awaitMessages({ filter, max: 1, time: 10000, errors })
+                        .then(async (collected) => {
+                          
+                          var rolename = collected.first().content;
+                          rolename = rolename.replace("<@&", "");
+                          rolename = rolename.replace(">", "");
+                          if (rolename === "" || rolename === "``") {
+                            return message.reply(
+                              `Please provide a Name for the new Mute Role`
+                            );
+                          }
+                          var roleOBJ = message.guild.roles.cache.find(
+                            (role) => role.name == rolename
+                          );
+                          if (roleOBJ === undefined) {
+                            roleOBJ = message.guild.roles.cache.find(
+                              (role) => role.id == rolename
+                            );
+                            if (roleOBJ === undefined) {
+                              return message.reply(
+                                "No such Role on the Server"
+                              );
+                            }
+                          }
+                          const updateguild = await Guild.findOneAndUpdate(
+                            { id: message.guild.id },
+                            { muteRole: roleOBJ.id },
+                            { new: true }
+                          );
+                          message.reply(
+                            `Changed Mute Role to: \`${roleOBJ.name}\``
+                          );
+                        });
+                    });
+                }
+              })
+              .catch((err) => {
+                console.error(err);
+              });
           });
         break;
 
