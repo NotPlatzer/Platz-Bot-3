@@ -14,6 +14,7 @@ module.exports = {
     if (message.author.id !== "608381190336020494") return;
 
     const filter = (m) => m.author.id === message.author.id;
+    console.log(filter);
     message.reply(
       `⚠This will cause everyone that has the new OR old muterole to be Muted!!!!\nType YES or NO (Will expire in 10 seconds)`
     );
