@@ -52,7 +52,7 @@ module.exports = {
     let embed = new MessageEmbed()
       .setTitle("Action : Mute")
       .setDescription(`Muted ${target} (${target.id})\nReason: ${reason}`)
-      .setColor("#ff2050")
+      .setColor("#ffa500")
       .setThumbnail(target.displayAvatarURL())
       .setFooter(`Muted by ${message.author.tag}`);
 

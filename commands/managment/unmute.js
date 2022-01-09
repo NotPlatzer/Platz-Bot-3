@@ -37,8 +37,14 @@ module.exports = {
     let Role = message.guild.roles.cache.find(
       (role) => role.id == messageGuild.muteRole
     );
+    let embed = new MessageEmbed()
+      .setTitle("Action : Un-Mute")
+      .setDescription(`Un-Muted ${target} (${target.id})`)
+      .setColor("#00FF00")
+      .setThumbnail(target.displayAvatarURL())
+      .setFooter(`Un-Muted by ${message.author.tag}`);
 
+    message.reply({ embeds: [embed] });
     target.roles.remove(Role);
-    message.reply(`Un-Muted ${target.username}`);
   },
 };
