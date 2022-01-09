@@ -92,9 +92,9 @@ module.exports = {
               .then(async (collected) => {
 
                 if (
-                  collected.first().content !== "YES" ||
-                  collected.first().content !== "yes" ||
-                  collected.first().content !== "Y" ||
+                  collected.first().content !== "YES" &&
+                  collected.first().content !== "yes" &&
+                  collected.first().content !== "Y" &&
                   collected.first().content !== "y"
                 ) {
                   return message.reply(`OK, cancelled`);
