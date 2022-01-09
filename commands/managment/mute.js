@@ -18,7 +18,9 @@ module.exports = {
 
     const muteRole = messageGuild.muteRole;
 
-    if (!muteRole) {
+    const mutedRole = message.guild.roles.cache.find((role) => role.name == muteRole);
+
+    if (!muteRole || mutedRole == undefined) {
       return message.reply(
         `This server does not have a mute role, use ${messageGuild.prefix}muterole <role> to set one or ${messageGuild.prefix}muterole create [name] to create one.`
       );
@@ -53,7 +55,7 @@ module.exports = {
           ADD_REACTIONS: false,
         });
       });
-      
+
     //make mute embed
     let embed = new MessageEmbed()
       .setTitle("Action : Mute")
