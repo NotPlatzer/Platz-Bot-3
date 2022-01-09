@@ -22,7 +22,7 @@ module.exports = {
 
     if (!muteRole || mutedRole == undefined) {
       return message.reply(
-        `This server does not have a mute role, use ${messageGuild.prefix}muterole <role> to set one or ${messageGuild.prefix}muterole create [name] to create one.`
+        `This server does not have a mute role, use \`${messageGuild.prefix}muterole <role>\` to set one or \`${messageGuild.prefix}muterole create [name]\` to create one.`
       );
     }
 
