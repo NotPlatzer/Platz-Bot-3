@@ -21,7 +21,7 @@ module.exports = {
       .awaitMessages({ filter, max: 1, time: 1_000, errors: ["time"] })
       .then(async (collected) => {
         var msg = collected.first().content;
-        collected.first().reply(msg);
+        console.log(msg);
       })
       .catch((err) => {
         console.log(err);
