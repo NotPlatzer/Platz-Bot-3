@@ -84,11 +84,11 @@ module.exports = {
         const filter = (m) => m.author.id === message.author.id;
         message
           .reply(
-            `⚠This will cause everyone that has the new OR old muterole to be Muted!!!!\nType YES or NO (Will expire in 10 seconds)`
+            `⚠This will cause everyone that has the new OR old muterole to be Muted!!!!\nType YES or NO (Will expire in 15 seconds)`
           )
           .then(() => {
             message.channel
-              .awaitMessages({ filter, max: 1, time: 10000, errors: ["time"]})
+              .awaitMessages({ filter, max: 1, time: 150000, errors: ["time"]})
               .then(async (collected) => {
 
                 if (
@@ -101,14 +101,14 @@ module.exports = {
                 } else {
                   message
                     .reply(
-                      `Please Provide the Name of the new Mute Role! (Will expire in 10 seconds)`
+                      `Please Provide the Name of the new Mute Role! (Will expire in 15 seconds)`
                     )
                     .then(() => {
                       message.channel
                         .awaitMessages({
                           filter,
                           max: 1,
-                          time: 10000,
+                          time: 150000,
                           errors: ["time"],
                         })
                         .then(async (collected) => {
