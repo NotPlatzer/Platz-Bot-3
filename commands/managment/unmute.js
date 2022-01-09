@@ -4,11 +4,11 @@ const { MessageEmbed } = require("discord.js");
 const Guild = require("/app/db_models/guild.js");
 
 module.exports = {
-  name: "mute",
-  aliases: ["m"],
+  name: "unmute",
+  aliases: ["unm"],
   cooldown: 1000 * 0,
-  description: "Mutes a member",
-  usage: "mute {@user to mute} {optional reason}",
+  description: "Un-Mutes a member",
+  usage: "unmute {@user to unmute}",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     if (!message.member.permissions.has(Permissions.FLAGS.MANAGE_ROLES))
