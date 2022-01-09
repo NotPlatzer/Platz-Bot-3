@@ -21,7 +21,7 @@ module.exports = {
     const mutedRole = message.guild.roles.cache.find(
       (role) => role.name == muteRole
     );
-    
+
     if (!muteRole && mutedRole == undefined) {
       return message.reply(
         `This server does not have a mute role, use \`${messageGuild.prefix}muterole <role>\` to set one or \`${messageGuild.prefix}muterole create [name]\` to create one.`
@@ -49,6 +49,7 @@ module.exports = {
       (role) => role.id == messageGuild.muteRole
     );
     //make mute embed
+    console.log(target.avatarURL());
     let embed = new MessageEmbed()
       .setTitle("Action : Mute")
       .setDescription(`Muted ${target} (${target.id})\nReason: ${reason}`)
