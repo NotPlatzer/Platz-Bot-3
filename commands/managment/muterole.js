@@ -41,7 +41,7 @@ module.exports = {
             await message.guild.roles
               .create({
                 name: "muted",
-                color: "#ff0000",
+                color: "#707070",
               })
               .then((role) => {
                 message.channel.send(`Role \`${role.name}\` created!`);
@@ -60,7 +60,7 @@ module.exports = {
           message.guild.roles
             .create({
               name: rolename,
-              color: "#ff0000",
+              color: "#707070",
             })
             .then((role) => {
               message.channel.send(`Role \`${rolename}\` created!`);
