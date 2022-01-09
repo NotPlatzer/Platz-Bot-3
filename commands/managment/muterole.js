@@ -75,6 +75,14 @@ module.exports = {
             { muteRole: roleOBJ.id },
             { new: true }
           );
+          message.guild.channels.cache
+            .filter((c) => c.type === "GUILD_TEXT")
+            .forEach(async (channel, id) => {
+              await channel.permissionOverwrites.create(roleOBJ, {
+                SEND_MESSAGES: false,
+                ADD_REACTIONS: false,
+              });
+            });
         } else {
           message.reply("There already is a muterole on the Server");
         }
@@ -88,9 +96,8 @@ module.exports = {
           )
           .then(() => {
             message.channel
-              .awaitMessages({ filter, max: 1, time: 150000, errors: ["time"]})
+              .awaitMessages({ filter, max: 1, time: 150000, errors: ["time"] })
               .then(async (collected) => {
-
                 if (
                   collected.first().content !== "YES" &&
                   collected.first().content !== "yes" &&
@@ -138,6 +145,17 @@ module.exports = {
                             { muteRole: roleOBJ.id },
                             { new: true }
                           );
+                          message.guild.channels.cache
+                            .filter((c) => c.type === "GUILD_TEXT")
+                            .forEach(async (channel, id) => {
+                              await channel.permissionOverwrites.create(
+                                roleOBJ,
+                                {
+                                  SEND_MESSAGES: false,
+                                  ADD_REACTIONS: false,
+                                }
+                              );
+                            });
                           message.reply(
                             `Changed Mute Role to: \`${roleOBJ.name}\``
                           );

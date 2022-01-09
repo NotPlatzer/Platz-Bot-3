@@ -18,7 +18,9 @@ module.exports = {
 
     const muteRole = messageGuild.muteRole;
 
-    const mutedRole = message.guild.roles.cache.find((role) => role.name == muteRole);
+    const mutedRole = message.guild.roles.cache.find(
+      (role) => role.name == muteRole
+    );
 
     if (!muteRole || mutedRole == undefined) {
       return message.reply(
@@ -46,16 +48,6 @@ module.exports = {
     let Role = message.guild.roles.cache.find(
       (role) => role.id == messageGuild.muteRole
     );
-
-    message.guild.channels.cache
-      .filter((c) => c.type === "GUILD_TEXT")
-      .forEach(async (channel, id) => {
-        await channel.permissionOverwrites.create(Role, {
-          SEND_MESSAGES: false,
-          ADD_REACTIONS: false,
-        });
-      });
-
     //make mute embed
     let embed = new MessageEmbed()
       .setTitle("Action : Mute")
