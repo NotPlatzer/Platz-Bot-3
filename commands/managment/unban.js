@@ -15,10 +15,10 @@ module.exports = {
     if (!message.guild.me.permissions.has(Permissions.FLAGS.BAN_MEMBERS))
       return message.reply("I dont have permission to do this!");
 
-    const target = message.mentions.members.first();
+    const target = args[1];
 
     if (!target) {
-      return message.reply(`Please mention the person who you want to unban`);
+      return message.reply(`Please provide the persons id who you want to unban`);
     }
 
     let embed = new MessageEmbed()
