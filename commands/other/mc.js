@@ -24,7 +24,30 @@ module.exports = {
     }
 
     mc.statusJava(ip, port)
-      .then((res) => console.log(res))
+      .then((server) => {
+        const serverembed = new MessageEmbed()
+          .setAuthor(
+            "Platz Bot v3",
+            "https://cdn.discordapp.com/avatars/917878990478377020/7f147973452d4a6bacbb6132b8e4a18d.png"
+          )
+          .setFooter(`To report bugs send a message to the dev`)
+          .setDescription(server.motd.raw)
+          .setTitle(server.ip)
+          .setThumbnail(server.icon)
+          .addField(
+            `Players:`,
+            `${server.players.online + "/" + server.players.max}`
+          )
+          .addField(`Version:`, `${server.version}`)
+          .addField(`Software:`, `${server.software}`)
+          .addField(`Online:`, `${server.online}`);
+
+        if (server.online == true) {
+          serverembed.setColor([77, 255, 0]);
+        } else {
+          serverembed.setColor([255, 0, 0]);
+        }
+      })
       .catch((err) => console.log(err));
   },
 };
