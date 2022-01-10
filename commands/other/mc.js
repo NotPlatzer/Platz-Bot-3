@@ -25,6 +25,14 @@ module.exports = {
 
     mc.statusJava(ip, port)
       .then((server) => {
+        console.log(ip + "" + port);
+
+        if (server == undefined) {
+          return message.reply(
+            `Could not find any information on this server!`
+          );
+        }
+
         const serverembed = new MessageEmbed()
           .setAuthor(
             "Platz Bot v3",
