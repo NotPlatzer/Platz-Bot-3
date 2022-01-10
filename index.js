@@ -162,6 +162,7 @@ client.on("messageCreate", (message) => {
 
       const GuildPrefix = messageGuild.prefix;
       if (message.mentions.everyone) return;
+      if (message.author.bot) return;
 
       if (message.mentions.has(client.user.id)) {
         message.reply(
