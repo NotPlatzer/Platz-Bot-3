@@ -161,6 +161,8 @@ client.on("messageCreate", (message) => {
       }
 
       const GuildPrefix = messageGuild.prefix;
+      if (message.mentions.everyone) return;
+
       if (message.mentions.has(client.user.id)) {
         message.reply(
           `Hello there! My Current Prefix is: ${GuildPrefix}\nUse ${GuildPrefix}help for more Information`
