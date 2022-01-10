@@ -27,7 +27,7 @@ module.exports = {
       .then((server) => {
         console.log(ip + ":" + port);
         
-
+        console.log(server)
         if (!server) {
           console.log("EROORFSAKJBGHBG")
           return message.reply(
