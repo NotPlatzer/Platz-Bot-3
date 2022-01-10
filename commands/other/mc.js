@@ -56,6 +56,7 @@ module.exports = {
             .setColor([77, 255, 0]);
         }
         message.reply({ embeds: [serverembed] });
+        console.log(server)
       })
       .catch((err) => console.log(err));
   },
