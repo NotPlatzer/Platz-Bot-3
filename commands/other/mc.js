@@ -25,9 +25,10 @@ module.exports = {
 
     mc.statusJava(ip, port)
       .then((server) => {
-        console.log(ip + "" + port);
+        console.log(ip + ":" + port);
 
         if (server == undefined) {
+          console.log("EROORFSAKJBGHBG")
           return message.reply(
             `Could not find any information on this server!`
           );
