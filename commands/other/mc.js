@@ -25,17 +25,21 @@ module.exports = {
 
     mc.statusJava(ip, port)
       .then((server) => {
-        console.log(ip + ":" + port);
-        
-        console.log(server)
-        if (!server) {
-          console.log("EROORFSAKJBGHBG")
-          return message.reply(
-            `Could not find any information on this server!`
-          );
+        const serverembed = new MessageEmbed();
+
+        if (server.online == false) {
+          serverembed
+            .setAuthor(
+              "Platz Bot v3",
+              "https://cdn.discordapp.com/avatars/917878990478377020/7f147973452d4a6bacbb6132b8e4a18d.png"
+            )
+            .setFooter(`To report bugs send a message to the dev`)
+            .setColor([255, 0, 0])
+            .setTitle(`${server.ip}`)
+            .addField(`Online:`, `${server.online}`);
         }
 
-        const serverembed = new MessageEmbed()
+        serverembed
           .setAuthor(
             "Platz Bot v3",
             "https://cdn.discordapp.com/avatars/917878990478377020/7f147973452d4a6bacbb6132b8e4a18d.png"
@@ -56,6 +60,7 @@ module.exports = {
         } else {
           serverembed.setColor([255, 0, 0]);
         }
+
         message.reply({ embeds: [serverembed] });
       })
       .catch((err) => console.log(err));
