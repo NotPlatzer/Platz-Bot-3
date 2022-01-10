@@ -31,8 +31,8 @@ module.exports = {
             "https://cdn.discordapp.com/avatars/917878990478377020/7f147973452d4a6bacbb6132b8e4a18d.png"
           )
           .setFooter(`To report bugs send a message to the dev`)
-          .setDescription(server.motd.raw)
-          .setTitle(server.ip)
+          .setDescription(`${server.motd.raw}`)
+          .setTitle(`${server.ip}`)
           .setThumbnail(server.icon)
           .addField(
             `Players:`,
