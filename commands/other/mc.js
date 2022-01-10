@@ -33,7 +33,6 @@ module.exports = {
           .setFooter(`To report bugs send a message to the dev`)
           .setDescription(`${server.motd.raw}`)
           .setTitle(`${server.ip}`)
-          .setThumbnail(server.icon)
           .addField(
             `Players:`,
             `${server.players.online + "/" + server.players.max}`
