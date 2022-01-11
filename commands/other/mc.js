@@ -45,11 +45,32 @@ module.exports = {
             )
             .setFooter(`To report bugs send a message to the dev`)
             .setDescription(`${server.motd.clean}`)
-            .setTitle(`${server.ip}`)
-            .addField(
-              `Players:`,
-              `${server.players.online + "/" + server.players.max}`
-            )
+            .setTitle(`${server.ip}`);
+
+          if (server.players > 0) {
+            var players = server.players.list;
+            if (players.length > 9) {
+              var playersOnDisplay = players.slice(0, 9);
+              playersOnDisplay = playersOnDisplay.join("\r\n");
+              var numberOfPlayersNotOnDisplay = players.length - 9;
+              var playersFORMATED =
+                playersOnDisplay + "\n" + numberOfPlayersNotOnDisplay;
+            } else {
+              var playersFORMATED = players.join("\r\n");
+            }
+
+            serverembed.addField(
+              `Players: ${server.players.online + "/" + server.players.max}`,
+              `${playersFORMATED}`
+            );
+          } else {
+            serverembed.addField(
+              `Players: ${server.players.online + "/" + server.players.max}`,
+              `/`
+            );
+          }
+
+          serverembed
             .addField(`Version:`, `${server.version}`)
             .addField(`Software:`, `${server.software}`)
             .addField(`Online:`, `${server.online}\n`)
