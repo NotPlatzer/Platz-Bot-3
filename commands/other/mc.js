@@ -47,11 +47,11 @@ module.exports = {
             .setDescription(`${server.motd.clean}`)
             .setTitle(`${server.ip}`);
 
-          if (server.players.online > 0) {
+          if (
+            server.players.online > 0 &&
+            typeof server.players.list !== undefined
+          ) {
             var players = server.players.list;
-            console.log(players);
-            console.log(server.players.list);
-            console.log(server.players);
             if (players.length > 9) {
               var playersOnDisplay = players.slice(0, 9);
               playersOnDisplay = playersOnDisplay.join("\r\n");
