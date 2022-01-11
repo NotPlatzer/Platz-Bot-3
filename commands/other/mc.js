@@ -56,8 +56,8 @@ module.exports = {
               var playersOnDisplay = players.slice(0, 9);
               playersOnDisplay = playersOnDisplay.join("\r\n");
               var numberOfPlayersNotOnDisplay = players.length - 9;
-              var playersFORMATED =
-                playersOnDisplay + "\n" + numberOfPlayersNotOnDisplay;
+              var playersFORMATED = `
+                ${playersOnDisplay}\n+ ${numberOfPlayersNotOnDisplay}`;
             } else {
               var playersFORMATED = players.join("\r\n");
             }
