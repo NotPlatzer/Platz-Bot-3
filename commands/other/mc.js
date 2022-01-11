@@ -49,7 +49,7 @@ module.exports = {
 
           if (
             server.players.online > 0 &&
-            typeof server.players.list !== undefined
+            server.players.list !== undefined
           ) {
             var players = server.players.list;
             if (players.length > 9) {
