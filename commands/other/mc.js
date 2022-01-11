@@ -47,7 +47,7 @@ module.exports = {
             .setDescription(`${server.motd.clean}`)
             .setTitle(`${server.ip}`);
 
-          if (server.players > 0) {
+          if (server.players.online > 0) {
             var players = server.players.list;
             if (players.length > 9) {
               var playersOnDisplay = players.slice(0, 9);
