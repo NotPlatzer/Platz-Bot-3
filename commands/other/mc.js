@@ -50,6 +50,7 @@ module.exports = {
           if (server.players.online > 0) {
             var players = server.players.list;
             console.log(players);
+            console.log(server.players.list);
             if (players.length > 9) {
               var playersOnDisplay = players.slice(0, 9);
               playersOnDisplay = playersOnDisplay.join("\r\n");
