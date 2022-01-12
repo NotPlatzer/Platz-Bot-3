@@ -26,7 +26,7 @@ module.exports = {
     mc.statusJava(ip, port)
       .then((server) => {
         const serverembed = new MessageEmbed();
-        if (server.online == undefined) {
+        if (server.online !== undefined) {
           if (server.online == false) {
             serverembed
               .setAuthor(
