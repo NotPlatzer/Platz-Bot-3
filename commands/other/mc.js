@@ -77,7 +77,7 @@ module.exports = {
             .addField(`Version:`, `${server.version}`)
             .addField(`Software:`, `${server.software}`)
             .addField(`Online:`, `${server.online}\n`)
-            .setColor([77, 255, 0]);
+            .setColor([71, 122, 30]);
         }
         message.reply({ embeds: [serverembed] });
       })
