@@ -51,31 +51,32 @@ module.exports = {
             serverembed.setTitle(`${server.ip}`);
           }
 
-          if (
-            server.players.online > 0 &&
-            server.players.list !== undefined &&
-            server.players !== undefined
-          ) {
-            var players = server.players.list;
-            if (players.length > 9) {
-              var playersOnDisplay = players.slice(0, 9);
-              playersOnDisplay = playersOnDisplay.join("\r\n");
-              var numberOfPlayersNotOnDisplay = players.length - 9;
-              var playersFORMATED = `
+          if (server.players !== undefined) {
+            if (
+              server.players.online > 0 &&
+              server.players.list !== undefined
+            ) {
+              var players = server.players.list;
+              if (players.length > 9) {
+                var playersOnDisplay = players.slice(0, 9);
+                playersOnDisplay = playersOnDisplay.join("\r\n");
+                var numberOfPlayersNotOnDisplay = players.length - 9;
+                var playersFORMATED = `
                 ${playersOnDisplay}\n\`+ ${numberOfPlayersNotOnDisplay}\``;
-            } else {
-              var playersFORMATED = players.join("\r\n");
-            }
+              } else {
+                var playersFORMATED = players.join("\r\n");
+              }
 
-            serverembed.addField(
-              `Players: ${server.players.online + "/" + server.players.max}`,
-              `${playersFORMATED}`
-            );
-          } else if (server.players !== undefined) {
-            serverembed.addField(
-              `Players: ${server.players.online + "/" + server.players.max}`,
-              `/`
-            );
+              serverembed.addField(
+                `Players: ${server.players.online + "/" + server.players.max}`,
+                `${playersFORMATED}`
+              );
+            } else if (server.players !== undefined) {
+              serverembed.addField(
+                `Players: ${server.players.online + "/" + server.players.max}`,
+                `/`
+              );
+            }
           }
           if (server.version !== undefined) {
             serverembed.addField(`Version:`, `${server.version}`);
