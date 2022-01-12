@@ -43,13 +43,18 @@ module.exports = {
               "Platz Bot v3",
               "https://cdn.discordapp.com/avatars/917878990478377020/7f147973452d4a6bacbb6132b8e4a18d.png"
             )
-            .setFooter(`To report bugs send a message to the dev`)
-            .setDescription(`${server.motd.clean}`)
-            .setTitle(`${server.ip}`);
+            .setFooter(`To report bugs send a message to the dev`);
+          if (server.motd.clean !== undefined) {
+            serverembed.setDescription(`${server.motd.clean}`);
+          }
+          if (server.ip !== undefined) {
+            serverembed.setTitle(`${server.ip}`);
+          }
 
           if (
             server.players.online > 0 &&
-            server.players.list !== undefined
+            server.players.list !== undefined &&
+            server.players !== undefined
           ) {
             var players = server.players.list;
             if (players.length > 9) {
@@ -66,16 +71,20 @@ module.exports = {
               `Players: ${server.players.online + "/" + server.players.max}`,
               `${playersFORMATED}`
             );
-          } else {
+          } else if (server.players !== undefined) {
             serverembed.addField(
               `Players: ${server.players.online + "/" + server.players.max}`,
               `/`
             );
           }
+          if (server.version !== undefined) {
+            serverembed.addField(`Version:`, `${server.version}`);
+          }
+          if (server.software !== undefined) {
+            serverembed.addField(`Software:`, `${server.software}`);
+          }
 
           serverembed
-            .addField(`Version:`, `${server.version}`)
-            .addField(`Software:`, `${server.software}`)
             .addField(`Online:`, `${server.online}\n`)
             .setColor([71, 122, 30]);
         }
