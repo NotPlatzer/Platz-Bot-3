@@ -10,7 +10,9 @@ module.exports = {
   async run(client, message, args, GuildPrefix, messageGuild) {
     if (!message.member.voice.channel)
       return message.reply("You have to be in a voice channel!");
-      
+
+    console.log(client.voice.adapters);
+
     if (client.voiceState !== undefined) {
       if (client.voiceState.channelid !== message.member.voice.channelid)
         return message.reply(
@@ -20,6 +22,6 @@ module.exports = {
     const music = args.join(" ");
     if (!music) return message.reply("Please provide a Song!");
 
-    await client.distube.play(message, music); 
+    await client.distube.play(message, music);
   },
 };
