@@ -36,9 +36,9 @@ module.exports = {
     if (!music) return message.reply("Please provide a Song!");
 
     const connection = joinVoiceChannel({
-      channelId: channel.id,
-      guildId: channel.guild.id,
-      adapterCreator: channel.guild.voiceAdapterCreator,
+      channelId: message.member.voice.channel.id,
+      guildId: message.channel.guild.id,
+      adapterCreator: message.channel.guild.voiceAdapterCreator,
     });
     await client.distube.play(message, music);
   },
