@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@discordjs/opus": "^0.7.0",
+    "@discordjs/voice": "^0.7.5",
     "@distube/soundcloud": "^1.0.0",
     "@distube/spotify": "^1.0.0",
     "@distube/ytdl-core": "^4.9.4",
