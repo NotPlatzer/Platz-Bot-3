@@ -295,8 +295,8 @@ client.distube
   })
 
   .on("error", (message, err) => {
-    console.log("An error encountered: " + err);
-    message.reply("An error occurred: " + err);
+    console.log("An Distube error encountered: " + err);
+    message.channel.send("An error occurred: " + err);
   });
 
 client.login(process.env.DJS_TOKEN);
