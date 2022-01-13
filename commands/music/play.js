@@ -13,18 +13,7 @@ module.exports = {
     if (!message.member.voice.channel)
       return message.reply("You have to be in a voice channel!");
 
-    client.voice.adapters.forEach(function (vcID) {
-      console.log(vcID);
-      console.log("Looping over: " + vcID);
-      message.guild.channels.cache
-        .filter((c) => c.type === "GUILD_VOICE")
-        .forEach(async (channel, id) => {
-          console.log(channel.id);
-          if (vcID === channel.id) {
-            console.log("FOUND ONE: " + channel);
-          }
-        });
-    });
+    console.log(getVoiceConnection(message.member.voice.channelid));
 
     if (client.voiceState !== undefined) {
       if (client.voiceState.channelid !== message.member.voice.channelid)
