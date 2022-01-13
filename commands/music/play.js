@@ -20,6 +20,6 @@ module.exports = {
     const music = args.join(" ");
     if (!music) return message.reply("Please provide a Song!");
 
-    await client.distube.play(message, music);
+    await client.distube.play(message, music); 
   },
 };

@@ -229,7 +229,7 @@ const playlists = require("./commands/music/playlists");
 client.distube = new distube.default(client, {
   searchSongs: 0,
   searchCooldown: 3,
-  leaveOnEmpty: true,
+  leaveOnEmpty: false,
   emptyCooldown: 0,
   leaveOnFinish: false,
   leaveOnStop: false,
