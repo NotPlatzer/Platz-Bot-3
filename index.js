@@ -219,6 +219,11 @@ client.on("messageCreate", (message) => {
     });
 });
 
+client.on("voiceStateUpdate", (oldState, newState) => {
+  if(newState == null && oldState.member.id == client.user.id) {
+    console.log("LEFT CHANNEL")
+  }
+});
 const distube = require("distube");
 
 const { SpotifyPlugin } = require("@distube/spotify");
@@ -251,7 +256,7 @@ const status = (queue) =>
   }\` | Autoplay: \`${queue.autoplay ? "On" : "Off"}\``;
 
 client.distube
-  .on("finish", (queue) => queue.textChannel.send("Finish queue!"))
+  .on("finish", (queue) => queue.textChannel.send("Finished queue!"))
 
   .on("playSong", (queue, song) => {
     const playembed = new MessageEmbed()
