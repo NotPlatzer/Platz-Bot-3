@@ -16,9 +16,10 @@ module.exports = {
     message.guild.channels.cache
       .filter((c) => c.type === "GUILD_VOICE")
       .forEach(async (channel, id) => {
-        console.log("OUTHER LOOP")
+        console.log("OUTHER LOOP");
+        console.log(JSON.stringify(channel.members, null, 4));
         channel.members.every((member) => {
-          console.log("INNER LOOP " + member.id)
+          console.log("INNER LOOP " + member.id);
           if (member.id == client.user.id) {
             console.log("Found the Client Channel: " + channel.id);
             const botvc = channel.id;
@@ -28,8 +29,7 @@ module.exports = {
         });
         if (typeof botvc !== undefined) {
           return true;
-        }
-        else{
+        } else {
           return false;
         }
       });
