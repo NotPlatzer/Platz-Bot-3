@@ -16,7 +16,7 @@ module.exports = {
     message.guild.channels.cache
       .filter((c) => c.type === "GUILD_VOICE")
       .forEach(async (channel, id) => {
-        console.log("OUTHER LOOP")
+        console.log("OUTHER LOOP: " + channel.members)
         channel.members.every((member) => {
           console.log("INNER LOOP")
           if (member.id == client.user.id) {
