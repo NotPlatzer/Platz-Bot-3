@@ -16,11 +16,22 @@ module.exports = {
     message.guild.channels.cache
       .filter((c) => c.type === "GUILD_VOICE")
       .forEach(async (channel, id) => {
-        channel.members.forEach((member) => {
-          if(member.id == client.user.id) {
-            console.log("Found the Client Channel: ", channel);
+        console.log("OUTHER LOOP")
+        channel.members.every((member) => {
+          console.log("INNER LOOP")
+          if (member.id == client.user.id) {
+            console.log("Found the Client Channel: " + channel.id);
+            const botvc = channel.id;
+            return true;
           }
-        })
+          return false;
+        });
+        if (typeof botvc !== undefined) {
+          return true;
+        }
+        else{
+          return false;
+        }
       });
     const music = args.join(" ");
     if (!music) return message.reply("Please provide a Song!");
