@@ -12,7 +12,7 @@ module.exports = {
   async run(client, message, args, GuildPrefix, messageGuild) {
     if (!message.member.voice.channel)
       return message.reply("You have to be in a voice channel!");
-    if (message.guild.me.voice !== undefined) {
+    if (message.guild.me.voice.channel !== null) {
       console.log(message.guild.me.voice.channel.id);
     }
 
@@ -22,6 +22,3 @@ module.exports = {
     await client.distube.play(message, music);
   },
 };
-
-//loop thrugh every connected vc on, if there is no vc that is on the server play.
-//IF a vc is found that is on the server check if it matches the authors vc if not RETURN
