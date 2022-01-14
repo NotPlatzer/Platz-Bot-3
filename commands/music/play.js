@@ -18,7 +18,7 @@ module.exports = {
       .forEach(async (channel, id) => {
         console.log("OUTHER LOOP")
         channel.members.every((member) => {
-          console.log("INNER LOOP " + member)
+          console.log("INNER LOOP " + member.id)
           if (member.id == client.user.id) {
             console.log("Found the Client Channel: " + channel.id);
             const botvc = channel.id;
