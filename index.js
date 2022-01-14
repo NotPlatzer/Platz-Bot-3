@@ -219,9 +219,19 @@ client.on("messageCreate", (message) => {
     });
 });
 
-client.on("voiceStateUpdate", (oldState, newState) => {
-  if (newState == null && oldState.member.id == client.user.id) {
-    console.log("LEFT CHANNEL");
+client.on("channelCreate", (channel) => {
+  if (channel.isText()) {
+    Guild.findOne({ id: channel.guild.id }).then((messageGuild) => {
+      if (!messageGuild) return;
+      let roleOBJ = message.guild.roles.cache.find(
+        (role) => role.id == messageGuild.muterole
+      );
+      if (roleOBJ == undefined) return;
+      await channel.permissionOverwrites.create(roleOBJ, {
+        SEND_MESSAGES: false,
+        ADD_REACTIONS: false,
+      });
+    });
   }
 });
 const distube = require("distube");
