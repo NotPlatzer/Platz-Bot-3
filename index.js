@@ -227,7 +227,7 @@ client.on("channelCreate", (channel) => {
         (role) => role.id == messageGuild.muterole
       );
       if (roleOBJ == undefined) return;
-      await channel.permissionOverwrites.create(roleOBJ, {
+      channel.permissionOverwrites.create(roleOBJ, {
         SEND_MESSAGES: false,
         ADD_REACTIONS: false,
       });
