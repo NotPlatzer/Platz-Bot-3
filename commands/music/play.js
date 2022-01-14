@@ -17,9 +17,8 @@ module.exports = {
       .filter((c) => c.type === "GUILD_VOICE")
       .forEach(async (channel, id) => {
         console.log("OUTHER LOOP");
-        console.log(JSON.stringify(channel.members, null, 4));
         channel.members.every((member) => {
-          console.log("INNER LOOP " + member.userId);
+          console.log("INNER LOOP " + member + " " + member.userId);
           if (member.userId == client.user.id) {
             console.log("Found the Client Channel: " + channel.id);
             const botvc = channel.id;
