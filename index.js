@@ -223,7 +223,7 @@ client.on("channelCreate", (channel) => {
   if (channel.isText()) {
     Guild.findOne({ id: channel.guild.id }).then((messageGuild) => {
       if (!messageGuild) return;
-      let roleOBJ = message.guild.roles.cache.find(
+      let roleOBJ = channel.guild.roles.cache.find(
         (role) => role.id == messageGuild.muterole
       );
       if (roleOBJ == undefined) return;
