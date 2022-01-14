@@ -228,7 +228,7 @@ client.on("channelCreate", (channel) => {
       let roleOBJ = channel.guild.roles.cache.find(
         (role) => role.id == messageGuild.muterole
       );
-      console.log(roleOBJ.name)
+      console.log(roleOBJ)
       if (roleOBJ == undefined) return;
       console.log("231");
       channel.permissionOverwrites.create(roleOBJ, {
