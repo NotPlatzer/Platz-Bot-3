@@ -220,8 +220,8 @@ client.on("messageCreate", (message) => {
 });
 
 client.on("voiceStateUpdate", (oldState, newState) => {
-  if(newState == null && oldState.member.id == client.user.id) {
-    console.log("LEFT CHANNEL")
+  if (newState == null && oldState.member.id == client.user.id) {
+    console.log("LEFT CHANNEL");
   }
 });
 const distube = require("distube");
@@ -299,9 +299,13 @@ client.distube
     queue.textChannel.send({ embeds: [listembed] });
   })
 
-  .on("error", (message, err) => {
+  .on("error", (message, err, queue) => {
     console.log("An Distube error encountered: " + err);
-    message.channel.send("An error occurred: " + err);
+    if (message.channel == undefined) {
+      queue.textChannel.send("An error occurred: " + err);
+    } else {
+      message.channel.send("An error occurred: " + err);
+    }
   });
 
 client.login(process.env.DJS_TOKEN);
