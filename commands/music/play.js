@@ -13,16 +13,15 @@ module.exports = {
     if (!message.member.voice.channel)
       return message.reply("You have to be in a voice channel!");
 
-      const connections = getVoiceConnection(message.member.voice.channelid);
-
-    console.log(connections);
-
-    if (client.voiceState !== undefined) {
-      if (client.voiceState.channelid !== message.member.voice.channelid)
-        return message.reply(
-          "You have to be in the same voice channel as the Bot!"
-        );
-    }
+    message.guild.channels.cache
+      .filter((c) => c.type === "GUILD_VOICE")
+      .forEach(async (channel, id) => {
+        channel.members.forEach((member) => {
+          if(member.id == client.user.id) {
+            console.log("Found the Client Channel: ", channel);
+          }
+        })
+      });
     const music = args.join(" ");
     if (!music) return message.reply("Please provide a Song!");
 
