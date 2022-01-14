@@ -17,7 +17,7 @@ module.exports = {
       .filter((c) => c.type === "GUILD_VOICE")
       .forEach(async (channel, id) => {
         console.log("OUTHER LOOP");
-        JSON.stringify(channel.members, null, 4);
+        console.log(JSON.stringify(channel.members, null, 4));
         channel.members.every((member) => {
           console.log("INNER LOOP " + member + " " + member.userId);
           if (member.userId == client.user.id) {
