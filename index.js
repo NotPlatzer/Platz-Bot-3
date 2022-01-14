@@ -222,13 +222,14 @@ client.on("messageCreate", (message) => {
 client.on("channelCreate", (channel) => {
   if (channel.isText()) {
     Guild.findOne({ id: channel.guild.id }).then((messageGuild) => {
-      console.log("225")
-      if (!messageGuild) return;
+      console.log("225");
+      if (!messageGuild) return console.log(messageGuild);
+      console.log("227");
       let roleOBJ = channel.guild.roles.cache.find(
         (role) => role.id == messageGuild.muterole
       );
       if (roleOBJ == undefined) return;
-      console.log("231")
+      console.log("231");
       channel.permissionOverwrites.create(roleOBJ, {
         SEND_MESSAGES: false,
         ADD_REACTIONS: false,
