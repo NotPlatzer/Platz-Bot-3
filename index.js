@@ -6,6 +6,15 @@ const ms = require("ms");
 const fs = require("fs");
 const schedule = require("node-schedule");
 
+const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
+  console.log(
+    "This job was supposed to run at " +
+      fireDate +
+      ", but actually ran at " +
+      new Date()
+  );
+});
+
 const client = new Discord.Client({
   intents: [
     "GUILDS",
@@ -323,12 +332,4 @@ client.distube
     }
   });
 
-const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
-  console.log(
-    "This job was supposed to run at " +
-      fireDate +
-      ", but actually ran at " +
-      new Date()
-  );
-});
 client.login(process.env.DJS_TOKEN);
