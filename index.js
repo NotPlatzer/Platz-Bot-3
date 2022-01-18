@@ -15,6 +15,7 @@ const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
     mc.statusJava("5.83.164.91", 10050)
       .then((server) => {
         PlayersOnServer = server.players.list;
+        console.log("On Server rn: " + server.players.list)
       })
       .catch((err) => console.log(err));
 
