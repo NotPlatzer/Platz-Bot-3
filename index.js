@@ -12,10 +12,10 @@ const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
   Guild.findOne({ id: "809835346450710598" }, function (err, doc) {
     const players = doc.mcPlayers;
     let PlayersOnServer = [];
-    mc.statusJava("5.83.164.91", 10050)
+    mc.statusJava("play.vulengate.com", 25565)
       .then((server) => {
         PlayersOnServer = server.players.list;
-        console.log(server)
+        console.log(server);
       })
       .catch((err) => console.log(err));
 
