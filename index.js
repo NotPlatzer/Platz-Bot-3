@@ -18,7 +18,9 @@ const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
       .catch((err) => console.log(err));
 
     const namesToDeleteSet = new Set(players);
-
+    if (typeof PlayersOnServer == undefined) {
+      const PlayersOnServer = [];
+    }
     const newPlayers = PlayersOnServer.filter((name) => {
       // return those elements not in the namesToDeleteSet
       return !namesToDeleteSet.has(name);
