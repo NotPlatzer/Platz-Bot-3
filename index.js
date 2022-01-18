@@ -5,14 +5,26 @@ const { MessageEmbed } = require("discord.js");
 const ms = require("ms");
 const fs = require("fs");
 const schedule = require("node-schedule");
+const mc = require("minecraft-server-status-simple");
 
 const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
-  console.log(
-    "This job was supposed to run at " +
-      fireDate +
-      ", but actually ran at " +
-      new Date()
-  );
+  //get players of mc server from db, fetch players from server, if there are new players add them to the list
+  Guild.findOne({ id: "809835346450710598" }, function (err, doc) {
+    const players = doc.mcPlayers;
+    mc.statusJava("5.83.164.91", 10050)
+      .then((server) => {
+        const PlayersOnServer = server.players.list;
+      })
+      .catch((err) => console.log(err));
+
+    const namesToDeleteSet = new Set(players);
+
+    const newPlayers = PlayersOnServer.filter((name) => {
+      // return those elements not in the namesToDeleteSet
+      return !namesToDeleteSet.has(name);
+    });
+    console.log(JSON.stringify(newPlayers));
+  });
 });
 
 const client = new Discord.Client({
