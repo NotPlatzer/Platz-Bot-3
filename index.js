@@ -4,6 +4,7 @@ const Guild = require("./db_models/guild");
 const { MessageEmbed } = require("discord.js");
 const ms = require("ms");
 const fs = require("fs");
+const schedule = require("node-schedule");
 
 const client = new Discord.Client({
   intents: [
@@ -238,8 +239,8 @@ client.on("channelCreate", (channel) => {
     });
   }
 });
-const distube = require("distube");
 
+const distube = require("distube");
 const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
 const playlists = require("./commands/music/playlists");
@@ -322,4 +323,12 @@ client.distube
     }
   });
 
+const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
+  console.log(
+    "This job was supposed to run at " +
+      fireDate +
+      ", but actually ran at " +
+      new Date()
+  );
+});
 client.login(process.env.DJS_TOKEN);
