@@ -11,16 +11,15 @@ const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
   //get players of mc server from db, fetch players from server, if there are new players add them to the list
   Guild.findOne({ id: "809835346450710598" }, function (err, doc) {
     const players = doc.mcPlayers;
+    let PlayersOnServer = [];
     mc.statusJava("5.83.164.91", 10050)
       .then((server) => {
-        const PlayersOnServer = server.players.list;
+        PlayersOnServer = server.players.list;
       })
       .catch((err) => console.log(err));
 
     const namesToDeleteSet = new Set(players);
-    if (typeof PlayersOnServer == undefined) {
-      const PlayersOnServer = [];
-    }
+
     const newPlayers = PlayersOnServer.filter((name) => {
       // return those elements not in the namesToDeleteSet
       return !namesToDeleteSet.has(name);
