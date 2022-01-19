@@ -104,10 +104,9 @@ module.exports = {
             )
             .setThumbnail(`https://api.mcsrvstat.us/icon/${ip}:${port}`);
         }
+        message.reply({ embeds: [serverembed] });
       })
       .catch((err) => console.log(err));
-
-    message.reply({ embeds: [serverembed] });
   },
 };
 
