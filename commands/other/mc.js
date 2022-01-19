@@ -27,7 +27,6 @@ module.exports = {
       .statusJava(ip, port)
       .then((server) => {
         const serverembed = new MessageEmbed();
-        serverembed.setThumbnail(`https://api.mcsrvstat.us/icon/${ip}:${port}`);
         if (server.online !== undefined) {
           if (server.online == false) {
             serverembed
@@ -38,13 +37,15 @@ module.exports = {
               .setFooter(`To report bugs send a message to the dev`)
               .setColor([255, 0, 0])
               .setTitle(`${server.ip}`)
-              .addField(`Online:`, `${server.online}\n`);
+              .addField(`Online:`, `${server.online}\n`)
+              .setThumbnail(`https://api.mcsrvstat.us/icon/${ip}:${port}`);
           } else {
             serverembed
               .setAuthor(
                 "Platz Bot v3",
                 "https://cdn.discordapp.com/avatars/917878990478377020/7f147973452d4a6bacbb6132b8e4a18d.png"
               )
+              .setThumbnail(`https://api.mcsrvstat.us/icon/${ip}:${port}`)
               .setFooter(`To report bugs send a message to the dev`);
             if (server.motd !== undefined) {
               serverembed.setDescription(`${server.motd.clean}`);
@@ -96,10 +97,12 @@ module.exports = {
               .setColor([71, 122, 30]);
           }
         } else {
-          serverembed.addField(
-            `Could Not Find any Information`,
-            `<------------------------------->`
-          );
+          serverembed
+            .addField(
+              `Could Not Find any Information`,
+              `<------------------------------->`
+            )
+            .setThumbnail(`https://api.mcsrvstat.us/icon/${ip}:${port}`);
         }
       })
       .catch((err) => console.log(err));
