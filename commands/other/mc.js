@@ -23,9 +23,11 @@ module.exports = {
       port = 25565;
     }
 
-    mc.statusJava(ip, port)
+    await mc
+      .statusJava(ip, port)
       .then((server) => {
         const serverembed = new MessageEmbed();
+        serverembed.setThumbnail(`https://api.mcsrvstat.us/icon/${ip}:${port}`);
         if (server.online !== undefined) {
           if (server.online == false) {
             serverembed
@@ -93,12 +95,21 @@ module.exports = {
               .addField(`Online:`, `${server.online}\n`)
               .setColor([71, 122, 30]);
           }
+        } else {
+          serverembed.addField(
+            `Could Not Find any Information`,
+            `<------------------------------->`
+          );
         }
-        else{
-          serverembed.addField(`Could Not Find any Information`, `<------------------------------->`);
-        }
-        message.reply({ embeds: [serverembed] });
       })
       .catch((err) => console.log(err));
+
+    message.reply({ embeds: [serverembed] });
   },
 };
+
+async function file_get_contents(uri, callback) {
+  let res = await fetch(uri),
+    ret = await res.text();
+  return callback ? callback(ret) : ret; // a Promise() actually.
+}
