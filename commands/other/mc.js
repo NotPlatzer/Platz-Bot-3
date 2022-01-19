@@ -26,7 +26,7 @@ module.exports = {
     await mc
       .statusJava(ip, port)
       .then((server) => {
-        console.log(server)
+        console.log(server);
         const serverembed = new MessageEmbed();
         if (server.online !== undefined) {
           if (server.online == false) {
@@ -51,7 +51,9 @@ module.exports = {
             if (server.motd !== undefined) {
               serverembed.setDescription(`${server.motd.clean}`);
             }
-            if (server.ip !== undefined) {
+            if (server.hostname !== undefined) {
+              serverembed.setTitle(`${server.hostname}`);
+            } else if (server.ip !== undefined) {
               serverembed.setTitle(`${server.ip}`);
             }
 
