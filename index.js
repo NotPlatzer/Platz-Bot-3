@@ -20,6 +20,7 @@ const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
     const newPlayers = PlayersOnServer.filter((name) => {
       return !namesToDeleteSet.has(name);
     });
+    console.log("Old Players: " + players + "\nOnline Players: " + PlayersonServer);
     console.log(JSON.stringify(newPlayers));
   });
 });
