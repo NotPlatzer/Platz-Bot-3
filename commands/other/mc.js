@@ -26,7 +26,6 @@ module.exports = {
     await mc
       .statusJava(ip, port)
       .then((server) => {
-        console.log(server);
         const serverembed = new MessageEmbed();
         if (server.online !== undefined) {
           if (server.online == false) {
