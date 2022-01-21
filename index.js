@@ -10,7 +10,7 @@ const mc = require("minecraft-server-status-simple");
 const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
   Guild.findOne({ id: "809835346450710598" }, function (err, doc) {
     const players = doc.mcPlayers;
-    const PlayersOnServer = getPlayersOnServer("5.83.164.91", 10050);
+    const PlayersOnServer = await getPlayersOnServer("5.83.164.91", 10050);
     console.log(PlayersOnServer);
     const namesToDeleteSet = new Set(players);
     const newPlayers = PlayersOnServer.filter((name) => {
