@@ -10,12 +10,8 @@ const mc = require("minecraft-server-status-simple");
 const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
   Guild.findOne({ id: "809835346450710598" }, function (err, doc) {
     const players = doc.mcPlayers;
-   const PlayersOnServer = await mc.statusJava("5.83.164.91", 10050)
-      .then((server) => {
-        return server.players.list;
-      })
-      .catch((err) => console.log(err));
-      console.log(PlayersOnServer)
+    const PlayersOnServer = getPlayersOnServer("5.83.164.91", 10050);
+    console.log(PlayersOnServer);
     const namesToDeleteSet = new Set(players);
     const newPlayers = PlayersOnServer.filter((name) => {
       return !namesToDeleteSet.has(name);
@@ -26,6 +22,16 @@ const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
     console.log(JSON.stringify(newPlayers));
   });
 });
+
+async function getPlayersOnServer(ip, port) {
+  const PlayersOnServer = await mc
+    .statusJava(ip, port)
+    .then((server) => {
+      return server.players.list;
+    })
+    .catch((err) => console.log(err));
+    return PlayersOnServer
+}
 
 const client = new Discord.Client({
   intents: [
