@@ -12,6 +12,7 @@ const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
     const players = doc.mcPlayers;
     mc.statusJava("5.83.164.91", 10050)
       .then((server) => {
+        if(server.players === undefined || server.players.list == undefined) return;
         let PlayersOnServer = server.players.list;
         const namesToDeleteSet = new Set(players);
         const newPlayers = PlayersOnServer.filter((name) => {
