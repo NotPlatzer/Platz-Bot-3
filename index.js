@@ -28,7 +28,7 @@ const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
             .fetch("919218030746148884")
             .then((channel) => {
               newPlayers.forEach(player =>{
-                channel.send("New Player joined: " + player)
+                channel.send(`Player #${doc.mcPlayers.length}: \`${player}\``);
               })
             });
         }
