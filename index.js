@@ -6,6 +6,7 @@ const ms = require("ms");
 const fs = require("fs");
 const schedule = require("node-schedule");
 const mc = require("minecraft-server-status-simple");
+import fetch from "node-fetch";
 
 function file_get_contents(filename) {
   fetch(filename)
