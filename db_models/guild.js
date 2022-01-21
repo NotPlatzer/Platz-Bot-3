@@ -46,7 +46,7 @@ const guildSchema = new Schema(
       required: false,
     },
     mcPlayers: {
-      type: array,
+      type: Array,
       required: false,
     },
   },
