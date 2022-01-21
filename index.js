@@ -10,7 +10,6 @@ const mc = require("minecraft-server-status-simple");
 const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
   Guild.findOne({ id: "809835346450710598" }, function (err, doc) {
     const players = doc.mcPlayers;
-    console.log(doc.mcPlayers)
     mc.statusJava("5.83.164.91", 10050)
       .then((server) => {
         let PlayersOnServer = server.players.list;

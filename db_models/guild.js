@@ -1,54 +1,58 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const guildSchema = new Schema({
+const guildSchema = new Schema(
+  {
     name: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     prefix: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     modRole: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     id: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     owner: {
-        type: String,
-        required: false
+      type: String,
+      required: false,
     },
     playlists: [
-        {
-            name: {
-                type: String,
-            },
-            link: {
-                type: String,
-            },
+      {
+        name: {
+          type: String,
         },
+        link: {
+          type: String,
+        },
+      },
     ],
     playedSongs: {
-        type: Number,
-        required: false
+      type: Number,
+      required: false,
     },
     botStartTime: {
-        type: Number,
-        required: false
+      type: Number,
+      required: false,
     },
     muteRole: {
-        type: String,
-        required: false
-    }
+      type: String,
+      required: false,
+    },
+    mcPlayers: {
+      type: array,
+      required: false,
+    },
+  },
+  { timestamps: true }
+);
 
-
-}, { timestamps: true });
-
-const Guild = mongoose.model('Guild', guildSchema);
-
+const Guild = mongoose.model("Guild", guildSchema);
 
 module.exports = Guild;
