@@ -21,6 +21,12 @@ const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
           "Old Players: " + players + "\nOnline Players: " + PlayersOnServer
         );
         console.log("New Players: " + JSON.stringify(newPlayers));
+        if(newPlayers.length > 0) {
+          doc.mcPlayers = players.concat(newPlayers)
+          doc.save();
+          var mcPlayersChannel = client.channels.get("919218030746148884");
+          mcPlayersChannel.send("New Player/s joined: " + newPlayers)
+        }
       })
       .catch((err) => console.log(err));
   });
