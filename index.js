@@ -27,7 +27,7 @@ const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
             var mcPlayersChannel = client.channels
               .fetch("919218030746148884")
               .then((channel) => {
-                var couter = newPlayers.length;
+                var counter = newPlayers.length;
                 newPlayers.forEach((player) => {
                   counter--;
                   channel.send(
