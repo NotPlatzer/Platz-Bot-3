@@ -25,13 +25,13 @@ const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
             doc.mcPlayers = players.concat(newPlayers);
             doc.save();
             var mcPlayersChannel = client.channels
-              .fetch("919218030746148884")
+              .fetch("928347331596808302")
               .then((channel) => {
                 var counter = newPlayers.length;
                 newPlayers.forEach((player) => {
                   counter--;
                   channel.send(
-                    `Player #${doc.mcPlayers.length - counter}: \`${player}\``
+                    `${doc.mcPlayers.length - counter}. \`${player}\``
                   );
                 });
               });
