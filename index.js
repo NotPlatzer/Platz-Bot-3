@@ -21,7 +21,7 @@ const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
     const server = file_get_contents(
       "https://api.mcsrvstat.us/debug/query/5.83.164.91:10050"
     );
-
+      console.log(server)
     if (server.PlayerList === undefined || server === undefined)
       return;
     let PlayersOnServer = server.PlayerList;
