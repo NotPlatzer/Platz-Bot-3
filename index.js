@@ -5,7 +5,6 @@ const { MessageEmbed } = require("discord.js");
 const ms = require("ms");
 const fs = require("fs");
 const schedule = require("node-schedule");
-const mc = require("minecraft-server-status-simple");
 const fetch = require("node-fetch");
 
 function file_get_contents(filename) {
