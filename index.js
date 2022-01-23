@@ -26,7 +26,7 @@ const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
             doc.mcPlayers = players.concat(newPlayers);
             doc.save();
             var mcPlayersChannel = client.channels
-              .fetch("928347331596808302")
+              .fetch("919218030746148884")
               .then((channel) => {
                 var counter = newPlayers.length;
                 newPlayers.forEach((player) => {
