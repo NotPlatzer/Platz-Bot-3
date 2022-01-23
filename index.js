@@ -15,7 +15,6 @@ const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
       function (error, response, body) {
         if (!error && response.statusCode == 200) {
           var server = JSON.parse(body);
-          console.log(server);
           if (server.PlayerList === false || server === undefined) return;
           let PlayersOnServer = server.PlayerList;
           const namesToDeleteSet = new Set(players);
