@@ -2,6 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const fs = require("fs");
 const commandFolders = fs.readdirSync("commands");
 const mc = require("minecraft-server-status-simple");
+var request = require("request");
 
 module.exports = {
   name: "mc",
@@ -86,6 +87,44 @@ module.exports = {
                   `/`
                 );
               }
+            } else {
+              const Debugserver = request.get(
+                "https://api.mcsrvstat.us/debug/query/5.83.164.91:10050",
+                function (error, response, body) {
+                  if (!error && response.statusCode == 200) {
+                    var Debugserver = JSON.parse(body);
+                    if (
+                      Debugserver.PlayerList !== false &&
+                      Debugserver !== undefined
+                    ) {
+                      var players = Debugserver.PlayerList;
+                      if (players.length > 9) {
+                        var playersOnDisplay = players.slice(0, 9);
+                        playersOnDisplay = playersOnDisplay.join("\r\n");
+                        var numberOfPlayersNotOnDisplay = players.length - 9;
+                        var playersFORMATED = `
+                          ${playersOnDisplay}\n\`+ ${numberOfPlayersNotOnDisplay}\``;
+                      } else {
+                        var playersFORMATED = players.join("\r\n");
+                      }
+
+                      serverembed.addField(
+                        `Players: ${
+                          Debugserver.Players + "/" + Debugserver.MaxPlayers
+                        }`,
+                        `${playersFORMATED}`
+                      );
+                    } else {
+                      serverembed.addField(
+                        `Players: ${
+                          Debugserver.Players + "/" + Debugserver.MaxPlayers
+                        }`,
+                        `/`
+                      );
+                    }
+                  }
+                }
+              );
             }
             if (server.version !== undefined) {
               serverembed.addField(`Version:`, `${server.version}`);
