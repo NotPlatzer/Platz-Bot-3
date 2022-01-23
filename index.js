@@ -5,47 +5,44 @@ const { MessageEmbed } = require("discord.js");
 const ms = require("ms");
 const fs = require("fs");
 const schedule = require("node-schedule");
-const fetch = require("node-fetch");
-
-function file_get_contents(filename) {
-  fetch(filename)
-    .then((resp) => resp.text())
-    .then(function (data) {
-      return data;
-    });
-}
+var request = require("request");
 
 const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
   Guild.findOne({ id: "809835346450710598" }, function (err, doc) {
     const players = doc.mcPlayers;
-    const server = file_get_contents(
-      "https://api.mcsrvstat.us/debug/query/5.83.164.91:10050"
-    );
-      console.log(server)
-    if (server.PlayerList === undefined || server === undefined)
-      return;
-    let PlayersOnServer = server.PlayerList;
-    const namesToDeleteSet = new Set(players);
-    const newPlayers = PlayersOnServer.filter((name) => {
-      return !namesToDeleteSet.has(name);
-    });
-    if (newPlayers.length > 0) {
-      doc.mcPlayers = players.concat(newPlayers);
-      doc.save();
-      var mcPlayersChannel = client.channels
-        .fetch("919218030746148884")
-        .then((channel) => {
-          var couter = newPlayers.length;
-          newPlayers.forEach((player) => {
-            counter--;
-            channel.send(
-              `Player #${doc.mcPlayers.length - counter}: \`${player}\``
-            );
+    const server = request.get(
+      "https://api.mcsrvstat.us/debug/query/5.83.164.91:10050",
+      function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+          var server = JSON.stringify(body);
+          console.log(server);
+          if (server.PlayerList === false || server === undefined) return;
+          let PlayersOnServer = server.PlayerList;
+          const namesToDeleteSet = new Set(players);
+          const newPlayers = PlayersOnServer.filter((name) => {
+            return !namesToDeleteSet.has(name);
           });
-        });
-    } else {
-      return;
-    }
+          if (newPlayers.length > 0) {
+            doc.mcPlayers = players.concat(newPlayers);
+            doc.save();
+            var mcPlayersChannel = client.channels
+              .fetch("919218030746148884")
+              .then((channel) => {
+                var couter = newPlayers.length;
+                newPlayers.forEach((player) => {
+                  counter--;
+                  channel.send(
+                    `Player #${doc.mcPlayers.length - counter}: \`${player}\``
+                  );
+                });
+              });
+          } else {
+            return;
+          }
+        }
+      }
+    );
+
     //if there are more then one players that are new: the size of new players -1, and that value we
   });
 });
