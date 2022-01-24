@@ -62,26 +62,6 @@ const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
   });
 });
 
-client.commands = new Discord.Collection();
-const commandFolders = fs.readdirSync("./commands");
-
-const timeout = new Discord.Collection();
-
-var commandCount = 1;
-
-//Looping for every command and putting it into the "client.commands" collection
-for (const folder of commandFolders) {
-  const commandFiles = fs
-    .readdirSync(`./commands/${folder}`)
-    .filter((file) => file.endsWith(".js"));
-
-  for (const file of commandFiles) {
-    const command = require(`./commands/${folder}/${file}`);
-    commandCount++;
-    client.commands.set(command.name.toLowerCase(), command);
-  }
-}
-
 const client = new Discord.Client({
   intents: [
     "GUILDS",
@@ -101,6 +81,26 @@ const client = new Discord.Client({
     "DIRECT_MESSAGE_TYPING",
   ],
 });
+
+client.commands = new Discord.Collection();
+const commandFolders = fs.readdirSync("./commands");
+
+const timeout = new Discord.Collection();
+
+var commandCount = 1;
+
+//Looping for every command and putting it into the "client.commands" collection
+for (const folder of commandFolders) {
+  const commandFiles = fs
+    .readdirSync(`./commands/${folder}`)
+    .filter((file) => file.endsWith(".js"));
+
+  for (const file of commandFiles) {
+    const command = require(`./commands/${folder}/${file}`);
+    commandCount++;
+    client.commands.set(command.name.toLowerCase(), command);
+  }
+}
 
 //Discord error handling
 client.on("error", () => {
