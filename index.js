@@ -21,7 +21,12 @@ const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
       function (error, response, body) {
         if (!error && response.statusCode == 200) {
           var server = JSON.parse(body);
-          if (server.PlayerList === false || server === undefined) return;
+          if (
+            server.PlayerList === false ||
+            server === undefined ||
+            server.PlayerList === undefined
+          )
+            return;
           let PlayersOnServer = server.PlayerList;
           const namesToDeleteSet = new Set(players);
           const newPlayers = PlayersOnServer.filter((name) => {
@@ -94,7 +99,10 @@ for (const folder of commandFolders) {
 }
 
 //Discord error handling
-client.on("error", "\x1B[31m A Discord Error:\x1B[0m" + console.error);
+client.on("error", () => {
+  console.log("\x1B[31m A Discord Error:\x1B[0m");
+  console.error;
+});
 //gets called once the client is online
 client.once("ready", async () => {
   //Connecting to the DB
