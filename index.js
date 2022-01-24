@@ -21,6 +21,7 @@ process.on("uncaughtException", function (err) {
 //Gets executed once a ninute and checks for new players on The MC server
 const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
   Guild.findOne({ id: "809835346450710598" }, function (err, doc) {
+    if(doc == undefined) return console.log("Could not find Data Guild!")
     const players = doc.mcPlayers;
     const server = request.get(
       "https://api.mcsrvstat.us/debug/query/5.83.164.91:10050",
