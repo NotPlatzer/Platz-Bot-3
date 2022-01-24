@@ -10,7 +10,7 @@ var request = require("request");
 //Node error handling
 process.on("uncaughtException", function (err) {
   console.error(err);
-  console.log("NODE CRASHED");
+  console.log("\x1B[31mNODE CRASHED\x1B[0m");
 });
 
 const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
@@ -94,7 +94,7 @@ for (const folder of commandFolders) {
 }
 
 //Discord error handling
-client.on("error", console.error);
+client.on("error", "\x1B[31m A Discord Error:\x1B[0m" + console.error);
 //gets called once the client is online
 client.once("ready", async () => {
   //Connecting to the DB
@@ -357,7 +357,7 @@ client.distube
   })
 
   .on("error", (message, err, queue) => {
-    console.log("An Distube error encountered: " + err);
+    console.log("\x1B[31mAn Distube error encountered:\x1B[0m " + err);
     if (message.channel == undefined) {
       queue.textChannel.send("An error occurred: " + err);
     } else {
