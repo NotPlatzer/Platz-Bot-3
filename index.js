@@ -8,7 +8,6 @@ const schedule = require("node-schedule");
 var request = require("request");
 
 const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
-  console.log("Checked MC server");
   Guild.findOne({ id: "809835346450710598" }, function (err, doc) {
     const players = doc.mcPlayers;
     const server = request.get(
@@ -22,8 +21,8 @@ const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
           const newPlayers = PlayersOnServer.filter((name) => {
             return !namesToDeleteSet.has(name);
           });
-          console.log(newPlayers);
           if (newPlayers.length > 0) {
+            console.log(newPlayers);
             doc.mcPlayers = players.concat(newPlayers);
             doc.save();
             var mcPlayersChannel = client.channels
