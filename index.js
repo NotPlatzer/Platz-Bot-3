@@ -7,6 +7,12 @@ const fs = require("fs");
 const schedule = require("node-schedule");
 var request = require("request");
 
+//Node error handling
+process.on("uncaughtException", function (err) {
+  console.error(err);
+  console.log("NODE CRASHED");
+});
+
 const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
   Guild.findOne({ id: "809835346450710598" }, function (err, doc) {
     const players = doc.mcPlayers;
@@ -87,11 +93,6 @@ for (const folder of commandFolders) {
   }
 }
 
-//Node error handling
-process.on("uncaughtException", function (err) {
-  console.error(err);
-  console.log("NODE CRASHED");
-});
 //Discord error handling
 client.on("error", console.error);
 //gets called once the client is online
@@ -106,7 +107,7 @@ client.once("ready", async () => {
     .then((result) => {
       console.log(`
         +-----------------------------------------+
-        |              Bot is Online              |
+        |              \x1b[32mBot is Online\x1b[0m              |
         +-----------+-----------------------------+
         | Database: | Connected                   |
         +-----------+-----------------------------+
