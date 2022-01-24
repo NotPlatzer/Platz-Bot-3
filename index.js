@@ -119,7 +119,7 @@ client.once("ready", async () => {
     .catch((err) =>
       console.log(`
         +-----------------------------------------+
-        |              Bot is Online              |
+        |              \x1b[32mBot is Online\x1b[0m              |
         +-----------+-----------------------------+
         | Database: | Not Connected               |
         +-----------+-----------------------------+
