@@ -6,13 +6,19 @@ const ms = require("ms");
 const fs = require("fs");
 const schedule = require("node-schedule");
 var request = require("request");
+const distube = require("distube");
+const { SpotifyPlugin } = require("@distube/spotify");
+const { SoundCloudPlugin } = require("@distube/soundcloud");
+const playlists = require("./commands/music/playlists");
+
+//heroku logs --app=platzer-dc-bot --tail
 
 //Node error handling
 process.on("uncaughtException", function (err) {
   console.error(err);
   console.log("\x1B[31mNODE CRASHED\x1B[0m");
 });
-
+//Gets executed once a ninute and checks for new players on The MC server
 const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
   Guild.findOne({ id: "809835346450710598" }, function (err, doc) {
     const players = doc.mcPlayers;
@@ -53,29 +59,7 @@ const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
         }
       }
     );
-
-    //if there are more then one players that are new: the size of new players -1, and that value we
   });
-});
-
-const client = new Discord.Client({
-  intents: [
-    "GUILDS",
-    "GUILD_MEMBERS",
-    "GUILD_BANS",
-    "GUILD_EMOJIS_AND_STICKERS",
-    "GUILD_INTEGRATIONS",
-    "GUILD_WEBHOOKS",
-    "GUILD_INVITES",
-    "GUILD_VOICE_STATES",
-    "GUILD_PRESENCES",
-    "GUILD_MESSAGES",
-    "GUILD_MESSAGE_REACTIONS",
-    "GUILD_MESSAGE_TYPING",
-    "DIRECT_MESSAGES",
-    "DIRECT_MESSAGE_REACTIONS",
-    "DIRECT_MESSAGE_TYPING",
-  ],
 });
 
 client.commands = new Discord.Collection();
@@ -98,12 +82,32 @@ for (const folder of commandFolders) {
   }
 }
 
+const client = new Discord.Client({
+  intents: [
+    "GUILDS",
+    "GUILD_MEMBERS",
+    "GUILD_BANS",
+    "GUILD_EMOJIS_AND_STICKERS",
+    "GUILD_INTEGRATIONS",
+    "GUILD_WEBHOOKS",
+    "GUILD_INVITES",
+    "GUILD_VOICE_STATES",
+    "GUILD_PRESENCES",
+    "GUILD_MESSAGES",
+    "GUILD_MESSAGE_REACTIONS",
+    "GUILD_MESSAGE_TYPING",
+    "DIRECT_MESSAGES",
+    "DIRECT_MESSAGE_REACTIONS",
+    "DIRECT_MESSAGE_TYPING",
+  ],
+});
+
 //Discord error handling
 client.on("error", () => {
   console.log("\x1B[31m A Discord Error:\x1B[0m");
   console.error;
 });
-//gets called once the client is online
+//Gets called once the client is online
 client.once("ready", async () => {
   //Connecting to the DB
   await mongoose
@@ -269,7 +273,7 @@ client.on("messageCreate", (message) => {
       console.log(error);
     });
 });
-
+//Gets called
 client.on("channelCreate", (channel) => {
   if (channel.isText()) {
     Guild.findOne({ id: channel.guild.id }).then((messageGuild) => {
@@ -290,11 +294,6 @@ client.on("channelCreate", (channel) => {
   }
 });
 
-const distube = require("distube");
-const { SpotifyPlugin } = require("@distube/spotify");
-const { SoundCloudPlugin } = require("@distube/soundcloud");
-const playlists = require("./commands/music/playlists");
-
 //Makes new Distube Client
 client.distube = new distube.default(client, {
   searchSongs: 0,
@@ -308,7 +307,7 @@ client.distube = new distube.default(client, {
     new SpotifyPlugin({ emitEventsAfterFetching: true }),
   ],
 });
-
+//Contains information about the Queue
 const status = (queue) =>
   `Volume: \`${queue.volume}%\` | Filter: \`${
     queue.filters.join(", ") || "Off"
@@ -322,7 +321,6 @@ const status = (queue) =>
 
 client.distube
   .on("finish", (queue) => queue.textChannel.send("Finished queue!"))
-
   .on("playSong", (queue, song) => {
     const playembed = new MessageEmbed()
       .setTitle(song.name)
@@ -350,7 +348,6 @@ client.distube
     )
   )
   .on("searchNoResult", (message) => message.reply(`No result found!`))
-
   .on("addList", (queue, playlist) => {
     const listembed = new MessageEmbed()
       .setTitle("Added Playlist:")
@@ -372,5 +369,5 @@ client.distube
       message.channel.send("An error occurred: " + err);
     }
   });
-
+//Loging in to the Discord Client
 client.login(process.env.DJS_TOKEN);
