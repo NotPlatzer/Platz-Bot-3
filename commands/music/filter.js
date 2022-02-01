@@ -8,6 +8,16 @@ module.exports = {
   usage: "filter {3d, bassboost, echo, karaoke, nightcore, vaporwave, earrape, slowreverb}",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
+    const filters = [
+        `3d`,
+        `bassboost`,
+        `echo`,
+        `karaoke`,
+        `nightcore`,
+        `vaporwave`,
+        `earrape`,
+        `slowreverb`,
+      ];
     const queue = client.distube.getQueue(message);
     if (!queue) return message.reply("There is no Queue");
     if (!message.member.voice.channel)
@@ -21,20 +31,20 @@ module.exports = {
         );
       }
     }
+    if(args.length < 0) {
+      message.reply(`Please provide a filter to play!`)
+    }
+    if(args[0] === "list") {
+      message.reply(`Filters: ${filters}`)
+    }
     if (
-      [
-        `3d`,
-        `bassboost`,
-        `echo`,
-        `karaoke`,
-        `nightcore`,
-        `vaporwave`,
-        `earrape`,
-        `slowreverb`,
-      ].includes(args[0])
+      filters.includes(args[0])
     ) {
       let filter = client.distube.setFilter(message, args[0]);
       message.channel.send("Current queue filter: " + (filter || "Off"));
+    }
+    else{
+      message.reply(`No such filter: ${args[0]}\nUse \`${messageGuild.prefix}filter list\` to get a list of available filters`)
     }
   },
 };
