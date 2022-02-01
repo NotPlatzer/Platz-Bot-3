@@ -341,7 +341,7 @@ client.distube
       .setColor([37, 150, 190])
       .setDescription(
         `Song Duration: \`${song.formattedDuration}\`\nRequested by: ${
-          song.user
+          song.member
         }\n\n${status(queue)}`
       )
       .setFooter(`To report bugs send a message to the dev`)
@@ -358,7 +358,7 @@ client.distube
   })
   .on("addSong", (queue, song) =>
     queue.textChannel.send(
-      `Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user}`
+      `Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.member}`
     )
   )
   .on("searchNoResult", (message) => message.reply(`No result found!`))
