@@ -348,7 +348,7 @@ client.distube
       .setImage(song.thumbnail);
 
     queue.textChannel.send({ embeds: [playembed] });
-    console.log(`Playing ${song.name}, Requested by: ${song.member.tag}`);
+    console.log(`Playing ${song.name}, Requested by: ${song.member}`);
 
     Guild.findOne({ id: "809835346450710598" }, function (err, doc) {
       var newsongscount = doc.playedSongs + 1;
