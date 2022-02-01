@@ -5,7 +5,7 @@ module.exports = {
   aliases: ["f"],
   cooldown: 1000 * 3,
   description: "Puts a sound filter on the music",
-  usage: "filter {3d, bassboost, echo, karaoke, nightcore, vaporwave, earrape, slowreverb}",
+  usage: "filter [list] {3d, bassboost, echo, karaoke, nightcore, vaporwave, earrape, slowreverb}",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     const filters = [
