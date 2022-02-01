@@ -41,7 +41,7 @@ module.exports = {
       filters.includes(args[0])
     ) {
       let filter = client.distube.setFilter(message, args[0]);
-      message.channel.send("Current queue filter: " + (filter || "Off"));
+      message.channel.send("Current queue filter: \`" + (filter || "Off") + "\`");
     }
     else{
       return message.reply(`No such filter: ${args[0]}\nUse \`${messageGuild.prefix}filter list\` to get a list of available filters`)
