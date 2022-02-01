@@ -5,7 +5,7 @@ module.exports = {
   aliases: ["f"],
   cooldown: 1000 * 3,
   description: "Puts a sound filter on the music",
-  usage: "filter {3d, bassboost, echo, karaoke, nightcore, vaporwave}",
+  usage: "filter {3d, bassboost, echo, karaoke, nightcore, vaporwave, earrape, slowreverb}",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     const queue = client.distube.getQueue(message);
@@ -22,9 +22,16 @@ module.exports = {
       }
     }
     if (
-      [`3d`, `bassboost`, `echo`, `karaoke`, `nightcore`, `vaporwave`].includes(
-        args[0]
-      )
+      [
+        `3d`,
+        `bassboost`,
+        `echo`,
+        `karaoke`,
+        `nightcore`,
+        `vaporwave`,
+        `earrape`,
+        `slowreverb`,
+      ].includes(args[0])
     ) {
       let filter = client.distube.setFilter(message, args[0]);
       message.channel.send("Current queue filter: " + (filter || "Off"));
