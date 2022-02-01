@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports = {
   name: "filter",
   aliases: ["f"],
-  cooldown: 1000 * 3,
+  cooldown: 1000 * 1,
   description: "Puts a sound filter on the music",
   usage: "filter [list] {3d, bassboost, echo, karaoke, nightcore, vaporwave, earrape, slowreverb}",
 

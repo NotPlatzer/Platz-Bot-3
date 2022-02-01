@@ -109,6 +109,7 @@ client.on("error", () => {
 });
 //Gets called once the client is online
 client.once("ready", async () => {
+  client.user.setActivity("discord.js", { type: "WATCHING" });
   //Connecting to the DB
   await mongoose
     .connect(process.env.DB_URI, {
