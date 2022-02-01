@@ -9,7 +9,6 @@ const request = require("request");
 const distube = require("distube");
 const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
-const playlists = require("./commands/music/playlists");
 
 //heroku logs --app=platzer-dc-bot --tail
 
