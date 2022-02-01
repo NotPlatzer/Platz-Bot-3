@@ -305,7 +305,13 @@ client.distube = new distube.default(client, {
   leaveOnStop: false,
   plugins: [
     new SoundCloudPlugin(),
-    new SpotifyPlugin({ emitEventsAfterFetching: true }),
+    new SpotifyPlugin({
+      emitEventsAfterFetching: true,
+      api: {
+        clientId: "7da91884b1834c058a54b107d8e27951",
+        clientSecret: process.env.SPOTIFY_SECRET,
+      },
+    }),
   ],
 });
 //Contains information about the Queue
