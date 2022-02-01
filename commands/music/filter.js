@@ -35,7 +35,7 @@ module.exports = {
       return message.reply(`Please provide a filter to play!`)
     }
     if(args[0] === "list") {
-     return message.reply(`Filters: ${filters}`)
+     return message.reply(`Filters: ${filters.join(", ")}`);
     }
     if (
       filters.includes(args[0])
