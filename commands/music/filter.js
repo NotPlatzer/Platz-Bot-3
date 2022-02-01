@@ -31,7 +31,7 @@ module.exports = {
         );
       }
     }
-    if(args.length < 0) {
+    if(args.length <= 0) {
       message.reply(`Please provide a filter to play!`)
     }
     if(args[0] === "list") {
