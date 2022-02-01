@@ -21,7 +21,7 @@ module.exports = {
       }
     }
     if (!queue) return message.reply("There is nothing to resume!");
-    if (!queue.playing) return message.reply(`The Song is already Paused!`);
+    if (queue.playing) return message.reply(`The Song is already Playing!`);
 
     client.distube.resume(message);
     message.reply("Resumed");
