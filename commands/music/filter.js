@@ -32,10 +32,10 @@ module.exports = {
       }
     }
     if(args.length <= 0) {
-      message.reply(`Please provide a filter to play!`)
+      return message.reply(`Please provide a filter to play!`)
     }
     if(args[0] === "list") {
-      message.reply(`Filters: ${filters}`)
+     return message.reply(`Filters: ${filters}`)
     }
     if (
       filters.includes(args[0])
@@ -44,7 +44,7 @@ module.exports = {
       message.channel.send("Current queue filter: " + (filter || "Off"));
     }
     else{
-      message.reply(`No such filter: ${args[0]}\nUse \`${messageGuild.prefix}filter list\` to get a list of available filters`)
+      return message.reply(`No such filter: ${args[0]}\nUse \`${messageGuild.prefix}filter list\` to get a list of available filters`)
     }
   },
 };
