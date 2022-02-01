@@ -296,6 +296,7 @@ client.on("channelCreate", (channel) => {
 
 //Makes new Distube Client
 client.distube = new distube.default(client, {
+  youtubeCookie: process.env.YT_COOKIE,
   emitAddSongWhenCreatingQueue: true,
   emitNewSongOnly: true,
   searchSongs: 0,
