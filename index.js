@@ -21,7 +21,7 @@ process.on("uncaughtException", function (err) {
 //Gets executed once a ninute and checks for new players on The MC server
 const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
   Guild.findOne({ id: "809835346450710598" }, function (err, doc) {
-    if(doc == undefined) return console.log("Could not find Data Guild!")
+    if (doc == undefined) return console.log("Could not find Data Guild!");
     const players = doc.mcPlayers;
     const server = request.get(
       "https://api.mcsrvstat.us/debug/query/5.83.164.91:10050",
@@ -126,7 +126,7 @@ client.once("ready", async () => {
         +-----------+-----------------------------+
         | Commands: | ${commandCount - 1}                          |
         +-----------+-----------------------------+
-        | Servers:  | ${client.guilds.cache.size}                           |
+        | Servers:  | ${client.guilds.cache.size}                          |
         +-----------+-----------------------------+`);
     })
     .catch((err) =>
@@ -138,7 +138,7 @@ client.once("ready", async () => {
         +-----------+-----------------------------+
         | Commands: | ${commandCount - 1}                          |
         +-----------+-----------------------------+
-        | Servers:  | ${client.guilds.cache.size}                           |
+        | Servers:  | ${client.guilds.cache.size}                          |
         +-----------+-----------------------------+`)
     );
 });
@@ -314,6 +314,10 @@ client.distube = new distube.default(client, {
       },
     }),
   ],
+  customFilters: {
+    earrape: "earwax,equalizer=f=1000:t=q:w=1:g=48,bass=g=40,dynaudnorm=f=400",
+    slowreverb: "atempo=0.85,aecho=1.0:0.5:10:0.5",
+  },
 });
 //Contains information about the Queue
 const status = (queue) =>
@@ -369,13 +373,11 @@ client.distube
     queue.textChannel.send({ embeds: [listembed] });
   })
 
-  .on("error", (message, err, queue) => {
+  .on("error", (channel, error) => {
     console.log("\x1B[31mAn Distube error encountered:\x1B[0m " + err);
-    if (message.channel == undefined) {
-      queue.textChannel.send("An error occurred: " + err);
-    } else {
-      message.channel.send("An error occurred: " + err);
-    }
+    channel.send(
+      `A Distube error occurred: ´${error.message}´\nSend a message to NotPlatzer#1106`
+    );
   });
 //Loging in to the Discord Client
 client.login(process.env.DJS_TOKEN);
