@@ -297,6 +297,7 @@ client.on("channelCreate", (channel) => {
 
 //Makes new Distube Client
 client.distube = new distube.default(client, {
+  emitNewSongOnly: true,
   searchSongs: 0,
   searchCooldown: 3,
   leaveOnEmpty: true,
