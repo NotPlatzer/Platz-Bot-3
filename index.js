@@ -17,8 +17,11 @@ process.on("uncaughtException", function (err) {
   console.error(err);
   console.log("\x1B[31mNODE CRASHED\x1B[0m");
 });
-//Gets executed once a ninute and checks for new players on The MC server
-const mcServer = schedule.scheduleJob("10 * * * * *", function (fireDate) {
+//Gets executed once a minute and checks for new players on The MC server
+schedule.scheduleJob("10 * * * * *", function (fireDate) {
+  const checkMcserver = "./commands/other/checkMcServer.js";
+  checkMcserver.run(client, message, args, GuildPrefix, messageGuild);
+
   Guild.findOne({ id: "809835346450710598" }, function (err, doc) {
     if (doc == undefined) return console.log("Could not find Data Guild!");
     const players = doc.mcPlayers;
