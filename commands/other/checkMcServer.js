@@ -1,4 +1,5 @@
 const Guild = require("/app/db_models/guild.js");
+const request = require("request");
 
 module.exports = {
   name: "checkMcServer",

@@ -5,7 +5,6 @@ const { MessageEmbed } = require("discord.js");
 const ms = require("ms");
 const fs = require("fs");
 const schedule = require("node-schedule");
-const request = require("request");
 const distube = require("distube");
 const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
