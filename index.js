@@ -195,7 +195,7 @@ client.on("messageCreate", (message) => {
 
       if (!command) return message.reply("No such Command: " + commandName);
 
-      if (command) {
+      if (command && command.name !== 'checkmcserver') {
         if (command.cooldown) {
           //If command has cooldown
           if (timeout.has(`${command.name}${message.author.id}`))

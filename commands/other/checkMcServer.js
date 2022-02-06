@@ -3,10 +3,10 @@ const request = require("request");
 
 module.exports = {
   name: "checkMcServer",
-  aliases: [""],
+  aliases: ["ok"],
   cooldown: 0,
-  description: "",
-  usage: "",
+  description: "ok",
+  usage: "ok",
 
   async run(client, fireDate) {
     Guild.findOne({ id: "809835346450710598" }, function (err, doc) {
