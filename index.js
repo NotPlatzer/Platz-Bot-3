@@ -341,7 +341,7 @@ client.distube
 
 //Gets executed once a minute and checks for new players on The MC server
 schedule.scheduleJob("10 * * * * *", function (fireDate) {
-  const checkMcserver = client.commands.get("checkMcServer.js");
+  const checkMcserver = client.commands.get("checkMcServer");
   checkMcserver.run(client);
   Guild.findOne({ id: "809835346450710598" }, function (err, doc) {
     if (doc == undefined) return console.log("Could not find Data Guild!");
