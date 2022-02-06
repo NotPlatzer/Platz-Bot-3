@@ -29,7 +29,7 @@ module.exports = {
 
       for (const file of commandFiles) {
         const command = require(`/app/commands/${folder}/${file}`);
-        if (command.name !== "test") {
+        if (command.name !== "checkmcserver") {
           embed.addField(command.name, command.description, true);
         }
       }

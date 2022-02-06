@@ -32,7 +32,7 @@ module.exports = {
       for (const file of commandFiles) {
         const command = require(`/app/commands/${folder}/${file}`);
 
-        if (command.name == firstargs && command.name !== "test") {
+        if (command.name == firstargs && command.name !== "checkmcserver") {
           infoembed
             .setTitle(`Information about "${command.name}" command`)
             .addField(`Usage:`, `${GuildPrefix}${command.usage}`)
