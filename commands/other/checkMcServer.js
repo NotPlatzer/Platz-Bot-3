@@ -1,3 +1,5 @@
+const Guild = require("./db_models/guild");
+
 module.exports = {
   name: "checkMcServer",
   aliases: [""],
