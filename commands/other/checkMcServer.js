@@ -10,7 +10,6 @@ module.exports = {
 
   async run(client, fireDate) {
     Guild.findOne({ id: "809835346450710598" }, function (err, doc) {
-      console.log(fireDate);
       if (doc == undefined) return console.log("Could not find Data Guild!");
       const players = doc.mcPlayers;
       const server = request.get(
