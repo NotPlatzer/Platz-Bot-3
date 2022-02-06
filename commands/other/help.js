@@ -32,6 +32,7 @@ module.exports = {
         if (command.name !== "checkmcserver") {
           embed.addField(command.name, command.description, true);
         }
+        else{ console.log("im here help")}
       }
     }
 
