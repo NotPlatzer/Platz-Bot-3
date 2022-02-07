@@ -273,7 +273,7 @@ client.distube = new distube.default(client, {
     }),
   ],
   customFilters: {
-    earrape: "earwax,equalizer=f=1000:t=q:w=1:g=48,bass=g=40,dynaudnorm=f=400",
+    earrape: "earwax,equalizer=f=1000:t=q:w=1:g=48,bass=g=100,dynaudnorm=f=400",
     slowreverb: "atempo=0.85,aecho=1.0:0.5:10:0.5",
   },
 });
