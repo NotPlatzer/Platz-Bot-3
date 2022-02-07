@@ -23,29 +23,19 @@ module.exports = {
     if (!firstargs)
       return message.reply("Please provide a command to show information");
 
-    var found = false;
-
-    for (const folder of commandFolders) {
-      const commandFiles = fs
-        .readdirSync(`/app/commands/${folder}`)
-        .filter((file) => file.endsWith(".js"));
-
-      for (const file of commandFiles) {
-        const command = require(`/app/commands/${folder}/${file}`);
-
-        if (command.name == firstargs && command.ownerOnly === false) {
-          infoembed
-            .setTitle(`Information about "${command.name}" command`)
-            .addField(`Usage:`, `${GuildPrefix}${command.usage}`)
-            .addField(`Description:`, `${command.description}`)
-            .addField(`Aliases:`, `${command.aliases}`);
-          message.reply({ embeds: [infoembed] });
-          found = true;
-        }
-      }
-    }
-
-    if (!found) {
+    const command =
+      client.commands.get(firstargs) ||
+      client.commands.find(
+        (cmd) => cmd.aliases && cmd.aliases.includes(firstargs)
+      );
+    if (command && command.ownerOnly === false) {
+      infoembed
+        .setTitle(`Information about "${command.name}" command`)
+        .addField(`Usage:`, `${GuildPrefix}${command.usage}`)
+        .addField(`Description:`, `${command.description}`)
+        .addField(`Aliases:`, `${command.aliases}`);
+      message.reply({ embeds: [infoembed] });
+    } else {
       message.reply("No such Command");
     }
   },
