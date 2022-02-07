@@ -4,11 +4,11 @@ const { MessageEmbed } = require("discord.js");
 const Guild = require("/app/db_models/guild.js");
 
 module.exports = {
-  name: "mute",
-  aliases: ["m"],
+  name: "tempmute",
+  aliases: ["tm"],
   cooldown: 1000 * 0,
-  description: "Mutes a member",
-  usage: "mute {@user to mute} {optional reason}",
+  description: "Temporaraly Mutes a member",
+  usage: "tempmute {@user to mute} {time} {optional reason}",
   ownerOnly: false,
 
   async run(client, message, args, GuildPrefix, messageGuild) {
@@ -22,13 +22,14 @@ module.exports = {
     const mutedRole = message.guild.roles.cache.find(
       (role) => role.name == muteRole
     );
-
+ 
     if (!muteRole && mutedRole == undefined) {
       return message.reply(
         `This server does not have a mute role, use \`${messageGuild.prefix}muterole <role>\` to set one or \`${messageGuild.prefix}muterole create [name]\` to create one.`
       );
     }
 
+    let time = args;
     let reason = args.slice(1).join(" ");
     if (!reason) reason = "Unspecified";
 
@@ -41,10 +42,10 @@ module.exports = {
       return message.reply(`You can not mute yourself!`);
     }
     if (target.id === message.guild.ownerId) {
-      return message.reply("You cannot mute the server owner");
+      return message.reply("You cannot Mute The Server Owner");
     }
     if (target.id === message.guild.me.id) {
-      return message.reply("You can not mute the bot in this way");
+      return message.reply("You can not Mute the Bot in this way");
     }
     let Role = message.guild.roles.cache.find(
       (role) => role.id == messageGuild.muteRole
