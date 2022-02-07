@@ -32,8 +32,6 @@ module.exports = {
         const command = require(`/app/commands/${folder}/${file}`);
         if (command.ownerOnly === false) {
           embed.addField(command.name, command.description, true);
-        } else {
-          console.log("im here help");
         }
       }
     }
