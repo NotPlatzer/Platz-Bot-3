@@ -8,6 +8,7 @@ module.exports = {
   cooldown: 1000 * 0,
   description: "Information about commands",
   usage: "Info",
+  ownerOnly: false,
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     const infoembed = new MessageEmbed()
@@ -32,7 +33,7 @@ module.exports = {
       for (const file of commandFiles) {
         const command = require(`/app/commands/${folder}/${file}`);
 
-        if (command.name == firstargs && command.name !== "checkmcserver") {
+        if (command.name == firstargs && command.ownerOnly === false) {
           infoembed
             .setTitle(`Information about "${command.name}" command`)
             .addField(`Usage:`, `${GuildPrefix}${command.usage}`)

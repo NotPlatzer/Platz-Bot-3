@@ -9,6 +9,7 @@ module.exports = {
   cooldown: 1000 * 5,
   description: "Creates/Changes the Muterole",
   usage: "muterole [create] [set] {role name}",
+  ownerOnly: false,
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     if (!message.member.permissions.has(Permissions.FLAGS.MANAGE_ROLES))

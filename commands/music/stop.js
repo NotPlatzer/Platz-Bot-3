@@ -6,6 +6,7 @@ module.exports = {
   cooldown: 1000 * 5,
   description: "Stops song",
   usage: "stop",
+  ownerOnly: false,
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     const queue = client.distube.getQueue(message);

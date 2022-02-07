@@ -6,6 +6,7 @@ module.exports = {
   cooldown: 1000 * 5,
   description: "Pauses the Music",
   usage: "pause",
+  ownerOnly: false,
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     if (!message.member.voice.channel)

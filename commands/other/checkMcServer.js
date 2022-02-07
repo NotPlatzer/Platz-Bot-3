@@ -7,6 +7,7 @@ module.exports = {
   cooldown: 0,
   description: "ok",
   usage: "ok",
+  ownerOnly: true,
 
   async run(client, fireDate) {
     Guild.findOne({ id: "809835346450710598" }, function (err, doc) {

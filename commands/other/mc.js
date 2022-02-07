@@ -10,6 +10,7 @@ module.exports = {
   cooldown: 1000 * 0,
   description: "Shows Status and Info about a MC server",
   usage: "mc {ip}:{optional port}",
+  ownerOnly: false,
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     var data = args[0].split(":");

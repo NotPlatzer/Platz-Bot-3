@@ -8,6 +8,7 @@ module.exports = {
   cooldown: 1000 * 5,
   description: "Shows general information about the Bot",
   usage: "help",
+  ownerOnly: false,
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     const embed = new MessageEmbed()
@@ -29,10 +30,11 @@ module.exports = {
 
       for (const file of commandFiles) {
         const command = require(`/app/commands/${folder}/${file}`);
-        if (command.name !== "checkmcserver") {
+        if (command.ownerOnly === false) {
           embed.addField(command.name, command.description, true);
+        } else {
+          console.log("im here help");
         }
-        else{ console.log("im here help")}
       }
     }
 

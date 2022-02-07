@@ -6,6 +6,7 @@ module.exports = {
   cooldown: 1000 * 0,
   description: "Shuffles the Queue",
   usage: "shuffle",
+  ownerOnly: false,
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     const queue = client.distube.getQueue(message);

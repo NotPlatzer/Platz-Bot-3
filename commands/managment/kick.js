@@ -8,6 +8,7 @@ module.exports = {
   cooldown: 1000 * 5,
   description: "Kicks a member",
   usage: "kick {@member to kick} {reason}",
+  ownerOnly: false,
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     if (!message.member.permissions.has(Permissions.FLAGS.KICK_MEMBERS))

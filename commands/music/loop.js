@@ -7,6 +7,7 @@ module.exports = {
   description: "Loops the song/queue",
   usage:
     "loop [use once for 'All Queue', twice for 'This Song', three times for 'Off'",
+  ownerOnly: false,
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     const queue = client.distube.getQueue(message);

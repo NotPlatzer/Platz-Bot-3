@@ -7,6 +7,7 @@ module.exports = {
   cooldown: 1000 * 5,
   description: "Leaves the VC",
   usage: "leave",
+  ownerOnly: false,
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     if (!message.member.voice.channel)

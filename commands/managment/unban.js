@@ -8,6 +8,7 @@ module.exports = {
   cooldown: 1000 * 0,
   description: "Un-Bans a member",
   usage: "unban {@user to unban}",
+  ownerOnly: false,
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     if (!message.member.permissions.has(Permissions.FLAGS.BAN_MEMBERS))
