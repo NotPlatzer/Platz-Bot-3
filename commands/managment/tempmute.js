@@ -51,7 +51,7 @@ module.exports = {
       return message.reply("Maximum mutetime is 2147483640 minutes");
     }
     if(!time) {
-      return message.reply("Please provide a amount time (minutes)");
+      return message.reply("Please provide a amount of time (minutes)");
     }
     let Role = message.guild.roles.cache.find(
       (role) => role.id == messageGuild.muteRole
