@@ -205,7 +205,7 @@ client.on("messageCreate", (message) => {
             );
           command.run(client, message, args, GuildPrefix, messageGuild);
           console.log(
-            `${message.author.tag} executed ${message.content} on ${message.guild.name}`
+            `${message.author.tag} executed "${message.content}" on ${message.guild.name}`
           );
           timeout.set(
             `${command.name}${message.author.id}`,
@@ -233,15 +233,12 @@ client.on("messageCreate", (message) => {
 client.on("channelCreate", (channel) => {
   if (channel.isText()) {
     Guild.findOne({ id: channel.guild.id }).then((messageGuild) => {
-      console.log("225");
       if (!messageGuild) return console.log(messageGuild);
-      console.log("227");
       let roleOBJ = channel.guild.roles.cache.find(
         (role) => role.id == messageGuild.muterole
       );
       console.log(roleOBJ + "\n" + messageGuild.muterole);
       if (roleOBJ == undefined) return;
-      console.log("231");
       channel.permissionOverwrites.create(roleOBJ, {
         SEND_MESSAGES: false,
         ADD_REACTIONS: false,

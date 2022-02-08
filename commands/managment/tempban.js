@@ -16,11 +16,10 @@ module.exports = {
     if (!message.guild.me.permissions.has(Permissions.FLAGS.BAN_MEMBERS))
       return message.reply("I dont have permission to do this!");
 
-    let time = args[1].replace(",", ".");
-    let reason = args.slice(1).join(" ");
+    let reason = args.slice(2).join(" ");
     if (!reason) reason = "Unspecified";
-
     const target = message.mentions.members.first();
+    let time = args[1].replace(",", ".");
 
     if (!target) {
       return message.reply(`Please mention the person who you want to ban`);
