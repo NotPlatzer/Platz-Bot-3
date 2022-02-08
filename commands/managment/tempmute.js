@@ -47,6 +47,12 @@ module.exports = {
     if (target.id === message.guild.me.id) {
       return message.reply("You can not Mute the Bot in this way");
     }
+    if(time > 2147483640) {
+      return message.reply("Maximum mutetime is 2147483640 minutes");
+    }
+    if(!time) {
+      return message.reply("Please provide a amount time (minutes)");
+    }
     let Role = message.guild.roles.cache.find(
       (role) => role.id == messageGuild.muteRole
     );
@@ -62,6 +68,7 @@ module.exports = {
 
     target.roles.add(Role);
     message.reply({ embeds: [embed] });
+
     // Unmute them after x minutes
     setTimeout(() => {
       target.roles.remove(Role, `Temporary mute expired.`);
