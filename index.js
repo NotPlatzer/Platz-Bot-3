@@ -217,7 +217,7 @@ client.on("messageCreate", (message) => {
         } else {
           //If  no cooldown
           console.log(
-            `${message.author.tag} executed ${message.content} on ${message.guild.name}`
+            `${message.author.tag} executed "${message.content}" on ${message.guild.name}`
           );
           command.run(client, message, args, GuildPrefix, messageGuild);
         }

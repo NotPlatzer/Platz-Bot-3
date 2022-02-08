@@ -83,6 +83,7 @@ module.exports = {
       .setFooter(`Muted by ${message.author.tag}`);
 
     target.roles.add(Role);
+    console.log(Role)
     message.reply({ embeds: [embed] });
 
     setTimeout(() => {
