@@ -29,7 +29,7 @@ module.exports = {
       );
     }
 
-    let time = args[1];
+    let time = args[1].replace(",", ".");
     let reason = args.slice(2).join(" ");
     if (!reason) reason = "Unspecified";
 
