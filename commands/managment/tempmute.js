@@ -8,7 +8,7 @@ module.exports = {
   aliases: ["tm"],
   cooldown: 1000 * 0,
   description: "Temporaraly Mutes a member",
-  usage: "tempmute {@user to mute} {time} {optional reason}",
+  usage: "tempmute {@user to mute} {time in minutes} {optional reason}",
   ownerOnly: false,
 
   async run(client, message, args, GuildPrefix, messageGuild) {
@@ -22,15 +22,15 @@ module.exports = {
     const mutedRole = message.guild.roles.cache.find(
       (role) => role.name == muteRole
     );
- 
+
     if (!muteRole && mutedRole == undefined) {
       return message.reply(
         `This server does not have a mute role, use \`${messageGuild.prefix}muterole <role>\` to set one or \`${messageGuild.prefix}muterole create [name]\` to create one.`
       );
     }
 
-    let time = args;
-    let reason = args.slice(1).join(" ");
+    let time = args[1];
+    let reason = args.slice(2).join(" ");
     if (!reason) reason = "Unspecified";
 
     const target = message.mentions.members.first();
@@ -52,13 +52,19 @@ module.exports = {
     );
     //make mute embed
     let embed = new MessageEmbed()
-      .setTitle("Action : Mute")
-      .setDescription(`Muted ${target} (${target.id})\nReason: ${reason}`)
+      .setTitle("Action : Temp-Mute")
+      .setDescription(
+        `Muted ${target} for ${time} minutes (${target.id})\nReason: ${reason}`
+      )
       .setColor("#ffa500")
       .setThumbnail(target.displayAvatarURL())
       .setFooter(`Muted by ${message.author.tag}`);
 
     target.roles.add(Role);
     message.reply({ embeds: [embed] });
+    // Unmute them after x minutes
+    setTimeout(() => {
+      target.roles.remove(Role, `Temporary mute expired.`);
+    }, time * 60000); // time in ms
   },
 };
