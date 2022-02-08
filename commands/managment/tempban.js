@@ -19,6 +19,7 @@ module.exports = {
     let reason = args.slice(2).join(" ");
     if (!reason) reason = "Unspecified";
     const target = message.mentions.members.first();
+    var time = args[1];
 
     if (!target) {
       return message.reply(`Please mention the person who you want to ban`);
@@ -37,6 +38,9 @@ module.exports = {
     }
     if (!time) {
       return message.reply("Please provide a amount of time (minutes)");
+    }
+    else{
+        time = time.replace(",", ".");
     }
 
     let embed = new MessageEmbed()
@@ -60,8 +64,6 @@ module.exports = {
           `Sorry ${message.author} I couldn't ban this person. Maybe the person has a role above me.`
         )
       );
-    let time = args[1].replace(",", ".");
-
     setTimeout(() => {
       message.guild.bans.remove(target);
     }, time * 60000); // time in ms
