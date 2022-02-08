@@ -19,7 +19,6 @@ module.exports = {
     let reason = args.slice(2).join(" ");
     if (!reason) reason = "Unspecified";
     const target = message.mentions.members.first();
-    let time = args[1].replace(",", ".");
 
     if (!target) {
       return message.reply(`Please mention the person who you want to ban`);
@@ -42,7 +41,9 @@ module.exports = {
 
     let embed = new MessageEmbed()
       .setTitle("Action : Temp-Ban")
-      .setDescription(`Banned ${target} for ${time} minutes (${target.id})\nReason: ${reason}`)
+      .setDescription(
+        `Banned ${target} for ${time} minutes (${target.id})\nReason: ${reason}`
+      )
       .setColor("#ff2050")
       .setThumbnail(target.displayAvatarURL())
       .setFooter(`Banned by ${message.author.tag}`);
@@ -59,9 +60,10 @@ module.exports = {
           `Sorry ${message.author} I couldn't ban this person. Maybe the person has a role above me.`
         )
       );
+    let time = args[1].replace(",", ".");
 
     setTimeout(() => {
-      message.guild.bans.remove(target)
+      message.guild.bans.remove(target);
     }, time * 60000); // time in ms
   },
 };
