@@ -29,7 +29,7 @@ module.exports = {
       );
     }
 
-    let time = args[1].replace(",", "."); //add that d is day h is hour and m or none is minutes
+    let time = args[1]; //add that d is day h is hour and m or none is minutes
     let reason = args.slice(2).join(" ");
     if (!reason) reason = "Unspecified";
 
@@ -49,14 +49,19 @@ module.exports = {
     }
     if (!time) {
       return message.reply("Please provide a amount of time (minutes)");
+    } else {
+      time = time.replace(",", ".");
     }
 
     var multiplicator;
     if (time.includes("d")) {
       multiplicator = 86400000;
+      time = time.replace("d", "")
     } else if (time.includes("h")) {
       multiplicator = 3600000;
+      time = time.replace("h", "");
     } else if (time.includes("m")) {
+      time = time.replace("m", "");
       multiplicator = 1000;
     } else {
       multiplicator = 1000;
