@@ -82,8 +82,7 @@ module.exports = {
       .setThumbnail(target.displayAvatarURL())
       .setFooter(`Muted by ${message.author.tag}`);
 
-    target.roles.add(Role);
-    console.log(Role)
+    target.roles.add(Role, `Muted`).then((member) => {console.log(member)})
     message.reply({ embeds: [embed] });
 
     setTimeout(() => {
