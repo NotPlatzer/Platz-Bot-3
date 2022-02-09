@@ -54,16 +54,21 @@ module.exports = {
     }
 
     var multiplicator;
+    var timeWord;
     if (time.includes("d")) {
       multiplicator = 86400000;
+      timeWord = "days"
       time = time.replace("d", "")
     } else if (time.includes("h")) {
       multiplicator = 3600000;
+      timeWord = "hours";
       time = time.replace("h", "");
     } else if (time.includes("m")) {
       time = time.replace("m", "");
+      timeWord = "minutes";
       multiplicator = 1000;
     } else {
+      timeWord = "minutes";
       multiplicator = 1000;
     }
     if (time * multiplicator > 2147483640) {
@@ -76,7 +81,7 @@ module.exports = {
     let embed = new MessageEmbed()
       .setTitle("Action : Temp-Mute")
       .setDescription(
-        `Muted ${target} for ${time} minutes (${target.id})\nReason: ${reason}`
+        `Muted ${target} for ${time} ${timeWord} (${target.id})\nReason: ${reason}`
       )
       .setColor("#ffa500")
       .setThumbnail(target.displayAvatarURL())
