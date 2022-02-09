@@ -90,8 +90,10 @@ module.exports = {
     target.roles.add(Role, `Muted`);
     message.reply({ embeds: [embed] });
 
-    setTimeout(() => {
-      target.roles.remove(Role, `Temporary mute expired.`);
-    }, time * multiplicator); // time in ms
+    function unmute(user, role) {
+      user.roles.remove(role, `Temporary mute expired.`);
+      console.log("unmuted")
+    }
+    setTimeout(unmute(target, Role), time * multiplicator); // time in ms
   },
 };
