@@ -57,8 +57,8 @@ module.exports = {
     var timeWord;
     if (time.includes("d")) {
       multiplicator = 86400000;
-      timeWord = "days"
-      time = time.replace("d", "")
+      timeWord = "days";
+      time = time.replace("d", "");
     } else if (time.includes("h")) {
       multiplicator = 3600000;
       timeWord = "hours";
@@ -79,7 +79,7 @@ module.exports = {
     );
     //make mute embed
     let embed = new MessageEmbed()
-      .setTitle("Action : Temp-Mute")
+      .setTitle("Action: Temp-Mute")
       .setDescription(
         `Muted ${target} for ${time} ${timeWord} (${target.id})\nReason: ${reason}`
       )
@@ -87,7 +87,7 @@ module.exports = {
       .setThumbnail(target.displayAvatarURL())
       .setFooter(`Muted by ${message.author.tag}`);
 
-    target.roles.add(Role, `Muted`).then((member) => {console.log(member)})
+    target.roles.add(Role, `Muted`);
     message.reply({ embeds: [embed] });
 
     setTimeout(() => {
