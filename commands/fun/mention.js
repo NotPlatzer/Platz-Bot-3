@@ -19,7 +19,7 @@ module.exports = {
       return message.reply(`Please tell me how often to @ them`);
     }
 
-    count = 0;
+    count = 1;
     while (count <= howOften) {
         message.channel.send(`<@${target.id}>`);
         count++;
