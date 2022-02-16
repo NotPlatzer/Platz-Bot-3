@@ -7,7 +7,7 @@ module.exports = {
   cooldown: 1000 * 5,
   description: "ping/test command",
   usage: "ping",
-  ownerOnly: false,
+  ownerOnly: true,
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     const embed = new MessageEmbed()
