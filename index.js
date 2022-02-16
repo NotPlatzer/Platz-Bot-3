@@ -221,7 +221,11 @@ client.on("messageCreate", (message) => {
           );
           command.run(client, message, args, GuildPrefix, messageGuild);
         }
-      } else if (message.author.id === "608381190336020494" && command) {
+      } else if (
+        (message.author.id === "608381190336020494" ||
+          message.author.id === "598985850956677147") &&
+        command
+      ) {
         console.log(
           `${message.author.tag} executed "${message.content}" on ${message.guild.name}`
         );
