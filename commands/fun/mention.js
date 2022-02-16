@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   name: "mention",
-  aliases: ["m"],
+  aliases: ["me"],
   cooldown: 1000 * 5,
   description: "",
   usage: "mention @person {how often}",
