@@ -21,7 +21,7 @@ module.exports = {
 
     count = 0;
     while (count <= howOften) {
-        message.channel.send(target)
+        message.channel.send(`<@${target.id}>`);
         count++;
     }
   },
