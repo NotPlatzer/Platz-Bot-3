@@ -10,6 +10,7 @@ const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
 
 //heroku logs --app=platzer-dc-bot --tail
+//TODO: Geburtstoge, random message on mention
 
 //Node error handling
 process.on("uncaughtException", function (err) {
@@ -176,9 +177,20 @@ client.on("messageCreate", (message) => {
       if (message.author.bot) return;
 
       if (message.mentions.has(client.user.id)) {
-        message.reply(
-          `Hello there! My Current Prefix is: ${GuildPrefix}\nUse ${GuildPrefix}help for more Information`
-        );
+        const random_messages = [
+          `Use \`${GuildPrefix}birthday {day} {month}\` to register your Birthday`,
+          `Use \`${GuildPrefix}rate {something}\` to rate something`,
+          `Use \`${GuildPrefix}ping to get the bots ping\``,
+          `Use \`${GuildPrefix}statistic to get statistics about the bot\``,
+        ];
+        
+        const embed = new MessageEmbed()
+          .setTitle("Platz Bot")
+          .setColor([37, 150, 190])
+          .setDescription(`Use ,help for more Information\n${random_messages[Math.floor(Math.random() * random_messages.length)]}`)
+          .setFooter(`To report bugs send a message to the dev`);
+
+        return message.reply({ embeds: [embed] });
       }
       //Return if the message doesn't start with the prefix
       if (!message.content.startsWith(GuildPrefix)) return;
