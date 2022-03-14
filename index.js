@@ -355,7 +355,7 @@ client.distube
   })
 
   .on("error", (channel, error) => {
-    if (error === "No result found") {
+    if (error.message === "No result found") {
       return channel.send("No result found!");
     }
     console.log("\x1B[31mAn Distube error encountered:\x1B[0m " + error);
