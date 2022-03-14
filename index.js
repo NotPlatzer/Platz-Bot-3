@@ -178,7 +178,6 @@ client.on("messageCreate", (message) => {
 
       if (message.mentions.has(client.user.id)) {
         const random_messages = [
-          `Use \`${GuildPrefix}birthday {day} {month}\` to register your birthday`,
           `Use \`${GuildPrefix}rate {something}\` to rate something`,
           `Use \`${GuildPrefix}ping to get the bots ping\``,
           `Use \`${GuildPrefix}statistic to get statistics about the bot\``,
@@ -188,7 +187,7 @@ client.on("messageCreate", (message) => {
           .setTitle("Platz Bot")
           .setColor([37, 150, 190])
           .setDescription(
-            `Use ,help for more Information\n${
+            `Use \`,help\` for more Information\nExample Usage: ${
               random_messages[
                 Math.floor(Math.random() * random_messages.length)
               ]

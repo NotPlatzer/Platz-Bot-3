@@ -118,7 +118,10 @@ module.exports = {
           if (playlist.name === playlistName) {
             //do something with the playlist
             found = true;
-            client.distube.play(message, playlist.link);
+            client.distube.play(message.member.voice.channel, playlist.link, {
+              textChannel: message.channel,
+              member: message.member,
+            });
           }
         });
         if (!found) return message.reply("No Playlist found!");
