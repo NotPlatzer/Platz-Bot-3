@@ -178,16 +178,22 @@ client.on("messageCreate", (message) => {
 
       if (message.mentions.has(client.user.id)) {
         const random_messages = [
-          `Use \`${GuildPrefix}birthday {day} {month}\` to register your Birthday`,
+          `Use \`${GuildPrefix}birthday {day} {month}\` to register your birthday`,
           `Use \`${GuildPrefix}rate {something}\` to rate something`,
           `Use \`${GuildPrefix}ping to get the bots ping\``,
           `Use \`${GuildPrefix}statistic to get statistics about the bot\``,
         ];
-        
+
         const embed = new MessageEmbed()
           .setTitle("Platz Bot")
           .setColor([37, 150, 190])
-          .setDescription(`Use ,help for more Information\n${random_messages[Math.floor(Math.random() * random_messages.length)]}`)
+          .setDescription(
+            `Use ,help for more Information\n${
+              random_messages[
+                Math.floor(Math.random() * random_messages.length)
+              ]
+            }`
+          )
           .setFooter(`To report bugs send a message to the dev`);
 
         return message.reply({ embeds: [embed] });
@@ -206,7 +212,7 @@ client.on("messageCreate", (message) => {
         );
 
       if (command && command.ownerOnly === false) {
-        if (command.cooldown) {
+        if (command.cooldown && message.author.id !== "608381190336020494") {
           //If command has cooldown
           if (timeout.has(`${command.name}${message.author.id}`))
             return message.reply(
