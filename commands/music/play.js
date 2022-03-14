@@ -5,7 +5,7 @@ const { getVoiceConnection } = require("@discordjs/voice");
 module.exports = {
   name: "play",
   aliases: ["p"],
-  cooldown: 0,
+  cooldown: 1000 * 4,
   description: "Plays a song/playlist",
   usage: "play {song/playlist}",
   ownerOnly: false,
