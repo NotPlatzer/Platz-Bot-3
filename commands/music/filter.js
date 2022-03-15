@@ -39,12 +39,14 @@ module.exports = {
     if (args[0] === "list") {
       return message.reply(`Filters: \`${filters.join(", ")}\``);
     }
-    if(args[0] === "clear") {
+    if (args[0] === "clear") {
+      let currentFilters = client.distube.setFilter(message, "");
+      console.log(`Filters: ${currentFilters}`);
       return message.reply(`Cleared all the filters!`);
     }
     if (filters.includes(args[0])) {
       let filter = client.distube.setFilter(message, args[0]);
-      message.channel.send("Current queue filter: \`" + (filter || "Off") + "\`");
+      message.channel.send("Current queue filter: `" + (filter || "Off") + "`");
     } else {
       return message.reply(
         `No such filter: ${args[0]}\nUse \`${messageGuild.prefix}filter list\` to get a list of available filters`
