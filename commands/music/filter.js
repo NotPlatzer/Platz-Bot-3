@@ -44,9 +44,10 @@ module.exports = {
       if (queue.filters.length === 0) {
         return message.reply(`No filters active!`);
       }
-      for (var i = 0; i <= queue.filters.length; i++) {
-        client.distube.setFilter(message, queue.filters[i]);
-        console.log(`${queue.filters[i]}, deactivated`);
+      for (const filter of queue.filters) {
+        client.distube.setFilter(message, filter);
+        console.log(`${filter}, deactivated`);
+        i++;
       }
       return message.reply(`Cleared all the filters!`);
     }
