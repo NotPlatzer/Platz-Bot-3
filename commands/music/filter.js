@@ -40,23 +40,19 @@ module.exports = {
       return message.reply(`Filters: \`${filters.join(", ")}\``);
     }
     if (args[0] === "clear") {
-      console.log(
-        `${typeof queue.filters} Filters active (${queue.filters.length}): ${
-          queue.filters
-        }`
-      );
       if (queue.filters.length === 0) {
         return message.reply(`No filters active!`);
       }
       while (queue.filters.length > 0) {
         client.distube.setFilter(message, queue.filters[0]);
-        console.log(`${queue.filters[0]}, deactivated`);
       }
       return message.reply(`Cleared all the filters!`);
     }
     if (filters.includes(args[0])) {
       let filter = client.distube.setFilter(message, args[0]);
-      message.channel.send("Current queue filter: `" + (filter || "Off") + "`");
+      message.channel.send(
+        "Current queue filter: `" + (filter.join(", ") || "Off") + "`"
+      );
     } else {
       return message.reply(
         `No such filter: ${args[0]}\nUse \`${messageGuild.prefix}filter list\` to get a list of available filters`
