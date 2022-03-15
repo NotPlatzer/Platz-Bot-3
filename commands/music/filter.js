@@ -40,7 +40,9 @@ module.exports = {
       return message.reply(`Filters: \`${filters.join(", ")}\``);
     }
     if (args[0] === "clear") {
-      console.log(`Filters: ${client.distube.filters}`);
+      console.log(
+        `Filters: ${JSON.stringify(client.distube.filters, null, 4)}`
+      );
       return message.reply(`Cleared all the filters!`);
     }
     if (filters.includes(args[0])) {
