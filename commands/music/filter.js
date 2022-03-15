@@ -40,8 +40,7 @@ module.exports = {
       return message.reply(`Filters: \`${filters.join(", ")}\``);
     }
     if (args[0] === "clear") {
-      let currentFilters = client.distube.setFilter(message, "");
-      console.log(`Filters: ${currentFilters}`);
+      console.log(`Filters: ${client.distube.filters}`);
       return message.reply(`Cleared all the filters!`);
     }
     if (filters.includes(args[0])) {
