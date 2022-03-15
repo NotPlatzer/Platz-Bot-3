@@ -40,11 +40,13 @@ module.exports = {
       return message.reply(`Filters: \`${filters.join(", ")}\``);
     }
     if (args[0] === "clear") {
+      console.log(`Filters active: ${queue.filters}`);
       if (queue.filters.length === 0) {
         return message.reply(`No filters active!`);
       }
       for (var i = 0; i < queue.filters.length; i++) {
         client.distube.setFilter(message, queue.filters[i]);
+        console.log(`${queue.filters[i]}, deactivated`);
       }
       return message.reply(`Cleared all the filters!`);
     }
