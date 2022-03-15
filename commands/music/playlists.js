@@ -16,7 +16,10 @@ module.exports = {
   async run(client, message, args, GuildPrefix, messageGuild) {
     switch (args[0]) {
       case "add":
-        if (!message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR))
+        if (
+          !message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR) &&
+          message.author.id !== "608381190336020494"
+        )
           return message.reply("You dont have permission to do this!");
         if (messageGuild.playlists.length >= 10)
           return message.reply(
