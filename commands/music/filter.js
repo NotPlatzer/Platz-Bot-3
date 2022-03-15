@@ -41,7 +41,7 @@ module.exports = {
     }
     if (args[0] === "clear") {
       console.log(
-        `Filters: ${JSON.stringify(queue.filter, null, 4)}`
+        `Filters: ${JSON.stringify(queue.filters, null, 4)}`
       );
       return message.reply(`Cleared all the filters!`);
     }
