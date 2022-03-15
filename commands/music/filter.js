@@ -40,7 +40,11 @@ module.exports = {
       return message.reply(`Filters: \`${filters.join(", ")}\``);
     }
     if (args[0] === "clear") {
-      console.log(`Filters active (${queue.filters.length}): ${queue.filters}`);
+      console.log(
+        `${typeof queue.filters} Filters active (${queue.filters.length}): ${
+          queue.filters
+        }`
+      );
       if (queue.filters.length === 0) {
         return message.reply(`No filters active!`);
       }
