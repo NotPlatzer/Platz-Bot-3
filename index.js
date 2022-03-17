@@ -335,6 +335,7 @@ client.distube
       doc.playedSongs = newsongscount;
       doc.save();
     });
+    console.log(`Queue: ${queue.length}`);
     if (queue.length === 1) {
       Guild.findOne({ id: queue.id }).then((queueGuild) => {
         if (queueGuild.relatedSongs && queueGuild.relatedSongs === true) {
