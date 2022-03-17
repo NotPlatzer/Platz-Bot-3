@@ -49,6 +49,10 @@ const guildSchema = new Schema(
       type: Array,
       required: false,
     },
+    relatedSongs: {
+      type: Boolean,
+      required: false,
+    },
   },
   { timestamps: true }
 );
