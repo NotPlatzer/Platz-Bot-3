@@ -10,7 +10,7 @@ const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
 
 //heroku logs --app=platzer-dc-bot --tail
-//TODO: Geburtstoge, random message on mention
+//TODO: rm song from queue, dj mode, volume
 
 //Node error handling
 process.on("uncaughtException", function (err) {
@@ -335,12 +335,13 @@ client.distube
       doc.playedSongs = newsongscount;
       doc.save();
     });
-
-    Guild.findOne({ id: queue.id }).then((queueGuild) => {
-      if (queueGuild.relatedSongs && queueGuild.relatedSongs === true) {
-        client.distube.addRelatedSong(queue);
-      }
-    });
+    if (queue.length === 1) {
+      Guild.findOne({ id: queue.id }).then((queueGuild) => {
+        if (queueGuild.relatedSongs && queueGuild.relatedSongs === true) {
+          client.distube.addRelatedSong(queue);
+        }
+      });
+    }
   })
   .on("addSong", (queue, song) =>
     queue.textChannel.send(
