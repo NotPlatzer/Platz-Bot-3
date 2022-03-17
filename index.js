@@ -313,7 +313,15 @@ const status = (queue) =>
   }\` | Autoplay: \`${queue.autoplay ? "On" : "Off"}\``;
 
 client.distube
-  .on("finish", (queue) => queue.textChannel.send("Finished queue!"))
+  .on("finish", (queue) => {
+    Guild.findOne({ id: queue.textChannel.guildid }).then((queueGuild) => {
+      if (queueGuild.relatedSongs && queueGuild.relatedSongs === true) {
+        client.distube.addRelatedVideo(queue.textChannel.lastMessage);
+      } else {
+        queue.textChannel.send("Finished queue!");
+      }
+    });
+  })
   .on("playSong", (queue, song) => {
     const playembed = new MessageEmbed()
       .setTitle(song.name)
