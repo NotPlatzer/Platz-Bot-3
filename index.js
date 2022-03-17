@@ -10,7 +10,7 @@ const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
 
 //heroku logs --app=platzer-dc-bot --tail
-//TODO: rm song from queue, dj mode, volume
+//TODO: rm song from queue, dj mode, volume, previous song
 
 //Node error handling
 process.on("uncaughtException", function (err) {
@@ -314,7 +314,7 @@ const status = (queue) =>
 
 client.distube
   .on("finish", (queue) => {
-    queue.textChannel.send("Finished queue!");
+    queue.textChannel.send("Finished the queue!");
   })
   .on("playSong", (queue, song) => {
     const playembed = new MessageEmbed()

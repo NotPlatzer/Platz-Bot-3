@@ -3,7 +3,7 @@ const Guild = require("/app/db_models/guild.js");
 
 module.exports = {
   name: "related",
-  aliases: ["r", "rel"],
+  aliases: ["rela", "rel"],
   cooldown: 1000 * 1,
   description: "Toggles if there should be songs added that are related",
   usage: "related",
