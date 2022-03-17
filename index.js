@@ -314,8 +314,7 @@ const status = (queue) =>
 
 client.distube
   .on("finish", (queue) => {
-    Guild.findOne({ id: queue.textChannel.guildid }).then((queueGuild) => {
-      if(!queueGuild) return console.log(`${queue.textChannel}`)
+    Guild.findOne({ id: queue.id }).then((queueGuild) => {
       if (queueGuild.relatedSongs && queueGuild.relatedSongs === true) {
         client.distube.addRelatedVideo(queue.textChannel.lastMessage);
       } else {
