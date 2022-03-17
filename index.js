@@ -314,13 +314,7 @@ const status = (queue) =>
 
 client.distube
   .on("finish", (queue) => {
-    Guild.findOne({ id: queue.id }).then((queueGuild) => {
-      if (queueGuild.relatedSongs && queueGuild.relatedSongs === true) {
-        client.distube.addRelatedSong(queue);
-      } else {
-        queue.textChannel.send("Finished queue!");
-      }
-    });
+    queue.textChannel.send("Finished queue!");
   })
   .on("playSong", (queue, song) => {
     const playembed = new MessageEmbed()
@@ -333,7 +327,6 @@ client.distube
       )
       .setFooter(`To report bugs send a message to the dev`)
       .setImage(song.thumbnail);
-
     queue.textChannel.send({ embeds: [playembed] });
     console.log(`Playing ${song.name}, Requested by: ${song.member.user.tag}`);
 
@@ -341,6 +334,12 @@ client.distube
       var newsongscount = doc.playedSongs + 1;
       doc.playedSongs = newsongscount;
       doc.save();
+    });
+
+    Guild.findOne({ id: queue.id }).then((queueGuild) => {
+      if (queueGuild.relatedSongs && queueGuild.relatedSongs === true) {
+        client.distube.addRelatedSong(queue);
+      }
     });
   })
   .on("addSong", (queue, song) =>
