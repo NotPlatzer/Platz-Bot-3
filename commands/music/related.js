@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const Guild = require("/app/db_models/guild.js");
 
 module.exports = {
   name: "related",
