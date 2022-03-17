@@ -316,7 +316,7 @@ client.distube
   .on("finish", (queue) => {
     Guild.findOne({ id: queue.id }).then((queueGuild) => {
       if (queueGuild.relatedSongs && queueGuild.relatedSongs === true) {
-        client.distube.addRelatedVideo(queue.textChannel.lastMessage);
+        client.distube.addRelatedSong(queue);
       } else {
         queue.textChannel.send("Finished queue!");
       }
