@@ -29,12 +29,14 @@ module.exports = {
     }
     if (isNaN(args[0])) return message.reply("Invalid number of seconds");
     const seconds = parseInt(args[0]);
-    const currentTime = queue.currentTime;
     const duration = queue.songs[0].duration;
-    //logic for spooling in the song
-    console.log(`c: ${currentTime}\nd: ${duration}`);
+
+    if (seconds > duration || seconds < 0) {
+      message.reply(`Invalid number`);
+    }
+    queue.currentTime = seconds;
     return message.reply(
-      `Skipped to \`${seconds}\` seconds in \`${queue.songs[0]}\``
+      `Skipped to \`${seconds}\` seconds in \`${queue.songs[0].name}\``
     );
   },
 };
