@@ -8,6 +8,7 @@ const schedule = require("node-schedule");
 const distube = require("distube");
 const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
+const { Permissions } = require("discord.js");
 
 //heroku logs --app=platzer-dc-bot --tail
 //TODO: dj mode
