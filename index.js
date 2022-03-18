@@ -217,7 +217,7 @@ client.on("messageCreate", (message) => {
           messageGuild.djmode === true &&
           !message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)
         )
-          return;
+          return message.reply(`Dj mode is on!`);
         if (command.cooldown && message.author.id !== "608381190336020494") {
           //If command has cooldown
           if (timeout.has(`${command.name}${message.author.id}`))
