@@ -9,6 +9,7 @@ module.exports = {
   description: "Temp-Bans a member",
   usage: "tempban {@user to ban} {time in minutes} {optional reason}",
   ownerOnly: false,
+  category: "managment",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     if (!message.member.permissions.has(Permissions.FLAGS.BAN_MEMBERS))
@@ -38,9 +39,8 @@ module.exports = {
     }
     if (!time) {
       return message.reply("Please provide a amount of time (minutes)");
-    }
-    else{
-        time = time.replace(",", ".");
+    } else {
+      time = time.replace(",", ".");
     }
 
     let embed = new MessageEmbed()

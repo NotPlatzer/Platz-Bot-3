@@ -8,6 +8,7 @@ module.exports = {
   description: "ping/test command",
   usage: "ping",
   ownerOnly: false,
+  category: "other",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     const embed = new MessageEmbed()

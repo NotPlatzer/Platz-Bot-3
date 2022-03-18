@@ -12,6 +12,7 @@ module.exports = {
   usage:
     "playlists {name of Playlist to play} {add {name of playlist to add} {link to playlist}} or {remove {name of playlist to remove}} or {list}",
   ownerOnly: false,
+  category: "music",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     switch (args[0]) {

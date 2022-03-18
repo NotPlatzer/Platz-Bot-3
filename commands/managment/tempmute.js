@@ -10,6 +10,7 @@ module.exports = {
   description: "Temporaraly Mutes a member",
   usage: "tempmute {@user to mute} {time in minutes} {optional reason}",
   ownerOnly: false,
+  category: "managment",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     if (!message.member.permissions.has(Permissions.FLAGS.MANAGE_ROLES))
@@ -92,7 +93,7 @@ module.exports = {
 
     function unmute(user, role) {
       user.roles.remove(role, `Temporary mute expired.`);
-      console.log("unmuted")
+      console.log("unmuted");
     }
     setTimeout(unmute(target, Role), time * multiplicator); // time in ms
   },

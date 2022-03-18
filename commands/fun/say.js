@@ -7,6 +7,7 @@ module.exports = {
   description: "Repeats everything you say",
   usage: "say {something to say}",
   ownerOnly: false,
+  category: "fun",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     if (args.length <= 0) return message.reply("Please tell me what to say");

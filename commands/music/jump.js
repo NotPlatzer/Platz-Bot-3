@@ -7,6 +7,7 @@ module.exports = {
   description: "Jumps to a song in the queue",
   usage: "jump {number in queue to which to jump to}",
   ownerOnly: false,
+  category: "music",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     const queue = client.distube.getQueue(message);

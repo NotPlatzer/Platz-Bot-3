@@ -8,6 +8,7 @@ module.exports = {
   description: "Shows the current Queue",
   usage: "queue",
   ownerOnly: false,
+  category: "music",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     const queue = client.distube.getQueue(message);

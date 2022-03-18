@@ -10,6 +10,7 @@ module.exports = {
   description: "Mutes a member",
   usage: "mute {@user to mute} {optional reason}",
   ownerOnly: false,
+  category: "managment",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     if (!message.member.permissions.has(Permissions.FLAGS.MANAGE_ROLES))

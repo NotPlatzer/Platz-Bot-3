@@ -8,6 +8,7 @@ module.exports = {
   usage:
     "filter [list] {3d, bassboost, echo, karaoke, nightcore, vaporwave, earrape, slowreverb}",
   ownerOnly: false,
+  category: "music",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     const filters = [

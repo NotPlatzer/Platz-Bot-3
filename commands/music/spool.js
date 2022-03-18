@@ -8,6 +8,7 @@ module.exports = {
   description: "Spools to a certain time in the current song",
   usage: "spool {seconds}",
   ownerOnly: false,
+  category: "music",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     if (!message.member.voice.channel)

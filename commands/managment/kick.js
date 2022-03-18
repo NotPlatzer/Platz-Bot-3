@@ -9,6 +9,7 @@ module.exports = {
   description: "Kicks a member",
   usage: "kick {@member to kick} {reason}",
   ownerOnly: false,
+  category: "managment",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     if (!message.member.permissions.has(Permissions.FLAGS.KICK_MEMBERS))

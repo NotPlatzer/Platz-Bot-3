@@ -7,6 +7,7 @@ module.exports = {
   description: "Plays the previous song",
   usage: "previous",
   ownerOnly: false,
+  category: "music",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     if (!message.member.voice.channel)
@@ -23,7 +24,6 @@ module.exports = {
     const queue = client.distube.getQueue(message);
     if (!queue) return message.reply("There is no Queue right now!");
 
-    
     client.distube.previous(queue);
   },
 };

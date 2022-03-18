@@ -11,6 +11,7 @@ module.exports = {
   description: "Changes the prefix",
   usage: "changePrefix {new prefix}",
   ownerOnly: false,
+  category: "managment",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     if (!message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR))

@@ -8,6 +8,7 @@ module.exports = {
   description: "Set the Volume of the queue",
   usage: "volume {1 - 100}",
   ownerOnly: false,
+  category: "music",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     if (!message.member.voice.channel)

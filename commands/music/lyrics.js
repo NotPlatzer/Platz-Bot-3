@@ -8,6 +8,7 @@ module.exports = {
   description: "Shows the Lyrics of the Current Song",
   usage: "lyrics",
   ownerOnly: false,
+  category: "music",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     function toDiscordTextformat(text) {

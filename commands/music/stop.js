@@ -7,6 +7,7 @@ module.exports = {
   description: "Stops song",
   usage: "stop",
   ownerOnly: false,
+  category: "music",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     const queue = client.distube.getQueue(message);

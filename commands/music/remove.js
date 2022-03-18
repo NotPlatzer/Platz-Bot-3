@@ -8,6 +8,7 @@ module.exports = {
   description: "Removes a specific song from the queue",
   usage: "remove {index in queue}",
   ownerOnly: false,
+  category: "music",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     if (!message.member.voice.channel)

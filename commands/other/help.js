@@ -9,6 +9,7 @@ module.exports = {
   description: "Shows general information about the Bot",
   usage: "help",
   ownerOnly: false,
+  category: "other",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     const embed = new MessageEmbed()

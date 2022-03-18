@@ -9,6 +9,7 @@ module.exports = {
   description: "Bans a member",
   usage: "ban {@user to ban} {optional reason}",
   ownerOnly: false,
+  category: "managment",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     if (!message.member.permissions.has(Permissions.FLAGS.BAN_MEMBERS))

@@ -9,6 +9,7 @@ module.exports = {
   description: "Shows statistics about the Bot",
   usage: "stat",
   ownerOnly: false,
+  category: "other",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     Guild.findOne({ id: "809835346450710598" }).then((modGuild) => {

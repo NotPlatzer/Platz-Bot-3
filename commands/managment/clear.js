@@ -8,6 +8,7 @@ module.exports = {
   description: "Clears messages",
   usage: "clear {amount of messages to clear}",
   ownerOnly: false,
+  category: "managment",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     if (!message.member.permissions.has(Permissions.FLAGS.MANAGE_MESSAGES))

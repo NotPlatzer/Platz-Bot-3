@@ -9,6 +9,7 @@ module.exports = {
   description: "Information about commands",
   usage: "Info",
   ownerOnly: false,
+  category: "other",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     const infoembed = new MessageEmbed()

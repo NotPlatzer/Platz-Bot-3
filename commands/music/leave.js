@@ -8,6 +8,7 @@ module.exports = {
   description: "Leaves the VC",
   usage: "leave",
   ownerOnly: false,
+  category: "music",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     if (!message.member.voice.channel)

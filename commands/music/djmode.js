@@ -9,6 +9,7 @@ module.exports = {
   description: "Toggles if dj mode is active",
   usage: "djmode",
   ownerOnly: false,
+  category: "music",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     const queue = client.distube.getQueue(message);

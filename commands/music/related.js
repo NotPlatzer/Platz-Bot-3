@@ -8,6 +8,7 @@ module.exports = {
   description: "Toggles if there should be songs added that are related",
   usage: "related",
   ownerOnly: false,
+  category: "music",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     const queue = client.distube.getQueue(message);

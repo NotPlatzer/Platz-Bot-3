@@ -9,6 +9,7 @@ module.exports = {
   description: "Plays a song/playlist",
   usage: "play {song/playlist}",
   ownerOnly: false,
+  category: "music",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     if (!message.member.voice.channel)

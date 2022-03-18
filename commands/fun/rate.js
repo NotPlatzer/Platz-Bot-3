@@ -7,6 +7,7 @@ module.exports = {
   description: "Rates something",
   usage: "rate {something to rate}",
   ownerOnly: false,
+  category: "fun",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     const random = Math.floor(Math.random() * 11);

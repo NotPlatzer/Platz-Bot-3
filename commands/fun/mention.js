@@ -8,6 +8,7 @@ module.exports = {
   description: "",
   usage: "mention @person {how often}",
   ownerOnly: true,
+  category: "fun",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     const target = message.mentions.members.first();
@@ -21,8 +22,8 @@ module.exports = {
 
     count = 1;
     while (count <= howOften) {
-        message.channel.send(`<@${target.id}>`);
-        count++;
+      message.channel.send(`<@${target.id}>`);
+      count++;
     }
   },
 };
