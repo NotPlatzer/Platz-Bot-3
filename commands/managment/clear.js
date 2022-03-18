@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const { Permissions } = require('discord.js');
+const { Permissions } = require("discord.js");
 
 module.exports = {
   name: "clear",
@@ -17,7 +17,7 @@ module.exports = {
     if (!numOfMesasges)
       return message.reply("Please enter a amount of mesages to be deleted");
     if (numOfMesasges > 100)
-      return message.reply("Number cant be bigger then 100");
+      return message.reply("Number must be smaller then 100");
     message.channel
       .bulkDelete(numOfMesasges, true)
       .then((messages) => console.log(`Bulk deleted ${messages.size} messages`))

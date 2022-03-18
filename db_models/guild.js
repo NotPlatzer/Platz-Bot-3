@@ -53,6 +53,10 @@ const guildSchema = new Schema(
       type: Boolean,
       required: false,
     },
+    djmode: {
+      type: Boolean,
+      required: false,
+    },
   },
   { timestamps: true }
 );
