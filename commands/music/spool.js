@@ -32,9 +32,12 @@ module.exports = {
     const duration = queue.songs[0].duration;
 
     if (seconds > duration || seconds < 0) {
-     return message.reply(`Invalid number`);
+      return message.reply(`Invalid number`);
     }
+    console.log(queue.currentTime);
     queue.currentTime = seconds;
+    console.log(queue.currentTime);
+
     return message.reply(
       `Skipped to \`${seconds}\` seconds in \`${queue.songs[0].name}\``
     );
