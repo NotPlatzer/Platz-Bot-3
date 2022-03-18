@@ -31,7 +31,7 @@ module.exports = {
     const rmno = parseInt(args[0]);
     queue.songs.splice(rmno, 1);
     return message.reply(
-      `Removed song number ${rmno} in queue\n\`${queue.song[rmno].name}\``
+      `Removed song number ${rmno} in queue\n\`${queue.songs[rmno].name}\``
     );
   },
 };
