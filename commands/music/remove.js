@@ -30,5 +30,6 @@ module.exports = {
     if (isNaN(args[0])) return message.reply("Invalid song number");
     const rmno = parseInt(args[0]);
     queue.songs.splice(rmno, 1);
+    return message.reply(`Removed song number ${rmno} in queue`);
   },
 };
