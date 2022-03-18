@@ -211,6 +211,12 @@ client.on("messageCreate", (message) => {
         );
 
       if (command && command.ownerOnly === false) {
+        if (
+          messageGuild.djmode &&
+          messageGuild.djmode === true &&
+          !message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)
+        )
+          return;
         if (command.cooldown && message.author.id !== "608381190336020494") {
           //If command has cooldown
           if (timeout.has(`${command.name}${message.author.id}`))
