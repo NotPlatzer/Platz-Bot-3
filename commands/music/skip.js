@@ -23,7 +23,8 @@ module.exports = {
       }
     }
     if (queue.songs.length === 1) {
-      return client.distube.stop(message);
+      client.distube.stop(message);
+      return message.reply("**Stopped Playing**");
     }
 
     if (!args[0]) {
