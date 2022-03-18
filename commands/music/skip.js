@@ -10,8 +10,7 @@ module.exports = {
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     const queue = client.distube.getQueue(message);
-    if (!queue)
-      return message.reply("There is nothing to skip!");
+    if (!queue) return message.reply("There is nothing to skip!");
     if (!message.member.voice.channel)
       return message.reply("You have to be in a voice channel!");
     if (message.guild.me.voice.channel !== null) {
@@ -22,6 +21,9 @@ module.exports = {
           "You have to be in the same Voice Channel as the Bot!"
         );
       }
+    }
+    if (queue.songs.length === 1) {
+      return client.distube.stop(message);
     }
 
     if (!args[0]) {
