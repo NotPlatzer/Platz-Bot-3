@@ -24,11 +24,11 @@ module.exports = {
       }
     }
     const queue = client.distube.getQueue(message);
-    if(!queue) {
-        return message.reply(`There is no queue`)
+    if (!queue) {
+      return message.reply(`There is no queue`);
     }
     if (isNaN(args[0])) return message.reply("Invalid song number");
     const rmno = parseInt(args[0]);
-    queue.songs.splice(1, rmno)
+    queue.songs.splice(rmno, 1);
   },
 };
