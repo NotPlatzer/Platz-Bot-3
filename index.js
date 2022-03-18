@@ -10,7 +10,7 @@ const { SpotifyPlugin } = require("@distube/spotify");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
 
 //heroku logs --app=platzer-dc-bot --tail
-//TODO: rm song from queue, dj mode, volume, vorspulen
+//TODO: dj mode, volume, vorspulen
 
 //Node error handling
 process.on("uncaughtException", function (err) {
