@@ -33,6 +33,6 @@ module.exports = {
       return message.reply(`Invalid Number`);
     }
     queue.volume = volume;
-    return message.reply(`Set volume to: \`${volume}\``);
+    return message.reply(`Set volume to: \`${volume}%\``);
   },
 };
