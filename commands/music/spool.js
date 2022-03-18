@@ -32,7 +32,7 @@ module.exports = {
     const duration = queue.songs[0].duration;
 
     if (seconds > duration || seconds < 0) {
-      message.reply(`Invalid number`);
+     return message.reply(`Invalid number`);
     }
     queue.currentTime = seconds;
     return message.reply(
