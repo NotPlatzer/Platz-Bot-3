@@ -16,7 +16,7 @@ module.exports = {
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     const startfen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
-    FENToPng(startfen, "assets/board.png", "newboard.png");
+    await FENToPng(startfen, "assets/board.png", "newboard.png");
     message.channel
       .send({
         files: [
