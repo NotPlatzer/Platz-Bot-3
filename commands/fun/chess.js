@@ -15,8 +15,9 @@ module.exports = {
   category: "fun",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
+    const FEN = args[0];
     const startfen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
-    FENToPng(startfen, "assets/board.png", "newboard.png", message);
+    FENToPng(FEN, "assets/board.png", "newboard.png", message);
   },
 };
 
