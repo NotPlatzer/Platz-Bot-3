@@ -16,19 +16,7 @@ module.exports = {
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     const startfen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
-    await FENToPng(startfen, "assets/board.png", "newboard.png");
-    message.channel
-      .send({
-        files: [
-          {
-            attachment: "assets/newboard.png",
-            name: "newboard.png",
-            description: "board",
-          },
-        ],
-      })
-      .then(console.log)
-      .catch(console.error);
+    FENToPng(startfen, "assets/board.png", "newboard.png");
   },
 };
 
@@ -146,9 +134,19 @@ function FENToPng(FEN, source, PngName) {
         lineNo--;
         i++;
       }
-      board.write("/app/assets/" + PngName).then(function () {
-        console.log(board);
-      }); // save
+      board.write("/app/assets/" + PngName); // save
+      message.channel
+        .send({
+          files: [
+            {
+              attachment: "assets/newboard.png",
+              name: "newboard.png",
+              description: "board",
+            },
+          ],
+        })
+        .then(console.log)
+        .catch(console.error);
     })
     .catch((err) => {
       console.error(err);
