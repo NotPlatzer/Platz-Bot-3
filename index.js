@@ -200,10 +200,6 @@ client.on("messageCreate", (message) => {
       }
       //Return if the message doesn't start with the prefix
       if (!message.content.startsWith(GuildPrefix)) return;
-      if (message.author.id !== "608381190336020494")
-        return message.reply(
-          "The Bot is currently under development! Please send a message to NotPlatzer#1106 or wait a few hours."
-        );
       //"args" is a Array and it contains the arguments after the command
       const args = message.content.slice(GuildPrefix.length).trim().split(" ");
 
