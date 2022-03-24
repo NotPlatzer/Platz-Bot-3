@@ -20,6 +20,7 @@
     "distube": "^3.3.0",
     "ffmpeg-static": "^4.4.0",
     "fs": "^0.0.1-security",
+    "jimp": "^0.16.1",
     "libsodium-wrappers": "^0.7.9",
     "minecraft-server-status-simple": "^1.1.1",
     "mongoose": "^6.1.1",
