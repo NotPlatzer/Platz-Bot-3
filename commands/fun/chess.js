@@ -16,12 +16,12 @@ module.exports = {
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     const startfen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
-    FENToPng(startfen, "app/assets/board.png", "newboard.png");
+    FENToPng(startfen, "assets/board.png", "newboard.png");
     message.channel
       .send({
         files: [
           {
-            attachment: "app/assets/newboard.png",
+            attachment: "assets/newboard.png",
             name: "newboard.png",
             description: "board",
           },
