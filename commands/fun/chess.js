@@ -147,6 +147,7 @@ function FENToPng(FEN, source, PngName) {
         i++;
       }
       board.write("/app/assets/" + PngName); // save
+      console.log("saved picture");
     })
     .catch((err) => {
       console.error(err);
