@@ -146,8 +146,9 @@ function FENToPng(FEN, source, PngName) {
         lineNo--;
         i++;
       }
-      board.write("/app/assets/" + PngName); // save
-      console.log(board);
+      board.write("/app/assets/" + PngName).then(function () {
+        console.log(board);
+      }); // save
     })
     .catch((err) => {
       console.error(err);
