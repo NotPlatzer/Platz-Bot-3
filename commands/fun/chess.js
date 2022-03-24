@@ -16,7 +16,7 @@ module.exports = {
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     const startfen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
-    FENToPng(startfen, "assets/board.png", "newboard.png");
+    FENToPng(startfen, "assets/board.png", "newboard.png", message);
   },
 };
 
@@ -69,7 +69,7 @@ function numToAlph(num) {
 }
 
 //returns a Png
-function FENToPng(FEN, source, PngName) {
+function FENToPng(FEN, source, PngName, message) {
   source = "./" + source;
   jimp
     .read(source)
