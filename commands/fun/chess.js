@@ -145,7 +145,7 @@ function FENToPng(FEN, source, PngName, message) {
             },
           ],
         })
-        .then(console.log)
+        .then()
         .catch(console.error);
     })
     .catch((err) => {
