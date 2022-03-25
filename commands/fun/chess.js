@@ -39,7 +39,7 @@ module.exports = {
         players: [message.author.id, target.user.id],
       };
     }
-    console.log(file.mat);
+    console.log(file.matches.length);
     message.reply(
       "Started a Chess match between: " +
         message.author.username +
