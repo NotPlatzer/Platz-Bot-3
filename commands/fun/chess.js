@@ -37,7 +37,7 @@ module.exports = {
       "Started a Chess match between: " +
         message.author.username +
         " & " +
-        target.username
+        target.user.username
     );
 
     FENToPng(
