@@ -15,9 +15,37 @@ module.exports = {
   category: "fun",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
-    const FEN = args[0];
-    const startfen = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
-    FENToPng(FEN, "assets/board.png", "newboard.png", message);
+    //the current FEN is stored in the db along with the players that startet the instance.
+    //,chess starts the match and moves a made with ,move e2e4
+
+    const target = message.mentions.members.first();
+    if (!target) return message.reply("Please mention your enemy!");
+    await Guild.findOneAndUpdate(
+      {
+        id: message.guild.id,
+      },
+      {
+        $addToSet: {
+          chessMatches: {
+            players: [message.author.id, target.id],
+            FEN: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR",
+          },
+        },
+      }
+    );
+    message.reply(
+      "Started a Chess match between: " +
+        message.author.username +
+        " & " +
+        target.username
+    );
+
+    FENToPng(
+      "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR",
+      "assets/board.png",
+      "newboard.png",
+      message
+    );
   },
 };
 

@@ -57,6 +57,16 @@ const guildSchema = new Schema(
       type: Boolean,
       required: false,
     },
+    chessMatches: [
+      {
+        players: {
+          type: array,
+        },
+        FEN: {
+          type: String,
+        },
+      },
+    ],
   },
   { timestamps: true }
 );
