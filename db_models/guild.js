@@ -60,7 +60,7 @@ const guildSchema = new Schema(
     chessMatches: [
       {
         players: {
-          type: array,
+          type: Array,
         },
         FEN: {
           type: String,
