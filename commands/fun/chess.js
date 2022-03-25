@@ -179,7 +179,7 @@ function FENToPng(FEN, source, PngName, message) {
           console.log("FILE EXISTS");
         }
       } catch (err) {
-        console.error(err);
+        console.log("it doesnt")
       }
       message.channel
         .send({
