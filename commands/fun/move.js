@@ -4,58 +4,43 @@ const jimp = require("jimp");
 const fs = require("fs");
 
 module.exports = {
-  name: "chess",
-  aliases: ["ch"],
-  cooldown: 1000 * 5,
-  description: "Starts a chess match",
-  usage: "chess {oponent}",
+  name: "move",
+  aliases: ["mo"],
+  cooldown: 1000 * 0,
+  description: "Changes the prefix",
+  usage: "changePrefix {new prefix}",
   ownerOnly: false,
   category: "fun",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
     //the current FEN is stored in the db along with the players that startet the instance.
     //,chess starts the match and moves a made with ,move e2e4
-    var newMatch = true;
+    //the current boards name would be (message.author.id + target.user.id.toString() + ".png")
     const fileName = "/app/data/chessMatches.json";
     const file = require(fileName);
-    const target = message.mentions.members.first();
-    if (!target) return message.reply("Please mention your enemy!");
 
     for (var i = 0; i < file.matches.length; i++) {
       if (
-        (file.matches[i].players[0] == message.author.id &&
-          file.matches[i].players[1] == target.user.id) ||
-        (file.matches[i].players[1] == message.author.id &&
-          file.matches[i].players[0] == target.user.id)
+        file.matches[i].players[0] == message.author.id ||
+        file.matches[i].players[1] == message.author.id
       ) {
-        newMatch = false;
+        const FEN = file.matches[i].FEN;
       }
     }
-
-    if (newMatch) {
-      file.matches[file.matches.length] = {
-        guildId: message.guild.id,
-        FEN: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR",
-        players: [message.author.id, target.user.id],
-      };
+    if (!FEN) {
+      return message.reply("There is no match currently!");
     }
-    console.log(file);
-    message.reply(
-      "Started a Chess match between: " +
-        message.author.username +
-        " & " +
-        target.user.username
-    );
+
+    const move = args[0];
+    const pieceSqare = move[0] + move[1];
+    const targetSqare = move[2] + move[3];
 
     FENToPng(
-      "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR",
+      ArrtoFEN(PawnMove(FENToArr(FEN), move)),
       "assets/board.png",
       message.author.id + target.user.id.toString() + ".png",
       message
     );
-    fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
-      if (err) return console.log(err);
-    });
   },
 };
 
@@ -190,4 +175,125 @@ function FENToPng(FEN, source, PngName, message) {
     .catch((err) => {
       console.error(err);
     });
+}
+//returns a Arr board
+function FENToArr(FEN) {
+  const piecePlacement = FEN.split(" ")[0];
+  var i = 0;
+  var lineNo = 8;
+  const lines = piecePlacement.split("/");
+  var Board = [
+    ["0", "0", "0", "0", "0", "0", "0", "0"],
+    ["0", "0", "0", "0", "0", "0", "0", "0"],
+    ["0", "0", "0", "0", "0", "0", "0", "0"],
+    ["0", "0", "0", "0", "0", "0", "0", "0"],
+    ["0", "0", "0", "0", "0", "0", "0", "0"],
+    ["0", "0", "0", "0", "0", "0", "0", "0"],
+    ["0", "0", "0", "0", "0", "0", "0", "0"],
+    ["0", "0", "0", "0", "0", "0", "0", "0"],
+  ];
+  //for every line, line no is stored in i +1
+  while (i < 8) {
+    const line = lines[i];
+    if (line !== "8") {
+      var sq = 1;
+      var x = 0;
+      //for every sq in line, sq is store in sq
+      while (sq <= 8 && x < line.length) {
+        if (!isNaN(line[x])) {
+          sq = +sq + +line[x];
+        }
+        //#region
+        else if (line[x] == "k") {
+          Board[i][sq - 1] = "k";
+          sq++;
+        } else if (line[x] == "p") {
+          Board[i][sq - 1] = "p";
+          sq++;
+        } else if (line[x] == "r") {
+          Board[i][sq - 1] = "r";
+          sq++;
+        } else if (line[x] == "n") {
+          Board[i][sq - 1] = "n";
+          sq++;
+        } else if (line[x] == "b") {
+          Board[i][sq - 1] = "b";
+          sq++;
+        } else if (line[x] == "q") {
+          Board[i][sq - 1] = "q";
+          sq++;
+        } else if (line[x] == "K") {
+          Board[i][sq - 1] = "K";
+          sq++;
+        } else if (line[x] == "Q") {
+          Board[i][sq - 1] = "Q";
+          sq++;
+        } else if (line[x] == "P") {
+          Board[i][sq - 1] = "P";
+          sq++;
+        } else if (line[x] == "N") {
+          Board[i][sq - 1] = "N";
+          sq++;
+        } else if (line[x] == "B") {
+          Board[i][sq - 1] = "B";
+          sq++;
+        } else if (line[x] == "R") {
+          Board[i][sq - 1] = "R";
+          sq++;
+        }
+        //#endregion
+        x++;
+      }
+    }
+    lineNo--;
+    i++;
+  }
+  return Board.reverse();
+}
+//returns a FEN
+function ArrtoFEN(Arr) {
+  //arr to FEN: just write the arr as string, add / every 8 then replace all the 0s with amount of 0s
+  FEN = Arr.reverse()
+    .toString()
+    .replaceAll(",", "")
+    .match(/.{1,8}/g)
+    .join("/");
+  //writen by maxi kofler
+  FEN = FEN.replaceAll("00000000", "8");
+  FEN = FEN.replaceAll("0000000", "7");
+  FEN = FEN.replaceAll("000000", "6");
+  FEN = FEN.replaceAll("00000", "5");
+  FEN = FEN.replaceAll("0000", "4");
+  FEN = FEN.replaceAll("000", "3");
+  FEN = FEN.replaceAll("00", "2");
+  FEN = FEN.replaceAll("0", "1");
+
+  return FEN;
+}
+function ChessPosToCoord(move) {
+  if (move[0] == "a") return (move[0] = "0" + (move[1] - 1));
+  if (move[0] == "b") return (move[0] = "1" + (move[1] - 1));
+  if (move[0] == "e") return (move[0] = "4" + (move[1] - 1));
+  if (move[0] == "c") return (move[0] = "2" + (move[1] - 1));
+  if (move[0] == "d") return (move[0] = "3" + (move[1] - 1));
+  if (move[0] == "f") return (move[0] = "5" + (move[1] - 1));
+  if (move[0] == "g") return (move[0] = "6" + (move[1] - 1));
+  if (move[0] == "h") return (move[0] = "7" + (move[1] - 1));
+}
+//returns a arr board
+function PawnMove(board, move) {
+  pieceSqare = ChessPosToCoord(move[0] + move[1]);
+
+  movetoSqare = ChessPosToCoord(move[2] + move[3]);
+  if (move[0] !== move[2] || move[1] >= move[3]) {
+    return "pawns can only move forward";
+  }
+  if (board[movetoSqare[1]][movetoSqare[0]] !== "0") {
+    return "Piece at moveto sqare";
+  } else {
+    //edit board to move pawn
+    board[movetoSqare[1]][movetoSqare[0]] = board[pieceSqare[1]][pieceSqare[0]];
+    board[pieceSqare[1]][pieceSqare[0]] = "0";
+  }
+  return board;
 }
