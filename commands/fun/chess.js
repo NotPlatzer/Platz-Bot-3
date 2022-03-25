@@ -174,6 +174,7 @@ function FENToPng(FEN, source, PngName, message) {
         i++;
       }
       board.write("/app/assets/" + PngName); // save
+      console.log("/app/assets/" + PngName);
       message.channel
         .send({
           files: [
