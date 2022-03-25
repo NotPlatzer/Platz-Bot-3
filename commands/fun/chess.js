@@ -1,9 +1,7 @@
 const Discord = require("discord.js");
-const mongoose = require("mongoose");
-const { Permissions } = require("discord.js");
 const Guild = require("/app/db_models/guild.js");
 const jimp = require("jimp");
-const { MessageEmbed } = require("discord.js");
+const fs = require("fs");
 
 module.exports = {
   name: "chess",
@@ -18,45 +16,16 @@ module.exports = {
     //the current FEN is stored in the db along with the players that startet the instance.
     //,chess starts the match and moves a made with ,move e2e4
     var newMatch = true;
+    const fileName = "/app/data/chessMatches.json";
+    const file = require(fileName);
     const target = message.mentions.members.first();
     if (!target) return message.reply("Please mention your enemy!");
-    for (var i = 0; i < messageGuild.chessMatches.length; i++) {
-      if (
-        (messageGuild.chessMatches[i].players[0] == message.author.id &&
-          messageGuild.chessMatches[i].players[1] == target.id) ||
-        (messageGuild.chessMatches[i].players[1] == message.author.id &&
-          messageGuild.chessMatches[i].players[0] == target.id)
-      ) {
+
+    for(var i = 0; i < file.matches.length) {
+      if((file.matches[i].players[0] == message.author.username && file.matches[i].players[1] == target.user.username) || (file.matches[i].players[1] == message.author.username && file.matches[i].players[0] == target.user.username)) {
+        console.log("match is not new")
         newMatch = false;
       }
-    }
-    if (newMatch) {
-      await Guild.findOneAndUpdate(
-        {
-          id: message.guild.id,
-        },
-        {
-          $addToSet: {
-            chessMatches: {
-              players: [message.author.id, target.id],
-              FEN: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR",
-            },
-          },
-        }
-      );
-    } else {
-      await Guild.findOneAndUpdate(
-        {
-          id: message.guild.id,
-        },
-        {
-          $pull: {
-            chessMatches: {
-              players: [message.author.id, target.id],
-            },
-          },
-        }
-      );
     }
 
     message.reply(
