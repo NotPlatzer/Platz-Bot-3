@@ -39,6 +39,7 @@ module.exports = {
         players: [message.author.id, target.user.id],
       };
     }
+    console.log(file.mat);
     message.reply(
       "Started a Chess match between: " +
         message.author.username +
@@ -52,6 +53,9 @@ module.exports = {
       "newboard.png",
       message
     );
+    fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
+      if (err) return console.log(err);
+    });
   },
 };
 
