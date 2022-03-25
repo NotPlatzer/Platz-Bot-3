@@ -178,8 +178,12 @@ function FENToPng(FEN, source, PngName, message) {
         .send({
           files: [
             {
-              attachment: "assets/newboard.png",
-              name: "newboard.png",
+              attachment:
+                "assets/" +
+                message.author.id +
+                target.user.id.toString() +
+                ".png",
+              name: message.author.id + target.user.id.toString() + ".png",
               description: "board",
             },
           ],
