@@ -25,10 +25,10 @@ module.exports = {
       console.log(file.matches[i].players[1]);
       console.log(file.matches[i].players[0]);
       if (
-        (file.matches[i].players[0] == message.author.username &&
-          file.matches[i].players[1] == target.user.username) ||
-        (file.matches[i].players[1] == message.author.username &&
-          file.matches[i].players[0] == target.user.username)
+        (file.matches[i].players[0] == message.author.id &&
+          file.matches[i].players[1] == target.user.id) ||
+        (file.matches[i].players[1] == message.author.id &&
+          file.matches[i].players[0] == target.user.id)
       ) {
         console.log("match is not new");
         newMatch = false;
