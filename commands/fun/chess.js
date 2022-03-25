@@ -181,9 +181,12 @@ function FENToPng(FEN, source, PngName, message) {
               attachment:
                 "assets/" +
                 message.author.id +
-                target.user.id.toString() +
+                message.mentions.members.first().user.id.toString() +
                 ".png",
-              name: message.author.id + target.user.id.toString() + ".png",
+              name:
+                message.author.id +
+                message.mentions.members.first().user.id.toString() +
+                ".png",
               description: "board",
             },
           ],
