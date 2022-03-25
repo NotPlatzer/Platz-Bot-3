@@ -22,20 +22,23 @@ module.exports = {
     if (!target) return message.reply("Please mention your enemy!");
 
     for (var i = 0; i < file.matches.length; i++) {
-      console.log(file.matches[i].players[1]);
-      console.log(file.matches[i].players[0]);
       if (
         (file.matches[i].players[0] == message.author.id &&
           file.matches[i].players[1] == target.user.id) ||
         (file.matches[i].players[1] == message.author.id &&
           file.matches[i].players[0] == target.user.id)
       ) {
-        console.log("match is not new");
         newMatch = false;
       }
-      console.log("looped")
     }
 
+    if (newMatch) {
+      file.matches[file.matches.length] = {
+        guildId: message.guild.id,
+        FEN: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR",
+        players: [message.author.id, target.user.id],
+      };
+    }
     message.reply(
       "Started a Chess match between: " +
         message.author.username +
