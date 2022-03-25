@@ -17,22 +17,48 @@ module.exports = {
   async run(client, message, args, GuildPrefix, messageGuild) {
     //the current FEN is stored in the db along with the players that startet the instance.
     //,chess starts the match and moves a made with ,move e2e4
-
+    var newMatch = true;
     const target = message.mentions.members.first();
     if (!target) return message.reply("Please mention your enemy!");
-    await Guild.findOneAndUpdate(
-      {
-        id: message.guild.id,
-      },
-      {
-        $addToSet: {
-          chessMatches: {
-            players: [message.author.id, target.id],
-            FEN: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR",
-          },
-        },
+    for (var i = 0; i < messageGuild.chessMatches.length; i++) {
+      if (
+        (messageGuild.chessMatches[i].players[0] == message.author.id &&
+          messageGuild.chessMatches[i].players[1] == target.id) ||
+        (messageGuild.chessMatches[i].players[1] == message.author.id &&
+          messageGuild.chessMatches[i].players[0] == target.id)
+      ) {
+        newMatch = false;
       }
-    );
+    }
+    if (newMatch) {
+      await Guild.findOneAndUpdate(
+        {
+          id: message.guild.id,
+        },
+        {
+          $addToSet: {
+            chessMatches: {
+              players: [message.author.id, target.id],
+              FEN: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR",
+            },
+          },
+        }
+      );
+    } else {
+      await Guild.findOneAndUpdate(
+        {
+          id: message.guild.id,
+        },
+        {
+          $pull: {
+            chessMatches: {
+              players: [message.author.id, target.id],
+            },
+          },
+        }
+      );
+    }
+
     message.reply(
       "Started a Chess match between: " +
         message.author.username +
