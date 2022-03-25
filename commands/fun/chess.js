@@ -21,11 +21,19 @@ module.exports = {
     const target = message.mentions.members.first();
     if (!target) return message.reply("Please mention your enemy!");
 
-    for(var i = 0; i < file.matches.length; i++) {
-      if((file.matches[i].players[0] == message.author.username && file.matches[i].players[1] == target.user.username) || (file.matches[i].players[1] == message.author.username && file.matches[i].players[0] == target.user.username)) {
-        console.log("match is not new")
+    for (var i = 0; i < file.matches.length; i++) {
+      console.log(file.matches[i].players[1]);
+      console.log(file.matches[i].players[0]);
+      if (
+        (file.matches[i].players[0] == message.author.username &&
+          file.matches[i].players[1] == target.user.username) ||
+        (file.matches[i].players[1] == message.author.username &&
+          file.matches[i].players[0] == target.user.username)
+      ) {
+        console.log("match is not new");
         newMatch = false;
       }
+      console.log("looped")
     }
 
     message.reply(
