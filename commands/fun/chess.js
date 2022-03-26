@@ -109,11 +109,11 @@ function numToAlph(num) {
 }
 
 //returns a Png
-async function FENToPng(FEN, source, PngName, message) {
+function FENToPng(FEN, source, PngName, message) {
   source = "./" + source;
   jimp
     .read(source)
-    .then((board) => {
+    .then(async (board) => {
       const piecePlacement = FEN.split(" ")[0];
       var i = 0;
       var lineNo = 8;
@@ -182,7 +182,7 @@ async function FENToPng(FEN, source, PngName, message) {
       } catch (err) {
         console.log("it doesnt");
       }
-     await message.channel
+      await message.channel
         .send({
           files: [
             {
