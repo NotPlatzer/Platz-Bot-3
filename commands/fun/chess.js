@@ -39,7 +39,6 @@ module.exports = {
         players: [message.author.id, target.user.id],
       };
     }
-    console.log(file);
     message.reply(
       "Started a Chess match between: " +
         message.author.username +
@@ -174,13 +173,7 @@ function FENToPng(FEN, source, PngName, message) {
         i++;
       }
       board.write("/app/assets/" + PngName); // save
-      try {
-        if (fs.existsSync("/app/assets/" + PngName)) {
-          console.log("FILE EXISTS");
-        }
-      } catch (err) {
-        console.log("it doesnt")
-      }
+
       message.channel
         .send({
           files: [

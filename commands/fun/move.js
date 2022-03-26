@@ -27,7 +27,7 @@ module.exports = {
         const FEN = file.matches[i].FEN;
       }
     }
-    if (!FEN) {
+    if (FEN == undefined) {
       return message.reply("There is no match currently!");
     }
 
