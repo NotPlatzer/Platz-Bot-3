@@ -54,7 +54,6 @@ module.exports = {
     );
     fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
       if (err) return console.log(err);
-      console.log(file);
     });
   },
 };
@@ -173,6 +172,7 @@ function FENToPng(FEN, source, PngName, message) {
         lineNo--;
         i++;
       }
+      
       board.writeAsync(`/app/assets/${PngName}`);
       try {
         if (fs.existsSync(`/app/assets/${PngName}`)) {
