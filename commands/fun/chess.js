@@ -173,7 +173,7 @@ function FENToPng(FEN, source, PngName, message) {
         lineNo--;
         i++;
       }
-      board.write(`/app/assets/${PngName}`); // save
+      board.writeAsync(`/app/assets/${PngName}`);
       try {
         if (fs.existsSync(`/app/assets/${PngName}`)) {
           console.log("FILE EXISTS");
