@@ -33,7 +33,7 @@ module.exports = {
     }
 
     if (newMatch) {
-      console.log("newmatch")
+      console.log("newmatch");
       file.matches[file.matches.length] = {
         guildId: message.guild.id,
         FEN: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR",
@@ -56,6 +56,7 @@ module.exports = {
     fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
       if (err) return console.log(err);
     });
+    console.log(file);
   },
 };
 
@@ -173,7 +174,7 @@ function FENToPng(FEN, source, PngName, message) {
         lineNo--;
         i++;
       }
-      board.write("/app/assets/" + PngName); // save
+      await board.write("/app/assets/" + PngName); // save
       try {
         if (fs.existsSync("/app/assets/" + PngName)) {
           console.log("FILE EXISTS");
@@ -181,7 +182,7 @@ function FENToPng(FEN, source, PngName, message) {
       } catch (err) {
         console.log("it doesnt");
       }
-      message.channel
+     await message.channel
         .send({
           files: [
             {
