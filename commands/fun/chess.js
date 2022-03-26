@@ -55,8 +55,8 @@ module.exports = {
     );
     fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
       if (err) return console.log(err);
+      console.log(file); 
     });
-    console.log(file);
   },
 };
 
