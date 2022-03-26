@@ -17,7 +17,7 @@ module.exports = {
     //,chess starts the match and moves a made with ,move e2e4
     var newMatch = true;
     const fileName = "/app/data/chessMatches.json";
-    const file = require(fileName);
+    let file = JSON.parse(fs.readFileSync(fileName, "utf8"));
     const target = message.mentions.members.first();
     if (!target) return message.reply("Please mention your enemy!");
 
@@ -33,7 +33,6 @@ module.exports = {
     }
 
     if (newMatch) {
-      console.log("newmatch");
       file.matches[file.matches.length] = {
         guildId: message.guild.id,
         FEN: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR",
@@ -55,7 +54,7 @@ module.exports = {
     );
     fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
       if (err) return console.log(err);
-      console.log(file); 
+      console.log(file);
     });
   },
 };
