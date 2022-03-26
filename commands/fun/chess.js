@@ -111,7 +111,7 @@ function FENToPng(FEN, source, PngName, message) {
   source = "./" + source;
   jimp
     .read(source)
-    .then(async (board) => {
+    .then((board) => {
       const piecePlacement = FEN.split(" ")[0];
       var i = 0;
       var lineNo = 8;
@@ -172,20 +172,24 @@ function FENToPng(FEN, source, PngName, message) {
         lineNo--;
         i++;
       }
-
-      board.writeAsync(`/app/assets/${PngName}`);
-      message.channel
-        .send({
-          files: [
-            {
-              attachment: `/app/assets/${PngName}`,
-              name: PngName,
-              description: "board",
-            },
-          ],
-        })
-        .then()
-        .catch(console.error);
+      async function safeImg(img, PngName) {
+        img.write(`/app/assets/${PngName}`);
+        return 0;
+      }
+      safeImg(board, PngName).then((err) => {
+        message.channel
+          .send({
+            files: [
+              {
+                attachment: `/app/assets/${PngName}`,
+                name: PngName,
+                description: "board",
+              },
+            ],
+          })
+          .then()
+          .catch(console.error);
+      });
     })
     .catch((err) => {
       console.error(err);
