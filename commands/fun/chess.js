@@ -33,6 +33,7 @@ module.exports = {
     }
 
     if (newMatch) {
+      console.log("newmatch")
       file.matches[file.matches.length] = {
         guildId: message.guild.id,
         FEN: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR",
@@ -173,7 +174,13 @@ function FENToPng(FEN, source, PngName, message) {
         i++;
       }
       board.write("/app/assets/" + PngName); // save
-
+      try {
+        if (fs.existsSync("/app/assets/" + PngName)) {
+          console.log("FILE EXISTS");
+        }
+      } catch (err) {
+        console.log("it doesnt");
+      }
       message.channel
         .send({
           files: [
