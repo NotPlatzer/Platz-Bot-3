@@ -173,9 +173,9 @@ function FENToPng(FEN, source, PngName, message) {
         lineNo--;
         i++;
       }
-      await board.write("/app/assets/" + PngName); // save
+      board.write(`/app/assets/${PngName}`); // save
       try {
-        if (fs.existsSync("/app/assets/" + PngName)) {
+        if (fs.existsSync(`/app/assets/${PngName}`)) {
           console.log("FILE EXISTS");
         }
       } catch (err) {
@@ -185,7 +185,7 @@ function FENToPng(FEN, source, PngName, message) {
         .send({
           files: [
             {
-              attachment: "/app/assets/" + PngName,
+              attachment: `/app/assets/${PngName}`,
               name: PngName,
               description: "board",
             },
