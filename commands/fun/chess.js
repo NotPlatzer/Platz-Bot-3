@@ -109,7 +109,7 @@ function numToAlph(num) {
 }
 
 //returns a Png
-function FENToPng(FEN, source, PngName, message) {
+async function FENToPng(FEN, source, PngName, message) {
   source = "./" + source;
   jimp
     .read(source)
