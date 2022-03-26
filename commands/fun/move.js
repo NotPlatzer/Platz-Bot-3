@@ -18,16 +18,16 @@ module.exports = {
     //the current boards name would be (message.author.id + target.user.id.toString() + ".png")
     const fileName = "/app/data/chessMatches.json";
     const file = require(fileName);
-
+    var FEN = "69";
     for (var i = 0; i < file.matches.length; i++) {
       if (
         file.matches[i].players[0] == message.author.id ||
         file.matches[i].players[1] == message.author.id
       ) {
-        const FEN = file.matches[i].FEN;
+        FEN = file.matches[i].FEN;
       }
     }
-    if (FEN == undefined) {
+    if (FEN == "69") {
       return message.reply("There is no match currently!");
     }
 
