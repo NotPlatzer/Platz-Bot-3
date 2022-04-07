@@ -4,7 +4,7 @@ const jimp = require("jimp");
 const fs = require("fs");
 
 module.exports = {
-  name: "move",
+  name: "test",
   aliases: ["test"],
   cooldown: 1000 * 0,
   description: "Changes the prefix",
