@@ -12,10 +12,10 @@ module.exports = {
   ownerOnly: true,
   category: "other",
 
-  async run(client, message, args, GuildPrefix, messageGuild) {
-    message.channel.send("!resign @NotPlatzer#1106");
+  run(client, message, args, GuildPrefix, messageGuild) {
+    message.channel.send("!resign <@608381190336020494>");
     sleep(2000);
-    message.channel.send("!chess @NotPlatzer#1106");
+    message.channel.send("!chess <@608381190336020494>");
   },
 };
 
