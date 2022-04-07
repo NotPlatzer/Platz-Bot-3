@@ -14,15 +14,12 @@ module.exports = {
 
   run(client, message, args, GuildPrefix, messageGuild) {
     message.channel.send("!resign <@608381190336020494>");
-    sleep(2000);
-    message.channel.send("!chess <@608381190336020494>");
+    sleep(2000).then(() => {
+      message.channel.send("!chess <@608381190336020494>");
+    });
   },
 };
 
-function sleep(milliseconds) {
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < milliseconds);
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
