@@ -12,7 +12,7 @@ module.exports = {
   ownerOnly: true,
   category: "other",
 
-  async run(client, message, args, GuildPrefix, messageGuild) {
+  run(client, message, args, GuildPrefix, messageGuild) {
     var newMessage;
 
     message.channel.send("!resign <@608381190336020494>");
