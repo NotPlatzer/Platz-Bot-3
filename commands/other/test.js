@@ -57,7 +57,3 @@ module.exports = {
     message.channel.send("!move O-O");
   },
 };
-
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
