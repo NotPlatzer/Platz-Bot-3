@@ -18,6 +18,7 @@ module.exports = {
     message.channel.send("!resign <@608381190336020494>");
     newMessage = false;
     while (!newMessage) {
+      sleep(500);
       message.channel.messages
         .fetch({ limit: 1 })
         .then((messages) => {
@@ -31,6 +32,7 @@ module.exports = {
     message.channel.send("!chess <@608381190336020494>");
     newMessage = false;
     while (!newMessage) {
+      sleep(500);
       message.channel.messages
         .fetch({ limit: 1 })
         .then((messages) => {
@@ -44,6 +46,7 @@ module.exports = {
     message.channel.send("!move O-O");
     newMessage = false;
     while (!newMessage) {
+      sleep(500);
       message.channel.messages
         .fetch({ limit: 1 })
         .then((messages) => {
@@ -57,3 +60,7 @@ module.exports = {
     message.channel.send("!move O-O");
   },
 };
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
