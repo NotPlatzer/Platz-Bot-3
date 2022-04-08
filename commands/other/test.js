@@ -13,50 +13,12 @@ module.exports = {
   category: "other",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
-    var newMessage;
-
     message.channel.send("!resign <@608381190336020494>");
-    newMessage = false;
-    while (!newMessage) {
-      await sleep(1000);
-      message.channel.messages
-        .fetch({ limit: 1 })
-        .then((messages) => {
-          let lastMessage = messages.first();
-          if (lastMessage.author.id !== "917878990478377020") {
-            newMessage = true;
-          }
-        })
-        .catch(console.error);
-    }
+    await sleep(2000);
     message.channel.send("!chess <@608381190336020494>");
-    newMessage = false;
-    while (!newMessage) {
-      await sleep(1000);
-      message.channel.messages
-        .fetch({ limit: 1 })
-        .then((messages) => {
-          let lastMessage = messages.first();
-          if (lastMessage.author.id !== "917878990478377020") {
-            newMessage = true;
-          }
-        })
-        .catch(console.error);
-    }
+    await sleep(2000);
     message.channel.send("!move O-O");
-    newMessage = false;
-    while (!newMessage) {
-      await sleep(1000);
-      message.channel.messages
-        .fetch({ limit: 1 })
-        .then((messages) => {
-          let lastMessage = messages.first();
-          if (lastMessage.author.id !== "917878990478377020") {
-            newMessage = true;
-          }
-        })
-        .catch(console.error);
-    }
+    await sleep(2000);
     message.channel.send("!move O-O");
   },
 };
