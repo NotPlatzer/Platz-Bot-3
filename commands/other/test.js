@@ -18,7 +18,7 @@ module.exports = {
     message.channel.send("!resign <@608381190336020494>");
     newMessage = false;
     while (!newMessage) {
-      channel.messages
+      message.channel.messages
         .fetch({ limit: 1 })
         .then((messages) => {
           let lastMessage = messages.first();
@@ -31,7 +31,7 @@ module.exports = {
     message.channel.send("!chess <@608381190336020494>");
     newMessage = false;
     while (!newMessage) {
-      channel.messages
+      message.channel.messages
         .fetch({ limit: 1 })
         .then((messages) => {
           let lastMessage = messages.first();
@@ -44,7 +44,7 @@ module.exports = {
     message.channel.send("!move O-O");
     newMessage = false;
     while (!newMessage) {
-      channel.messages
+      message.channel.messages
         .fetch({ limit: 1 })
         .then((messages) => {
           let lastMessage = messages.first();
