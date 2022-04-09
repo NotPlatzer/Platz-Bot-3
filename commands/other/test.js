@@ -17,19 +17,13 @@ module.exports = {
     await sleep(2000);
     message.channel.send("!chess <@608381190336020494>");
     await sleep(2000);
-    message.channel.send("!move a1b1");
+    message.channel.send("!move d2d4");
     await sleep(2000);
-    message.channel.send("!move h8g8");
+    message.channel.send("!move d1d3");
     await sleep(2000);
-    message.channel.send("!move b1a1");
+    message.channel.send("!move c1h6");
     await sleep(2000);
-    message.channel.send("!move g8h8");
-    await sleep(2000);
-    message.channel.send("!move O-O-O");
-    await sleep(2000);
-    message.channel.send("!move O-O");
-    await sleep(2000);
-    message.channel.send("!move O-O");
+    message.channel.send("!move b1a3");
   },
 };
 
