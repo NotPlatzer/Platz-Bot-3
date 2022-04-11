@@ -13,7 +13,7 @@ module.exports = {
   async run(client, message, args, GuildPrefix, messageGuild) {
     var newMatch = true;
     const fileName =
-      "app/data/chessMatches.json";
+      "/app/data/chessMatches.json";
     let file = JSON.parse(fs.readFileSync(fileName, "utf8"));
     const target = message.mentions.members.first();
     if (!target) return message.reply("Please mention your enemy!");
