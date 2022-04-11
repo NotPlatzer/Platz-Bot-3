@@ -19,9 +19,7 @@ module.exports = {
     await sleep(2000);
     message.channel.send("!move e2e4");
     await sleep(2000);
-    message.channel.send("!move e7e5");
-    await sleep(2000);
-    message.channel.send("!move d5e6");
+    message.channel.send("!move d4e3");
   },
 };
 
