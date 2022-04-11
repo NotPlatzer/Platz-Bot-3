@@ -215,7 +215,8 @@ client.on("messageCreate", (message) => {
         if (
           messageGuild.djmode &&
           messageGuild.djmode === true &&
-          !message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR)
+          !message.member.permissions.has(Permissions.FLAGS.ADMINISTRATOR) &&
+          command.category == "music"
         )
           return message.reply(`Dj mode is on!`);
         if (command.cooldown && message.author.id !== "608381190336020494") {
