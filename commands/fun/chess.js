@@ -25,15 +25,17 @@ module.exports = {
 
     for (var i = 0; i < file.matches.length; i++) {
       if (
-        file.matches[i].players[0] == message.author.id ||
-        file.matches[i].players[1] == message.author.id
+        (file.matches[i].players[0] == message.author.id ||
+          file.matches[i].players[1] == message.author.id) &&
+        file.matches[i].guildId == message.channel.guildId
       ) {
         newMatch = false;
         matchNum = i;
       }
       if (
-        file.matches[i].players[0] == target.user.id ||
-        file.matches[i].players[1] == target.user.id
+        (file.matches[i].players[0] == target.user.id ||
+          file.matches[i].players[1] == target.user.id) &&
+        file.matches[i].guildId == message.channel.guildId
       ) {
         enemyPlaying = true;
       }

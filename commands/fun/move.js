@@ -25,8 +25,9 @@ module.exports = {
     var matchNum = 6969;
     for (var i = 0; i < file.matches.length; i++) {
       if (
-        file.matches[i].players[0] == message.author.id ||
-        file.matches[i].players[1] == message.author.id
+        (file.matches[i].players[0] == message.author.id ||
+          file.matches[i].players[1] == message.author.id) &&
+        file.matches[i].guildId == message.channel.guildId
       ) {
         console.log("current FEN: " + file.matches[i].FEN);
         FEN = file.matches[i].FEN;
@@ -130,10 +131,7 @@ module.exports = {
         board[pieceLine][pieceSquare] == "N"
       ) {
         moveReturn = KnightMove(board, move);
-      } else if (
-        board[pieceLine][pieceSquare] == "0" ||
-        board[pieceLine][pieceSquare] == "0"
-      ) {
+      } else {
         moveReturn = "invalid {selceted square is empty}";
       }
       //#endregion
@@ -883,7 +881,14 @@ function KingMove(board, move) {
       return "K KING: invalid {there is one of your pieces}";
     }
   }
-
+  if (
+    (movetoLine - pieceLine <= 1 || pieceLine - movetoLine <= 1) &&
+    (movetoSquare - pieceSquare <= 1 || pieceSquare - movetoSquare <= 1)
+  ) {
+    return "valid";
+  }else{
+    return "invalid {not valid king move}"
+  }
   if (
     pieceSquare - movetoSquare == 1 ||
     pieceSquare - movetoSquare == -1 ||
