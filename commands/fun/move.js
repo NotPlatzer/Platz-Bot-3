@@ -48,6 +48,7 @@ module.exports = {
     var board = FENToArr(FEN); //first index is sq, second is line
     const move = args[0]; //e2e4
     var castling = FEN.split(" ")[2];
+    var enPassant = FEN.split(" ")[3];
     if (!move) return message.reply("Please provide a move!");
     if (move == "O-O" || move == "O-O-O") {
       const castret = Castling(board, move, FEN);
@@ -135,7 +136,6 @@ module.exports = {
         moveReturn = "invalid {selceted square is empty}";
       }
       //#endregion
-      var enPassant = FEN.split(" ")[3];
 
       if (moveReturn.includes("invalid")) {
         message.channel.send(moveReturn);
