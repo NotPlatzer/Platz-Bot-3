@@ -14,7 +14,7 @@ module.exports = {
   async run(client, message, args, GuildPrefix, messageGuild) {
     //the current FEN is stored in the db along with the players that startet the instance.
     //,chess starts the match and moves a made with ,move e2e4
-    const resetFEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq -";
+    const resetFEN = "r3k2r/pppppppp/8/8/8/8/PPPPPPPP/R3K2R w KQkq -";
     var newMatch = true;
     var enemyPlaying = false;
     const fileName = "/app/data/chessMatches.json";

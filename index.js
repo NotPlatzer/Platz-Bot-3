@@ -72,7 +72,7 @@ client.once("ready", async () => {
   var file = await JSON.parse(
     fs.readFileSync(fileName, "utf8", function (err, data) {
       if (err) console.log("error", err);
-      console.log(data);
+      console.log("chess matches: " + data);
     })
   );
   //Connecting to the DB
