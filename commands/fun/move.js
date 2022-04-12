@@ -211,13 +211,17 @@ module.exports = {
     var whoseTurn = FEN.split(" ")[1];
     if (whoseTurn == "w") {
       whoseTurn = "b";
-      if (enPassant !== "-" && enPassant[0] == "5") {
-        enPassant = "-";
+      if (enPassant !== "-") {
+        if (enPassant[0] == "5") {
+          enPassant = "-";
+        }
       }
     } else {
       whoseTurn = "w";
-      if (enPassant !== "-" && enPassant[0] == "2") {
-        enPassant = "-";
+      if (enPassant !== "-") {
+        if (enPassant[0] == "2") {
+          enPassant = "-";
+        }
       }
     }
     const newFEN =
@@ -882,25 +886,14 @@ function KingMove(board, move) {
     }
   }
   if (
-    (movetoLine - pieceLine <= 1 && pieceLine - movetoLine <= 1) &&
-    (movetoSquare - pieceSquare <= 1 && pieceSquare - movetoSquare <= 1)
+    movetoLine - pieceLine <= 1 &&
+    pieceLine - movetoLine <= 1 &&
+    movetoSquare - pieceSquare <= 1 &&
+    pieceSquare - movetoSquare <= 1
   ) {
     return "valid";
-  }else{
-    return "invalid {not valid king move}"
-  }
-  if (
-    pieceSquare - movetoSquare == 1 ||
-    pieceSquare - movetoSquare == -1 ||
-    (pieceSquare - movetoSquare == 0 && pieceSquare !== movetoSquare)
-  ) {
-    return "valid";
-  } else if (
-    pieceLine - movetoLine == 1 ||
-    pieceLine - movetoLine == -1 ||
-    pieceLine - movetoLine == 0
-  ) {
-    return "valid";
+  } else {
+    return "invalid {not valid king move}";
   }
 }
 //returns a FEN
