@@ -882,8 +882,8 @@ function KingMove(board, move) {
     }
   }
   if (
-    (movetoLine - pieceLine <= 1 || pieceLine - movetoLine <= 1) &&
-    (movetoSquare - pieceSquare <= 1 || pieceSquare - movetoSquare <= 1)
+    (movetoLine - pieceLine <= 1 && pieceLine - movetoLine <= 1) &&
+    (movetoSquare - pieceSquare <= 1 && pieceSquare - movetoSquare <= 1)
   ) {
     return "valid";
   }else{
