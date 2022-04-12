@@ -211,14 +211,14 @@ module.exports = {
     var whoseTurn = FEN.split(" ")[1];
     if (whoseTurn == "w") {
       whoseTurn = "b";
-      if (enPassant !== "-") {
+      if (enPassant.length > 1) {
         if (enPassant[0] == "5") {
           enPassant = "-";
         }
       }
     } else {
       whoseTurn = "w";
-      if (enPassant !== "-") {
+      if (enPassant.length > 1) {
         if (enPassant[0] == "2") {
           enPassant = "-";
         }
