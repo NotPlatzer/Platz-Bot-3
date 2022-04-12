@@ -67,6 +67,14 @@ client.on("error", () => {
 //Gets called once the client is online
 client.once("ready", async () => {
   client.user.setActivity(`,help`, { type: "WATCHING" });
+  const fileName = "/app/data/chessMatches.json";
+
+  var file = await JSON.parse(
+    fs.readFileSync(fileName, "utf8", function (err, data) {
+      if (err) console.log("error", err);
+      console.log(data);
+    })
+  );
   //Connecting to the DB
   await mongoose
     .connect(process.env.DB_URI, {
