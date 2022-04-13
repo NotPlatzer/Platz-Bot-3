@@ -196,7 +196,7 @@ client.on("messageCreate", (message) => {
           .setTitle("Platz Bot")
           .setColor([37, 150, 190])
           .setDescription(
-            `Use \`,help\` for more Information\nExample Usage: ${
+            `Use \`,help\` for more Information\n\nExample Usage: ${
               random_messages[
                 Math.floor(Math.random() * random_messages.length)
               ]
