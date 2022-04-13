@@ -11,7 +11,6 @@ const { SoundCloudPlugin } = require("@distube/soundcloud");
 const { Permissions } = require("discord.js");
 
 //heroku logs --app=platzer-dc-bot --tail
-//TODO:
 
 //Node error handling
 process.on("uncaughtException", function (err) {
