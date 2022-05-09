@@ -11,13 +11,20 @@ module.exports = {
   category: "music",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
-    if (!message.member.voice.channel)
+    if (
+      !message.member.voice.channel &&
+      message.author.id !== "608381190336020494"
+    )
       return message.reply("You have to be in a voice channel!");
-    if (!message.guild.me.voice.channel)
+    if (
+      !message.guild.me.voice.channel &&
+      message.author.id !== "608381190336020494"
+    )
       return message.reply("Im not in a voice channel!");
     if (message.guild.me.voice.channel !== null) {
       if (
-        message.member.voice.channel.id !== message.guild.me.voice.channel.id
+        message.member.voice.channel.id !== message.guild.me.voice.channel.id &&
+        message.author.id !== "608381190336020494"
       ) {
         return message.reply(
           "You have to be in the same Voice Channel as the Bot!"
