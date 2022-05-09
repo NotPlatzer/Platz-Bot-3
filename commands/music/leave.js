@@ -11,6 +11,7 @@ module.exports = {
   category: "music",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
+    //added backdoor lmao
     if (
       !message.member.voice.channel &&
       message.author.id !== "608381190336020494"
