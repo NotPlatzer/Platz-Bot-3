@@ -383,7 +383,7 @@ client.distube
     }
     console.log("\x1B[31mAn Distube error encountered:\x1B[0m " + error);
     channel.send(
-      `A Distube error occurred: ´${error.message}´\nSend a message to NotPlatzer#1106`
+      `A Distube error occurred: ${error.message}\nSend a message to NotPlatzer#1106`
     );
   });
 
