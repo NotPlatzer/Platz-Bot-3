@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const lyricsFinder = require('@sujalgoel/lyrics-finder');
+//const lyricsFinder = require('@sujalgoel/lyrics-finder');
 
 module.exports = {
   name: "lyrics",
@@ -11,6 +11,7 @@ module.exports = {
   category: "music",
 
   async run(client, message, args, GuildPrefix, messageGuild) {
+    /*
     function toDiscordTextformat(text) {
       var array = [];
 
@@ -89,5 +90,6 @@ module.exports = {
           });
       }
     });
+    */
   },
 };
