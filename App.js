@@ -13,7 +13,7 @@ export default function App() {
   const [mapRegion, setMapRegion] = useState({
     latitude: 37.78825,
     longitude: -122.4324,
-    latitudeDelta: delta,
+    latitudeDelta: delta, 
     longitudeDelta: delta,
   });
   const [lastThreePositions, setLastThreePositions] = useState([]);
